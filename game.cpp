@@ -17,6 +17,44 @@
 
 #include "game.h"
 
+#include <GL/glut.h>
+
 Game::Game()
 {
+
+}
+
+Game::~Game()
+{
+
+}
+
+void Game::init()
+{
+  glShadeModel(GL_SMOOTH);
+  glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+  glClearDepth(1.0f);
+  glEnable(GL_DEPTH_TEST);
+  glDepthFunc(GL_LEQUAL);
+  glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+}
+
+int Game::start(int argc = 0, char *argv[] = NULL)
+{
+  glutInit(&argc, argv);
+  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+  glutInitWindowPosition(50, 50);
+  glutInitWindowSize(800, 600);
+  glutCreateWindow("NyanCat 3D" );
+
+  init();
+
+  // Zaregistrujeme callback funkcie
+  glutDisplayFunc(Renderer::renderWrapper);
+  glutReshapeFunc(Renderer::reshapeWrapper);
+  /*glutKeyboardFunc(keyboard);
+  glutSpecialFunc(special_keys);*/
+
+  glutMainLoop();
+  return 0;
 }

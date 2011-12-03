@@ -18,6 +18,8 @@
 #ifndef NYANCAT_H
 #define NYANCAT_H
 
+#include "gameobject.h"
+
 class NyanCat : public GameObject
 {
 public:

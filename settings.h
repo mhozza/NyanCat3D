@@ -15,15 +15,13 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef SETTINGS_H
+#define SETTINGS_H
 
-#include "gameobject.h"
-
-class Camera : public GameObject
+class Settings
 {
 public:
-    Camera();
+    Settings();
 };
 
-#endif // CAMERA_H
+#endif // SETTINGS_H

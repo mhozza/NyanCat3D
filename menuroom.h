@@ -18,6 +18,8 @@
 #ifndef MENUROOM_H
 #define MENUROOM_H
 
+#include "room.h"
+
 class MenuRoom : public Room
 {
 public:

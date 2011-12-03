@@ -18,10 +18,18 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-class Renderer
+#include "room.h"
+
+class Renderer //singleton
 {
-public:
-    Renderer();
+  static Renderer* instance;
+  Renderer();
+public:  
+  static Renderer* getInstance();
+  static void renderWrapper();
+  static void reshapeWrapper(int, int);
+  void render();
+  void reshape(int w, int h);
 };
 
 #endif // RENDERER_H

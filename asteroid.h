@@ -18,6 +18,8 @@
 #ifndef ASTEROID_H
 #define ASTEROID_H
 
+#include "gameobject.h"
+
 class Asteroid : public GameObject
 {
 public:

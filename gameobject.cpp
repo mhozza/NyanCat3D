@@ -19,4 +19,18 @@
 
 GameObject::GameObject()
 {
+    model = new Model();
 }
+
+GameObject::~GameObject()
+{
+    delete model;
+}
+
+void GameObject::move()
+{
+    x+=speedX;
+    y+=speedY;
+    z+=speedZ;
+}
+

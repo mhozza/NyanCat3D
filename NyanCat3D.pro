@@ -17,7 +17,10 @@ SOURCES += main.cpp\
     nyancat.cpp \
     camera.cpp \
     asteroid.cpp \
-    renderer.cpp
+    renderer.cpp \
+    model.cpp \
+    controller.cpp \
+    settings.cpp
 
 HEADERS  += \
     game.h \
@@ -28,4 +31,9 @@ HEADERS  += \
     nyancat.h \
     camera.h \
     asteroid.h \
-    renderer.h
+    renderer.h \
+    model.h \
+    controller.h \
+    settings.h
+
+LIBS += -lglut -lGLU

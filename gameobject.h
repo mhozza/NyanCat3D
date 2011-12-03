@@ -18,10 +18,22 @@
 #ifndef GAMEOBJECT_H
 #define GAMEOBJECT_H
 
+#include "model.h"
+
 class GameObject
 {
+protected:
+    float x,y,z;
+    float speedX,speedY,speedZ;
+    Model* model;
 public:
     GameObject();
+    ~GameObject();
+    void move();
+    inline float getX(){return x;}
+    inline float getY(){return y;}
+    inline float getZ(){return z;}
+    inline Model* getModel(){return model;}
 };
 
 #endif // GAMEOBJECT_H

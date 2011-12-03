@@ -15,15 +15,8 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef CAMERA_H
-#define CAMERA_H
+#include "controller.h"
 
-#include "gameobject.h"
-
-class Camera : public GameObject
+Controller::Controller()
 {
-public:
-    Camera();
-};
-
-#endif // CAMERA_H
+}

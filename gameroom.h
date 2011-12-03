@@ -18,8 +18,21 @@
 #ifndef GAMEROOM_H
 #define GAMEROOM_H
 
+#include "nyancat.h"
+#include "camera.h"
+#include "gameobject.h"
+#include "room.h"
+
+#include <vector>
+
+
+using namespace std;
+
 class GameRoom : public Room
 {
+    Camera* camera;
+    NyanCat* player;
+    vector<GameObject*> objects;
 public:
     GameRoom();
 };

@@ -1,4 +1,7 @@
+#include "game.h"
+
 int main(int argc, char *argv[])
 {
-    //return
+    Game g;
+    return g.start(argc,argv);
 }

@@ -18,10 +18,17 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include "renderer.h"
+
 class Game
 {
+    bool run;
+    void init();
+    Renderer* renderer;
 public:
     Game();
+    ~Game();
+    int start(int argc, char *argv[]);
 };
 
 #endif // GAME_H
