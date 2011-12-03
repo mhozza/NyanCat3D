@@ -9,7 +9,23 @@ QT       +=
 TARGET = NyanCat3D
 
 SOURCES += main.cpp\        
+    game.cpp \
+    gameobject.cpp \
+    room.cpp \
+    gameroom.cpp \
+    menuroom.cpp \
+    nyancat.cpp \
+    camera.cpp \
+    asteroid.cpp \
+    renderer.cpp
 
-HEADERS  +=
-
-
+HEADERS  += \
+    game.h \
+    gameobject.h \
+    room.h \
+    gameroom.h \
+    menuroom.h \
+    nyancat.h \
+    camera.h \
+    asteroid.h \
+    renderer.h
