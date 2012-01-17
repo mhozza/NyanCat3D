@@ -16,6 +16,7 @@
  */
 
 #include "menuroom.h"
+#include "bitmapmodel.h"
 
 MenuRoom::MenuRoom()
 {
@@ -23,7 +24,8 @@ MenuRoom::MenuRoom()
   //background?
 
   //main logo
-
+  BitmapModel * logo = new BitmapModel("graphics/logo.png");
+  addObject(new GameObject(logo));
   //buttons
 
 }

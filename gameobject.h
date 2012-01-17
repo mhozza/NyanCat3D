@@ -19,6 +19,7 @@
 #define GAMEOBJECT_H
 
 #include "model.h"
+#include <cstddef>
 
 class GameObject
 {
@@ -26,15 +27,16 @@ protected:
     float x,y,z;
     float speedX,speedY,speedZ;
     Model* model;
-    //texture???
-public:
-    GameObject();
+    GameObject(){model = NULL;}
+public:    
+    GameObject(Model * model);
     ~GameObject();
     void move();
     inline float getX(){return x;}
     inline float getY(){return y;}
     inline float getZ(){return z;}
-    inline Model* getModel(){return model;}
+    Model* getModel();
+    void setModel(Model* model);
 };
 
 #endif // GAMEOBJECT_H

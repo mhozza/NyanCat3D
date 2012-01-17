@@ -18,15 +18,43 @@
 #include "bitmapmodel.h"
 #include "utils.h"
 #include <GL/glut.h>
+#include <iostream>
 
-BitmapModel::BitmapModel()
+GLubyte rasters[24] = {
+   0xcc, 0xf5, 0xa0, 0x22, 0x88, 0x33, 0xd0, 0x50, 0xc0, 0xd2,
+   0xaf, 0xa4, 0xfc, 0xdd, 0x77, 0x70, 0xc6, 0x4a, 0xa0, 0x10,
+   0x5b, 0xc0, 0xff, 0xc8};
+
+
+BitmapModel::BitmapModel(string fname)
 {
+  img = NULL;
+  Utils::loadPngImage(fname.c_str(),width,height,hasAlpha,&img);//TODO skontrolovat return value
+}
+
+BitmapModel::~BitmapModel()
+{
+  if(img!=NULL)
+  {
+    delete img;
+  }
 }
 
 void BitmapModel::loadBitmap(string fname)
 {
-  int width,height;
-  bool hasAlpha;
-  GLubyte ** img;
-  Utils::loadPngImage(fname.c_str(),width,height,hasAlpha,img);
+  if(!Utils::loadPngImage(fname.c_str(),width,height,hasAlpha,&img))
+  {
+    cerr << "Unable to load png" << endl;
+  }
 }
+
+void BitmapModel::draw()
+{
+  //if(image==NULL) todo vyhod exception
+  glRasterPos2i (0, 0);
+  //glBitmap(width,height,0,0,0,0,img);
+  //glBitmap (10, 12, 10.0, 10.0, 11.0, 0.0, rasters);
+  glDrawPixels(width, height, hasAlpha ? GL_RGBA : GL_RGB, GL_UNSIGNED_BYTE, img);
+}
+
+

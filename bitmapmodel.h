@@ -20,15 +20,20 @@
 
 #include "model.h"
 #include <string>
-#include <png.h>
+#include <GL/glut.h>
 
 using namespace std;
 
 class BitmapModel : public Model
 {
+  int width,height;
+  bool hasAlpha;
+  GLubyte * img;
 public:
-    BitmapModel();
-    void loadBitmap(string fname);
+  BitmapModel(string fname);
+  void loadBitmap(string fname);
+  void draw();
+  ~BitmapModel();
 };
 
 #endif // BITMAPMODEL_H

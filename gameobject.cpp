@@ -17,14 +17,16 @@
 
 #include "gameobject.h"
 
-GameObject::GameObject()
+GameObject::GameObject(Model * model = NULL)
 {
-    //model = new Model();
+    this->model = model;
 }
+
 
 GameObject::~GameObject()
 {
-    //delete model;
+  if (model!=NULL)
+    delete model;
 }
 
 void GameObject::move()
@@ -32,5 +34,18 @@ void GameObject::move()
     x+=speedX;
     y+=speedY;
     z+=speedZ;
+}
+
+Model * GameObject::getModel()
+{
+  //if(model == NULL) TODO vyhod exception
+  return model;
+}
+
+void GameObject::setModel(Model* model)
+{
+  if (this->model!=NULL)
+    delete this->model;
+  this->model = model;
 }
 
