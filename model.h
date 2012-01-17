@@ -19,10 +19,10 @@
 #define MODEL_H
 
 class Model
-{
+{  
 public:
     Model();
-    //void draw();
+    virtual void draw() = 0;
 };
 
 #endif // MODEL_H

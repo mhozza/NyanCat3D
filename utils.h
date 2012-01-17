@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,16 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gameobject.h"
+#ifndef UTILS_H
+#define UTILS_H
 
-GameObject::GameObject()
-{
-    //model = new Model();
-}
+#include <GL/glut.h>
 
-GameObject::~GameObject()
-{
-    //delete model;
-}
+class Utils
+{  
+  Utils(){}
+public:
+  static bool loadPngImage(const char *name, int &outWidth, int &outHeight, bool &outHasAlpha, GLubyte **outData);
+};
 
-void GameObject::move()
-{
-    x+=speedX;
-    y+=speedY;
-    z+=speedZ;
-}
-
+#endif // UTILS_H

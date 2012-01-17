@@ -23,6 +23,7 @@
 class Renderer //singleton
 {
   static Renderer* instance;
+  Room * actualRoom;
   Renderer();
 public:  
   static Renderer* getInstance();
@@ -30,6 +31,9 @@ public:
   static void reshapeWrapper(int, int);
   void render();
   void reshape(int w, int h);
+
+  void setRoom(Room * room);
+  ~Renderer();
 };
 
 #endif // RENDERER_H

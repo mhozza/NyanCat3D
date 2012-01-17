@@ -19,4 +19,11 @@
 
 MenuRoom::MenuRoom()
 {
+  //Navyrabam si objekty
+  //background?
+
+  //main logo
+
+  //buttons
+
 }

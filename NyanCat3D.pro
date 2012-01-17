@@ -20,7 +20,9 @@ SOURCES += main.cpp\
     renderer.cpp \
     model.cpp \
     controller.cpp \
-    settings.cpp
+    settings.cpp \
+    bitmapmodel.cpp \
+    utils.cpp
 
 HEADERS  += \
     game.h \
@@ -34,6 +36,8 @@ HEADERS  += \
     renderer.h \
     model.h \
     controller.h \
-    settings.h
+    settings.h \
+    bitmapmodel.h \
+    utils.h
 
-LIBS += -lglut -lGLU
+LIBS += -lglut -lGLU -lpng

@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,18 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gameobject.h"
+#include "bitmapmodel.h"
+#include "utils.h"
+#include <GL/glut.h>
 
-GameObject::GameObject()
+BitmapModel::BitmapModel()
 {
-    //model = new Model();
 }
 
-GameObject::~GameObject()
+void BitmapModel::loadBitmap(string fname)
 {
-    //delete model;
+  int width,height;
+  bool hasAlpha;
+  GLubyte ** img;
+  Utils::loadPngImage(fname.c_str(),width,height,hasAlpha,img);
 }
-
-void GameObject::move()
-{
-    x+=speedX;
-    y+=speedY;
-    z+=speedZ;
-}
-

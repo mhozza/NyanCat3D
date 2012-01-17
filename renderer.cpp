@@ -17,11 +17,24 @@
 
 #include "renderer.h"
 #include <GL/glut.h>
+#include "gameobject.h"
+#include <vector>
+
+using namespace std;
 
 Renderer * Renderer::instance = 0;
 
 Renderer::Renderer()
 {
+  this->actualRoom = NULL;
+}
+
+Renderer::~Renderer()
+{
+  if(actualRoom!=NULL)
+  {
+    delete actualRoom;
+  }
 }
 
 void Renderer::renderWrapper()
@@ -49,8 +62,17 @@ void Renderer::render()
 
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
+  vector<GameObject*> objects = actualRoom->getObjects();
+  for(unsigned i = 0;i<objects.size();i++)
+  {
+    GameObject * obj = objects[i];
+    glPushMatrix();
+    glTranslatef(obj->getX(), obj->getY(), obj->getZ());
+    obj->getModel()->draw();
+    glPopMatrix();
+  }
 
-  glTranslatef(-2.0f, 0.0f, -6.0f);
+  /*glTranslatef(-2.0f, 0.0f, -6.0f);
 
   glColor3f(1.0, 1.0, 1.0);
   glutWireCube(3.0);
@@ -70,7 +92,7 @@ void Renderer::render()
      glVertex3f( 1.0f, 1.0f, 0.0f);
      glVertex3f( 1.0f,-1.0f, 0.0f);
      glVertex3f(-1.0f,-1.0f, 0.0f);
-  glEnd();
+  glEnd();*/
 
   glutSwapBuffers();
 }
@@ -84,4 +106,13 @@ void Renderer::reshape(int w, int h)
   if (h == 0)
   h = 1;
   gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
+}
+
+void Renderer::setRoom(Room * room)
+{
+  if(actualRoom!=NULL)
+  {
+    delete actualRoom;
+  }
+  this->actualRoom = room;
 }

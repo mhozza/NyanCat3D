@@ -18,10 +18,21 @@
 #ifndef ROOM_H
 #define ROOM_H
 
+#include "gameobject.h"
+#include <vector>
+#include <cstddef>
+
+using namespace std;
+
 class Room
 {
+  vector<GameObject*> objects;
+protected:
+  void addObject(GameObject* object);
 public:
-    Room();
+  Room();
+  vector<GameObject*> getObjects();
+
 };
 
 #endif // ROOM_H

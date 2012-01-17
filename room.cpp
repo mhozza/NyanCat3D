@@ -17,6 +17,18 @@
 
 #include "room.h"
 
+
 Room::Room()
 {
+}
+
+vector<GameObject*> Room::getObjects()
+{
+  return objects;
+}
+
+void Room::addObject(GameObject* object)
+{
+  if(object!=NULL)
+    objects.push_back(object);
 }

@@ -16,17 +16,18 @@
  */
 
 #include "game.h"
+#include "menuroom.h"
 
 #include <GL/glut.h>
 
 Game::Game()
 {
-
+  this->renderer = Renderer::getInstance();
 }
 
 Game::~Game()
 {
-
+  delete renderer;
 }
 
 void Game::init()
@@ -55,6 +56,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   /*glutKeyboardFunc(keyboard);
   glutSpecialFunc(special_keys);*/
 
+  renderer->setRoom(new MenuRoom());
   glutMainLoop();
   return 0;
 }

@@ -26,6 +26,7 @@ protected:
     float x,y,z;
     float speedX,speedY,speedZ;
     Model* model;
+    //texture???
 public:
     GameObject();
     ~GameObject();

@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,20 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "gameobject.h"
+#ifndef BITMAPMODEL_H
+#define BITMAPMODEL_H
 
-GameObject::GameObject()
+#include "model.h"
+#include <string>
+#include <png.h>
+
+using namespace std;
+
+class BitmapModel : public Model
 {
-    //model = new Model();
-}
+public:
+    BitmapModel();
+    void loadBitmap(string fname);
+};
 
-GameObject::~GameObject()
-{
-    //delete model;
-}
-
-void GameObject::move()
-{
-    x+=speedX;
-    y+=speedY;
-    z+=speedZ;
-}
-
+#endif // BITMAPMODEL_H
