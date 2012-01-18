@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,21 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef KEYBOARD_H
+#define KEYBOARD_H
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
-
-class Game
+class Keyboard
 {
-    bool run;
-    void init();
-    Renderer* renderer;
+  static Keyboard* instance;
+  Keyboard();
+  int width, height;
 public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
+  static Keyboard* getInstance();
+  static void keyboardFuncWrapper(unsigned char key, int x, int y);
+  void keyboardFunc(unsigned char key, int x, int y);
+  static void keyboardSpecialFuncWrapper(int key, int x, int y);
+  void keyboardSpecialFunc(int key, int x, int y);
+  ~Keyboard();
 };
 
-#endif // GAME_H
+#endif // KEYBOARD_H

@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,19 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef MOUSE_H
+#define MOUSE_H
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
-
-class Game
+class Mouse  //singleton
 {
-    bool run;
-    void init();
-    Renderer* renderer;
+  static Mouse* instance;
+  Mouse();
+  int width, height;
 public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
+  static Mouse* getInstance();
+  static void mouseFuncWrapper(int button, int state, int x, int y);
+  void mouseFunc(int button, int state, int x, int y);
+  ~Mouse();
 };
 
-#endif // GAME_H
+#endif // MOUSE_H

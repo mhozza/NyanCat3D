@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,49 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
-
-#include "renderer.h"
-#include "mouse.h"
 #include "keyboard.h"
+#include <GL/glut.h>
 
-class Game
+//using namespace std;
+
+Keyboard * Keyboard::instance = 0;
+
+Keyboard::Keyboard()
 {
-    bool run;
-    void init();
-    Renderer* renderer;
-public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-};
 
-#endif // GAME_H
+}
+
+Keyboard::~Keyboard()
+{
+
+}
+Keyboard* Keyboard::getInstance()
+{
+  if(!instance)
+    instance = new Keyboard();
+
+  return instance;
+}
+
+void Keyboard::keyboardFuncWrapper(unsigned char key, int x, int y)
+{
+  Keyboard::getInstance()->keyboardFunc(key, x, y);
+}
+
+void Keyboard::keyboardSpecialFuncWrapper(int key, int x, int y)
+{
+  Keyboard::getInstance()->keyboardSpecialFunc(key, x, y);
+}
+
+
+void Keyboard::keyboardFunc(unsigned char key, int x, int y)
+{
+
+}
+
+void Keyboard::keyboardSpecialFunc(int key, int x, int y)
+{
+
+}
+
+

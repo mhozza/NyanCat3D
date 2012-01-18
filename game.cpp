@@ -58,9 +58,9 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   // Zaregistrujeme callback funkcie
   glutDisplayFunc(Renderer::renderWrapper);
   glutReshapeFunc(Renderer::reshapeWrapper);
-  //glutMouseFunc();
-  /*glutKeyboardFunc(keyboard);
-  glutSpecialFunc(special_keys);*/
+  glutMouseFunc(Mouse::mouseFuncWrapper);
+  glutKeyboardFunc(Keyboard::keyboardFuncWrapper);
+  glutSpecialFunc(Keyboard::keyboardSpecialFuncWrapper);
 
   renderer->setRoom(new MenuRoom(WINDOW_W,WINDOW_H));
   glutMainLoop();

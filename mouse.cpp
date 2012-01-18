@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,22 +15,38 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
-
-#include "renderer.h"
 #include "mouse.h"
-#include "keyboard.h"
+#include <GL/glut.h>
 
-class Game
+//using namespace std;
+
+Mouse * Mouse::instance = 0;
+
+Mouse::Mouse()
 {
-    bool run;
-    void init();
-    Renderer* renderer;
-public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-};
 
-#endif // GAME_H
+}
+
+Mouse::~Mouse()
+{
+
+}
+Mouse* Mouse::getInstance()
+{
+  if(!instance)
+    instance = new Mouse();
+
+  return instance;
+}
+
+void Mouse::mouseFuncWrapper(int button, int state, int x, int y)
+{
+  Mouse::getInstance()->mouseFunc(button, state, x, y);
+}
+
+void Mouse::mouseFunc(int button, int state, int x, int y)
+{
+
+}
+
+

@@ -22,7 +22,9 @@ SOURCES += main.cpp\
     controller.cpp \
     settings.cpp \
     bitmapmodel.cpp \
-    utils.cpp
+    utils.cpp \
+    mouse.cpp \
+    keyboard.cpp
 
 HEADERS  += \
     game.h \
@@ -38,6 +40,8 @@ HEADERS  += \
     controller.h \
     settings.h \
     bitmapmodel.h \
-    utils.h
+    utils.h \
+    mouse.h \
+    keyboard.h
 
 LIBS += -lglut -lGLU -lpng
