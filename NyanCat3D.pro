@@ -27,7 +27,8 @@ SOURCES += main.cpp\
     keyboard.cpp \
     button.cpp \
     startbutton.cpp \
-    quitbutton.cpp
+    quitbutton.cpp \
+    nyancatmodel.cpp
 
 HEADERS  += \
     game.h \
@@ -48,6 +49,7 @@ HEADERS  += \
     keyboard.h \
     button.h \
     startbutton.h \
-    quitbutton.h
+    quitbutton.h \
+    nyancatmodel.h
 
 LIBS += -lglut -lGLU -lpng

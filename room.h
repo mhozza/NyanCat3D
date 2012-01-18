@@ -23,6 +23,9 @@
 #include <cstddef>
 #include "utils.h"
 
+#define MODE_2D 0
+#define MODE_3D 1
+
 using namespace std;
 
 class Room
@@ -31,11 +34,13 @@ class Room
 protected:
   void addObject(GameObject* object);
   ColorRGBAf bgcolor;
+  int mode;
 public:
   Room();
   ~Room();
   vector<GameObject*> getObjects();
   ColorRGBAf getBackgroundColor();
+  int getMode();
 
 };
 

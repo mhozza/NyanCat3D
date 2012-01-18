@@ -16,7 +16,10 @@
  */
 
 #include "nyancat.h"
+#include "nyancatmodel.h"
 
 NyanCat::NyanCat()
 {
+  this->model = new NyanCatModel();
 }
+

@@ -66,7 +66,7 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
       r.x+=((*i).second.first.first)->getX();
       r.y+=((*i).second.first.first)->getY();
       int h = 600;//TODO zratat
-      cerr << x << " " << h-y << endl << r.x << " " << r.y << " " << r.x+r.width << " " << r.y+r.height << endl;
+      //cerr << x << " " << h-y << endl << r.x << " " << r.y << " " << r.x+r.width << " " << r.y+r.height << endl;
       //ak som trafil do obdlznika
       if(x>=r.x && x<=r.x+r.width && h-y>=r.y && h-y<=r.y+r.height)
       {

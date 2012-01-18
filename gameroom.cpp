@@ -16,7 +16,11 @@
  */
 
 #include "gameroom.h"
+#include "nyancat.h"
+
 
 GameRoom::GameRoom()
 {
+  mode = MODE_3D;
+  addObject(new NyanCat());
 }

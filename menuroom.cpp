@@ -24,6 +24,7 @@
 
 MenuRoom::MenuRoom(int width, int height)
 {
+  mode = MODE_2D;
   //Navyrabam si objekty
   //background
   bgcolor.setColor(1.0/255,51.0/255,102.0/255);

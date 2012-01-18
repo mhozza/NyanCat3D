@@ -23,7 +23,7 @@
 class NyanCat : public GameObject
 {
 public:
-    NyanCat();
+    NyanCat();    
 };
 
 #endif // NYANCAT_H

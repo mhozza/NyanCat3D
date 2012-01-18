@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,36 +15,33 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "room.h"
-#include "mouse.h"
+#include "nyancatmodel.h"
 
-
-Room::Room()
+NyanCatModel::NyanCatModel()
 {
 }
 
-Room::~Room()
+void NyanCatModel::draw()
 {
-  Mouse::getInstance()->clearActions();
-}
+  glTranslatef(-2.0f, 0.0f, -6.0f);
 
-vector<GameObject*> Room::getObjects()
-{
-  return objects;
-}
+  glColor3f(1.0, 1.0, 1.0);
+  glutWireCube(3.0);
 
-void Room::addObject(GameObject* object)
-{
-  if(object!=NULL)
-    objects.push_back(object);
-}
+  glColor3f(1.0, 0.0, 0.0);
+  glBegin(GL_TRIANGLES);
+     glVertex3f( 0.0f, 1.0f, 0.0f);
+     glVertex3f(-1.0f,-1.0f, 0.0f);
+     glVertex3f( 1.0f,-1.0f, 0.0f);
+  glEnd();
 
-ColorRGBAf Room::getBackgroundColor()
-{
-  return bgcolor;
-}
+  glTranslatef(4.0f,0.0f,0.0f);
 
-int Room::getMode()
-{
-  return mode;
+  glColor3f(0.0, 0.0, 1.0);
+  glBegin(GL_QUADS);
+     glVertex3f(-1.0f, 1.0f, 0.0f);
+     glVertex3f( 1.0f, 1.0f, 0.0f);
+     glVertex3f( 1.0f,-1.0f, 0.0f);
+     glVertex3f(-1.0f,-1.0f, 0.0f);
+  glEnd();
 }

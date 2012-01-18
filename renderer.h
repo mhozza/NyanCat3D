@@ -18,6 +18,9 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#define WINDOW_W 800
+#define WINDOW_H 600
+
 #include "room.h"
 
 class Renderer //singleton
@@ -35,6 +38,7 @@ public:
   inline int getWidth(){return width;}
   inline int getHeight(){return height;}
   void setRoom(Room * room);
+  void resetView(int w, int h);
   ~Renderer();
 };
 

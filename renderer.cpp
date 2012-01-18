@@ -76,41 +76,29 @@ void Renderer::render()
     glPopMatrix();
   }
 
-  /*glTranslatef(-2.0f, 0.0f, -6.0f);
 
-  glColor3f(1.0, 1.0, 1.0);
-  glutWireCube(3.0);
-
-  glColor3f(1.0, 0.0, 0.0);
-  glBegin(GL_TRIANGLES);
-     glVertex3f( 0.0f, 1.0f, 0.0f);
-     glVertex3f(-1.0f,-1.0f, 0.0f);
-     glVertex3f( 1.0f,-1.0f, 0.0f);
-  glEnd();
-
-  glTranslatef(4.0f,0.0f,0.0f);
-
-  glColor3f(0.0, 0.0, 1.0);
-  glBegin(GL_QUADS);
-     glVertex3f(-1.0f, 1.0f, 0.0f);
-     glVertex3f( 1.0f, 1.0f, 0.0f);
-     glVertex3f( 1.0f,-1.0f, 0.0f);
-     glVertex3f(-1.0f,-1.0f, 0.0f);
-  glEnd();*/
 
   glutSwapBuffers();
 }
 
 void Renderer::reshape(int w, int h)
 {
+  //resetView(w,h);
+  glutReshapeWindow(WINDOW_W, WINDOW_H);
+}
+
+void Renderer::resetView(int w, int h)
+{
+  if (h == 0) h = 1;
   glViewport(0, 0, w, h);
   glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
   glLoadIdentity();                                   // Vynulovanie
-  glOrtho (0.0, w, 0.0, h, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
+  if(actualRoom->getMode()==MODE_2D)
+    glOrtho (0.0, w, 0.0, h, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
+  else
+    gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici
   glLoadIdentity();                                   // A vynulujeme ju
-  if (h == 0) h = 1;
-  gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
   width = w;
   height = h;
 }
@@ -122,5 +110,5 @@ void Renderer::setRoom(Room * room)
     delete actualRoom;
   }
   this->actualRoom = room;
-  //render();
+  resetView(WINDOW_W,WINDOW_H);
 }

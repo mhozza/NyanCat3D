@@ -30,6 +30,5 @@ QuitButton::QuitButton(int x, int y)
 
 void QuitButton::onClick()
 {
-  cout << "baf" << endl;
   exit(0);
 }

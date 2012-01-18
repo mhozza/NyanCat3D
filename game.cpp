@@ -17,11 +17,11 @@
 
 #include "game.h"
 #include "menuroom.h"
+#include "gameroom.h"
 
 #include <GL/glut.h>
 
-#define WINDOW_W 800
-#define WINDOW_H 600
+
 
 Game::Game()
 {
@@ -53,16 +53,21 @@ int Game::start(int argc = 0, char *argv[] = NULL)
 
   glutCreateWindow("NyanCat 3D" );
 
+
+
   init();
 
   // Zaregistrujeme callback funkcie
   glutDisplayFunc(Renderer::renderWrapper);
+  glutIdleFunc(Renderer::renderWrapper);
   glutReshapeFunc(Renderer::reshapeWrapper);
   glutMouseFunc(Mouse::mouseFuncWrapper);
   glutKeyboardFunc(Keyboard::keyboardFuncWrapper);
   glutSpecialFunc(Keyboard::keyboardSpecialFuncWrapper);
 
+
   renderer->setRoom(new MenuRoom(WINDOW_W,WINDOW_H));
+  //renderer->setRoom(new GameRoom());
   glutMainLoop();
   return 0;
 }
