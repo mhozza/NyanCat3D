@@ -26,7 +26,8 @@ SOURCES += main.cpp\
     mouse.cpp \
     keyboard.cpp \
     button.cpp \
-    startbutton.cpp
+    startbutton.cpp \
+    quitbutton.cpp
 
 HEADERS  += \
     game.h \
@@ -46,6 +47,7 @@ HEADERS  += \
     mouse.h \
     keyboard.h \
     button.h \
-    startbutton.h
+    startbutton.h \
+    quitbutton.h
 
 LIBS += -lglut -lGLU -lpng

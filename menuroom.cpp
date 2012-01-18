@@ -17,8 +17,8 @@
 
 #include "menuroom.h"
 #include "bitmapmodel.h"
-#include "mouse.h"
 #include "startbutton.h"
+#include "quitbutton.h"
 
 #define MAGIN 10
 
@@ -35,10 +35,9 @@ MenuRoom::MenuRoom(int width, int height)
   addObject(new StartButton(30,300));
   /*//settins
   BitmapModel * settings = new BitmapModel("graphics/settings.png");
-  addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));
+  addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));*/
   //quit
-  BitmapModel * quit = new BitmapModel("graphics/quit.png");
-  addObject(new GameObject(quit,(width-quit->getWidth())/2,height-logo->getHeight()-3*MAGIN-start->getWidth()-settings->getWidth()-quit->getWidth(),0));*/
+  addObject(new QuitButton(30,100));
 
 }
 
