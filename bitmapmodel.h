@@ -25,8 +25,7 @@
 using namespace std;
 
 class BitmapModel : public Model
-{
-  int width,height;
+{  
   bool hasAlpha;
   GLubyte * img;
 public:

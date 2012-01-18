@@ -17,9 +17,13 @@
 
 #include "gameobject.h"
 
-GameObject::GameObject(Model * model = NULL)
+GameObject::GameObject(Model * model = NULL, float x = 0.0f, float y = 0.0f, float z= 0.0f)
 {
-    this->model = model;
+  this->model = NULL;
+  setModel(model);
+  setX(x);
+  setY(y);
+  setZ(z);
 }
 
 
@@ -46,6 +50,6 @@ void GameObject::setModel(Model* model)
 {
   if (this->model!=NULL)
     delete this->model;
-  this->model = model;
+  this->model = model;  
 }
 

@@ -28,6 +28,7 @@ GLubyte rasters[24] = {
 
 BitmapModel::BitmapModel(string fname)
 {
+  depth = 0;
   img = NULL;
   Utils::loadPngImage(fname.c_str(),width,height,hasAlpha,&img);//TODO skontrolovat return value
 }

@@ -23,7 +23,7 @@
 class MenuRoom : public Room
 {
 public:
-    MenuRoom();
+    MenuRoom(int width, int height);
 };
 
 #endif // MENUROOM_H

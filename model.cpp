@@ -21,3 +21,20 @@ Model::Model()
 {
 }
 
+
+float Model::getWidth()
+{
+  return width;
+}
+
+
+float Model::getHeight()
+{
+  return height;
+}
+
+
+float Model::getDepth()
+{
+  return depth;
+}

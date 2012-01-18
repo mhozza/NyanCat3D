@@ -24,17 +24,20 @@
 class GameObject
 {
 protected:
-    float x,y,z;
+    float x,y,z,width, height, depth;
     float speedX,speedY,speedZ;
     Model* model;
     GameObject(){model = NULL;}
 public:    
-    GameObject(Model * model);
+    GameObject(Model * model,float x, float y, float z);
     ~GameObject();
     void move();
     inline float getX(){return x;}
     inline float getY(){return y;}
     inline float getZ(){return z;}
+    inline void setX(float x){this->x = x;}
+    inline void setY(float y){this->y = y;}
+    inline void setZ(float z){this->z = z;}
     Model* getModel();
     void setModel(Model* model);
 };

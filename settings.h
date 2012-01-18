@@ -18,10 +18,15 @@
 #ifndef SETTINGS_H
 #define SETTINGS_H
 
+#include <vector>
+
+using namespace std;
+
 class Settings
 {
 public:
     Settings();
+    //pair<int,int> getResolution();
 };
 
 #endif // SETTINGS_H

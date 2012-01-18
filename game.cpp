@@ -20,6 +20,9 @@
 
 #include <GL/glut.h>
 
+#define WINDOW_W 800
+#define WINDOW_H 600
+
 Game::Game()
 {
   this->renderer = Renderer::getInstance();
@@ -44,8 +47,10 @@ int Game::start(int argc = 0, char *argv[] = NULL)
 {
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+
   glutInitWindowPosition(50, 50);
-  glutInitWindowSize(800, 600);
+  glutInitWindowSize(WINDOW_W, WINDOW_H);
+
   glutCreateWindow("NyanCat 3D" );
 
   init();
@@ -53,10 +58,11 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   // Zaregistrujeme callback funkcie
   glutDisplayFunc(Renderer::renderWrapper);
   glutReshapeFunc(Renderer::reshapeWrapper);
+  //glutMouseFunc();
   /*glutKeyboardFunc(keyboard);
   glutSpecialFunc(special_keys);*/
 
-  renderer->setRoom(new MenuRoom());
+  renderer->setRoom(new MenuRoom(WINDOW_W,WINDOW_H));
   glutMainLoop();
   return 0;
 }

@@ -20,9 +20,14 @@
 
 class Model
 {  
+protected:
+  float width, height, depth;
 public:
-    Model();
-    virtual void draw() = 0;
+  Model();
+  virtual void draw() = 0;
+  float getWidth();
+  float getHeight();
+  float getDepth();
 };
 
 #endif // MODEL_H

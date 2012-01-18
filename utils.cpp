@@ -22,7 +22,7 @@
 
 using namespace std;
 
-bool Utils::loadPngImage(const char *name, int &outWidth, int &outHeight, bool &outHasAlpha, GLubyte **outData)
+bool Utils::loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData)
 {
     png_structp png_ptr;
     png_infop info_ptr;
@@ -109,8 +109,8 @@ bool Utils::loadPngImage(const char *name, int &outWidth, int &outHeight, bool &
      */
     png_read_png(png_ptr, info_ptr, PNG_TRANSFORM_STRIP_16 | PNG_TRANSFORM_PACKING | PNG_TRANSFORM_EXPAND, png_voidp_NULL);
 
-    outWidth = info_ptr->width;
-    outHeight = info_ptr->height;
+    outWidth = (float)info_ptr->width;
+    outHeight = (float)info_ptr->height;
     switch (info_ptr->color_type) {
         case PNG_COLOR_TYPE_RGBA:
             outHasAlpha = true;
@@ -133,7 +133,7 @@ bool Utils::loadPngImage(const char *name, int &outWidth, int &outHeight, bool &
         // note that png is ordered top to
         // bottom, but OpenGL expect it bottom to top
         // so the order or swapped
-        memcpy(*outData+(row_bytes * (outHeight-1-i)), row_pointers[i], row_bytes);
+        memcpy(*outData+(row_bytes * ((int)outHeight-1-i)), row_pointers[i], row_bytes);
     }
 
     /* Clean up after the read,

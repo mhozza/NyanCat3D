@@ -20,11 +20,31 @@
 
 #include <GL/glut.h>
 
+struct ColorRGBAf
+{
+  GLclampf red, green, blue, alpha;
+  ColorRGBAf(GLclampf red = 0, GLclampf green = 0, GLclampf blue = 0, GLclampf alpha = 1)
+  {
+    this->red = red;
+    this->green = green;
+    this->blue = blue;
+    this->alpha = alpha;
+  }
+  void setColor(GLclampf red = 0, GLclampf green = 0, GLclampf blue = 0, GLclampf alpha = 1)
+  {
+    this->red = red;
+    this->green = green;
+    this->blue = blue;
+    this->alpha = alpha;
+  }
+};
+
+
 class Utils
 {  
   Utils(){}
 public:
-  static bool loadPngImage(const char *name, int &outWidth, int &outHeight, bool &outHasAlpha, GLubyte **outData);
+  static bool loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData);
 };
 
 #endif // UTILS_H

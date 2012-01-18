@@ -58,8 +58,12 @@ Renderer* Renderer::getInstance()
 
 void Renderer::render()
 {
-  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+  glClearColor(actualRoom->getBackgroundColor().red,
+               actualRoom->getBackgroundColor().green,
+               actualRoom->getBackgroundColor().blue,
+               actualRoom->getBackgroundColor().alpha);
 
+  glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
   vector<GameObject*> objects = actualRoom->getObjects();
@@ -106,7 +110,9 @@ void Renderer::reshape(int w, int h)
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici
   glLoadIdentity();                                   // A vynulujeme ju
   if (h == 0) h = 1;
-  //gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
+  gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
+  width = w;
+  height = h;
 }
 
 void Renderer::setRoom(Room * room)

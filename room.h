@@ -21,6 +21,7 @@
 #include "gameobject.h"
 #include <vector>
 #include <cstddef>
+#include "utils.h"
 
 using namespace std;
 
@@ -29,9 +30,11 @@ class Room
   vector<GameObject*> objects;
 protected:
   void addObject(GameObject* object);
+  ColorRGBAf bgcolor;
 public:
   Room();
   vector<GameObject*> getObjects();
+  ColorRGBAf getBackgroundColor();
 
 };
 

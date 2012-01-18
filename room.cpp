@@ -32,3 +32,8 @@ void Room::addObject(GameObject* object)
   if(object!=NULL)
     objects.push_back(object);
 }
+
+ColorRGBAf Room::getBackgroundColor()
+{
+  return bgcolor;
+}
