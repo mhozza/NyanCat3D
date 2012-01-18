@@ -17,8 +17,10 @@
 
 #include "mouse.h"
 #include <GL/glut.h>
+#include "gameobject.h"
+#include <iostream>
 
-//using namespace std;
+using namespace std;
 
 Mouse * Mouse::instance = 0;
 
@@ -46,7 +48,41 @@ void Mouse::mouseFuncWrapper(int button, int state, int x, int y)
 
 void Mouse::mouseFunc(int button, int state, int x, int y)
 {
-
+  //cerr << "Klik:" << button << " " << state << endl;
+  pair<multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator,
+      multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator>
+      r = actions.equal_range(make_pair(button,state));
+  for(multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator
+      i = r.first;i!=r.second;i++)
+  {
+    if((*i).second.second)//if global
+    {
+      ((*i).second.first.first)->action((*i).second.first.second);
+    }
+    else
+    {
+      //get object rect
+      Rect r = ((*i).second.first.first)->getModel()->getRect();
+      r.x+=((*i).second.first.first)->getX();
+      r.y+=((*i).second.first.first)->getY();
+      //cerr << x << " " << y << endl << r.x << " " << r.y << " " << r.width << " " << r.height << endl;
+      //ak som trafil do obdlznika
+      if(x>=r.x && x<=r.x+r.width && y<=r.y && y>=r.y-r.height)
+      {
+        ((*i).second.first.first)->action((*i).second.first.second);
+      }
+    }
+  }
 }
 
+void Mouse::registerAction(GameObject *object, int actionID, int button, int state, bool global)
+{
+  actions.insert(make_pair(make_pair(button,state),make_pair(make_pair(object,actionID),global)));
+  //cerr << "Reg:" << button << " " << state << endl;
+}
+
+void Mouse::clearActions()
+{
+  actions.clear();
+}
 

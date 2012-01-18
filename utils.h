@@ -39,6 +39,31 @@ struct ColorRGBAf
   }
 };
 
+struct Rect
+{
+  int x, y, z, width, height, depth;
+  Rect(int x = 0,int y = 0, int w =0, int h=0)
+  {
+    setRect(x,y,0,w,h,0);
+  }
+
+  Rect(int x = 0,int y = 0, int z = 0, int w =0, int h=0, int d = 0)
+  {
+    setRect(x,y,z,w,h,d);
+  }
+
+  void setRect(int x = 0,int y = 0, int z = 0, int w =0, int h=0, int d = 0)
+  {
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    this->width = w;
+    this->height = h;
+    this->depth = d;
+  }
+
+
+};
 
 class Utils
 {  

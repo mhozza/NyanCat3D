@@ -18,15 +18,24 @@
 #ifndef MOUSE_H
 #define MOUSE_H
 
+#include "utils.h"
+#include "gameobject.h"
+#include <map>
+
+using namespace std;
+
 class Mouse  //singleton
 {
   static Mouse* instance;
   Mouse();
   int width, height;
+  multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> > actions;
 public:
   static Mouse* getInstance();
   static void mouseFuncWrapper(int button, int state, int x, int y);
   void mouseFunc(int button, int state, int x, int y);
+  void registerAction(GameObject * object, int actionID, int button, int state, bool global);
+  void clearActions();
   ~Mouse();
 };
 

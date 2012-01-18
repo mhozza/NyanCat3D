@@ -16,10 +16,16 @@
  */
 
 #include "room.h"
+#include "mouse.h"
 
 
 Room::Room()
 {
+}
+
+Room::~Room()
+{
+  Mouse::getInstance()->clearActions();
 }
 
 vector<GameObject*> Room::getObjects()

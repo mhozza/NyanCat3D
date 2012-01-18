@@ -24,6 +24,7 @@ class MenuRoom : public Room
 {
 public:
     MenuRoom(int width, int height);
+    ~MenuRoom();
 };
 
 #endif // MENUROOM_H

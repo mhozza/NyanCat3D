@@ -18,6 +18,8 @@
 #ifndef KEYBOARD_H
 #define KEYBOARD_H
 
+#include "gameobject.h"
+
 class Keyboard
 {
   static Keyboard* instance;
@@ -29,6 +31,7 @@ public:
   void keyboardFunc(unsigned char key, int x, int y);
   static void keyboardSpecialFuncWrapper(int key, int x, int y);
   void keyboardSpecialFunc(int key, int x, int y);
+  void RegisterAction(GameObject * object, int actionID, int key, bool special);
   ~Keyboard();
 };
 

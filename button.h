@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,32 +15,18 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "model.h"
+#ifndef BUTTON_H
+#define BUTTON_H
 
-Model::Model()
+#include "gameobject.h"
+
+class Button : public GameObject
 {
-}
+protected:
+  virtual void onClick() = 0;
+public:
+  Button(int x, int y);
+  void action(int actionID);
+};
 
-/*
-float Model::getWidth()
-{
-  return width;
-}
-
-
-float Model::getHeight()
-{
-  return height;
-}
-
-
-float Model::getDepth()
-{
-  return depth;
-}*/
-
-Rect Model::getRect()
-{
-  Rect r(x,y,z,width,height,depth);
-  return r;
-}
+#endif // BUTTON_H

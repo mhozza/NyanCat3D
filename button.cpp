@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,32 +15,22 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "model.h"
+#include "button.h"
+#include "mouse.h"
+#include "GL/glut.h"
+#include "utils.h"
 
-Model::Model()
-{
+Button::Button(int x, int y)
+  :GameObject(NULL,x,y,0)
+{  
+  Mouse * m = Mouse::getInstance();
+  m->registerAction(this,0,GLUT_LEFT_BUTTON,GLUT_DOWN,false);
 }
 
-/*
-float Model::getWidth()
+void Button::action(int actionID)
 {
-  return width;
-}
-
-
-float Model::getHeight()
-{
-  return height;
-}
-
-
-float Model::getDepth()
-{
-  return depth;
-}*/
-
-Rect Model::getRect()
-{
-  Rect r(x,y,z,width,height,depth);
-  return r;
+  if(actionID==0)
+  {
+    onClick();
+  }
 }

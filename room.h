@@ -33,6 +33,7 @@ protected:
   ColorRGBAf bgcolor;
 public:
   Room();
+  ~Room();
   vector<GameObject*> getObjects();
   ColorRGBAf getBackgroundColor();
 

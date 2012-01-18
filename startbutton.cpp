@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,32 +15,22 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "model.h"
+#include "startbutton.h"
+#include "bitmapmodel.h"
+#include "renderer.h"
+#include "gameroom.h"
+#include <iostream>
 
-Model::Model()
+using namespace std;
+
+StartButton::StartButton(int x, int y)
+  :Button(x,y)
 {
+  this->setModel(new BitmapModel("graphics/start.png"));
 }
 
-/*
-float Model::getWidth()
+void StartButton::onClick()
 {
-  return width;
-}
-
-
-float Model::getHeight()
-{
-  return height;
-}
-
-
-float Model::getDepth()
-{
-  return depth;
-}*/
-
-Rect Model::getRect()
-{
-  Rect r(x,y,z,width,height,depth);
-  return r;
+  //zapni hru
+  Renderer::getInstance()->setRoom(new GameRoom());
 }

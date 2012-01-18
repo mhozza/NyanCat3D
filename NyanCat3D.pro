@@ -24,7 +24,9 @@ SOURCES += main.cpp\
     bitmapmodel.cpp \
     utils.cpp \
     mouse.cpp \
-    keyboard.cpp
+    keyboard.cpp \
+    button.cpp \
+    startbutton.cpp
 
 HEADERS  += \
     game.h \
@@ -42,6 +44,8 @@ HEADERS  += \
     bitmapmodel.h \
     utils.h \
     mouse.h \
-    keyboard.h
+    keyboard.h \
+    button.h \
+    startbutton.h
 
 LIBS += -lglut -lGLU -lpng

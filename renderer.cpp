@@ -122,4 +122,5 @@ void Renderer::setRoom(Room * room)
     delete actualRoom;
   }
   this->actualRoom = room;
+  //render();
 }

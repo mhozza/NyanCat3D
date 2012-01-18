@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,32 +15,16 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "model.h"
+#ifndef STARTBUTTON_H
+#define STARTBUTTON_H
 
-Model::Model()
+#include "button.h"
+
+class StartButton : public Button
 {
-}
+  void onClick();
+public:
+    StartButton(int x,int y);
+};
 
-/*
-float Model::getWidth()
-{
-  return width;
-}
-
-
-float Model::getHeight()
-{
-  return height;
-}
-
-
-float Model::getDepth()
-{
-  return depth;
-}*/
-
-Rect Model::getRect()
-{
-  Rect r(x,y,z,width,height,depth);
-  return r;
-}
+#endif // STARTBUTTON_H

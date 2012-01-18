@@ -27,11 +27,11 @@ protected:
     float x,y,z,width, height, depth;
     float speedX,speedY,speedZ;
     Model* model;
-    GameObject(){model = NULL;}
+    GameObject(){model = NULL;}    
 public:    
     GameObject(Model * model,float x, float y, float z);
     ~GameObject();
-    void move();
+    virtual void move();
     inline float getX(){return x;}
     inline float getY(){return y;}
     inline float getZ(){return z;}
@@ -40,6 +40,7 @@ public:
     inline void setZ(float z){this->z = z;}
     Model* getModel();
     void setModel(Model* model);
+    virtual void action(int){} // param: actionID
 };
 
 #endif // GAMEOBJECT_H

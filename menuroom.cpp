@@ -17,6 +17,8 @@
 
 #include "menuroom.h"
 #include "bitmapmodel.h"
+#include "mouse.h"
+#include "startbutton.h"
 
 #define MAGIN 10
 
@@ -27,16 +29,20 @@ MenuRoom::MenuRoom(int width, int height)
   bgcolor.setColor(1.0/255,51.0/255,102.0/255);
   //main logo
   BitmapModel * logo = new BitmapModel("graphics/logo.png");  
-  addObject(new GameObject(logo,(width-logo->getWidth())/2,height-logo->getHeight(),0));
+  addObject(new GameObject(logo,(width-logo->getRect().width)/2,height-logo->getRect().height,0));
   //buttons
   //start
-  BitmapModel * start = new BitmapModel("graphics/start.png");
-  addObject(new GameObject(start,(width-start->getWidth())/2,height/*-logo->getHeight()-MAGIN*/-start->getWidth(),0));
+  addObject(new StartButton(30,300));
   /*//settins
   BitmapModel * settings = new BitmapModel("graphics/settings.png");
   addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));
   //quit
   BitmapModel * quit = new BitmapModel("graphics/quit.png");
   addObject(new GameObject(quit,(width-quit->getWidth())/2,height-logo->getHeight()-3*MAGIN-start->getWidth()-settings->getWidth()-quit->getWidth(),0));*/
+
+}
+
+MenuRoom::~MenuRoom()
+{
 
 }

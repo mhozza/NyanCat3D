@@ -18,16 +18,19 @@
 #ifndef MODEL_H
 #define MODEL_H
 
+#include "utils.h"
+
 class Model
 {  
 protected:
-  float width, height, depth;
+  float x,y,z,width, height, depth;
 public:
   Model();
   virtual void draw() = 0;
-  float getWidth();
+  /*float getWidth();
   float getHeight();
-  float getDepth();
+  float getDepth();*/
+  Rect getRect();
 };
 
 #endif // MODEL_H
