@@ -19,13 +19,14 @@
 
 UniverseModel::UniverseModel(GLuint textureId)
   :Model(textureId)
-{
+{  
+  width = 6, height = 6, depth = 60;
 }
 
 void UniverseModel::draw()
 {
-  glScalef(3.0,3.0,50.0);
-  glColor3f(1.0, 1.0, 0.5);
+  glScalef(width/2,height/2,depth/2);
+  glColor3f(1.0, 1.0, 0.7);
   glBegin(GL_QUADS);
 
   glBindTexture(GL_TEXTURE_2D,textureId);

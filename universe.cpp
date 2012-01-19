@@ -18,9 +18,20 @@
 #include "universe.h"
 #include "universemodel.h"
 
-Universe::Universe(GLuint textureId)
+Universe::Universe(GLuint textureId, bool second)
   :GameObject(NULL,0,0,0)
 {
   this->setModel(new UniverseModel(textureId));
-  speedZ = 0.1;
+  speedZ = 0.2;
+  if(second) setZ(-model->getRect().depth);
 }
+
+void Universe::step()
+{
+  if(z>=model->getRect().depth)
+  {
+    //vygneruj novy blok
+    setZ(-model->getRect().depth);
+  }
+}
+

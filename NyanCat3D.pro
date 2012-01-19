@@ -30,7 +30,8 @@ SOURCES += main.cpp\
     quitbutton.cpp \
     nyancatmodel.cpp \
     universe.cpp \
-    universemodel.cpp
+    universemodel.cpp \
+    asteroidmodel.cpp
 
 HEADERS  += \
     game.h \
@@ -54,6 +55,7 @@ HEADERS  += \
     quitbutton.h \
     nyancatmodel.h \
     universe.h \
-    universemodel.h
+    universemodel.h \
+    asteroidmodel.h
 
 LIBS += -lglut -lGLU -lpng

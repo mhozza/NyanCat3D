@@ -17,6 +17,10 @@
 
 #include "gameobject.h"
 
+#include <iostream>
+
+using namespace std;
+
 GameObject::GameObject(Model * model = NULL, float x = 0.0f, float y = 0.0f, float z= 0.0f)
 {
   speedX = 0; speedY = 0; speedZ = 0;
@@ -39,6 +43,7 @@ void GameObject::move()
     x+=speedX;
     y+=speedY;
     z+=speedZ;
+    //cout << x << " " << y << " " << z << endl;
 }
 
 Model * GameObject::getModel()

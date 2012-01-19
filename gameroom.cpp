@@ -33,6 +33,22 @@ GameRoom::GameRoom(Game *parent)
   glFogf (GL_FOG_END, 20.0);*/
 
   mode = MODE_3D;
-  addObject(new NyanCat());
+  player = new NyanCat();
+  addObject(player);
   addObject(new Universe(getParent()->getTextureId(0)));
+  addObject(new Universe(getParent()->getTextureId(0),true));
+}
+
+void GameRoom::generateBlock()
+{
+
+  //pridat nahodne asteroidy
+
+  //pridat nahodny bonus
+
+}
+
+void GameRoom::timer()
+{
+  Room::timer();
 }

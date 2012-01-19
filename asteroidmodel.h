@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,27 +15,15 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAMEROOM_H
-#define GAMEROOM_H
+#ifndef ASTEROIDMODEL_H
+#define ASTEROIDMODEL_H
 
-#include "nyancat.h"
-#include "camera.h"
-#include "gameobject.h"
-#include "room.h"
+#include "model.h"
 
-#include <vector>
-
-
-using namespace std;
-
-class GameRoom : public Room
+class AsteroidModel : public Model
 {
-    //Camera* camera;
-    NyanCat* player;
-    void generateBlock();
 public:
-    GameRoom(Game * parent);
-    void timer();
+    AsteroidModel();
 };
 
-#endif // GAMEROOM_H
+#endif // ASTEROIDMODEL_H

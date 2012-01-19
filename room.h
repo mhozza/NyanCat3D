@@ -46,7 +46,7 @@ public:
   vector<GameObject*> getObjects();
   ColorRGBAf getBackgroundColor();
   int getMode();
-  void timer();
+  virtual void timer();
 };
 
 #endif // ROOM_H
