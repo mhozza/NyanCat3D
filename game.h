@@ -22,11 +22,15 @@
 #include "mouse.h"
 #include "keyboard.h"
 
+#define TEXTURES_NUM 1
+
 class Game
 {
     bool run;
     void init();
+    GLuint texId[TEXTURES_NUM];
     Renderer* renderer;
+    bool setupTextures();
 public:
     Game();
     ~Game();

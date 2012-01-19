@@ -36,14 +36,19 @@ Game::~Game()
 void Game::init()
 {
   glShadeModel(GL_SMOOTH);
+
   glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
   glClearDepth(1.0f);
+
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
   glDepthMask(GL_TRUE);
-  //glEnable(GL_CULL_FACE);
+
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-  //glDepthMask(true);
+
+  //textures
+  setupTextures();
+
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)
@@ -73,4 +78,28 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   //renderer->setRoom(new GameRoom());
   glutMainLoop();
   return 0;
+}
+
+bool Game::setupTextures()
+{
+  const char * texFiles[] = {"stars.png"};
+
+  glGenTextures(TEXTURES_NUM,texId);
+  for(int i = 0;i<TEXTURES_NUM;i++)
+  {
+    glBindTexture(GL_TEXTURE_2D,texId[i]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
+
+    float width, height;
+    bool alpha;
+    GLubyte * img;
+    Utils::loadPngImage(texFiles[i],width,height,alpha,&img);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, alpha ? GL_RGBA : GL_RGB, GL_UNSIGNED_BYTE, img);
+  }
+
+
+  return true;
 }
