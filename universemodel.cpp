@@ -17,34 +17,53 @@
 
 #include "universemodel.h"
 
-UniverseModel::UniverseModel()
-  :Model()
+UniverseModel::UniverseModel(GLuint textureId)
+  :Model(textureId)
 {
 }
 
 void UniverseModel::draw()
 {
   glScalef(3.0,3.0,50.0);
-  glColor3f(0.0, 0.0, 1.0);
+  glColor3f(1.0, 1.0, 0.5);
   glBegin(GL_QUADS);
-     glVertex3f(-1.0f, -1.0f, -1.0f);
-     glVertex3f( -1.0f, -1.0f, 1.0f);
-     glVertex3f( -1.0f, 1.0f, 1.0f);
-     glVertex3f(-1.0f,1.0f, -1.0f);
 
-     glVertex3f(1.0f, -1.0f, -1.0f);
-     glVertex3f(1.0f, -1.0f, 1.0f);
-     glVertex3f(1.0f, 1.0f, 1.0f);
-     glVertex3f(1.0f,1.0f, -1.0f);
+  glBindTexture(GL_TEXTURE_2D,textureId);
+  glTexCoord2f(0,0);
+  glVertex3f(-1.0f, -1.0f, -1.0f);
+  glTexCoord2f(0,1);
+  glVertex3f( -1.0f, -1.0f, 1.0f);
+  glTexCoord2f(1,1);
+  glVertex3f( -1.0f, 1.0f, 1.0f);
+  glTexCoord2f(1,0);
+  glVertex3f(-1.0f,1.0f, -1.0f);
 
-     glVertex3f(-1.0f, -1.0f, -1.0f);
-     glVertex3f(1.0f, -1.0f, -1.0f);
-     glVertex3f(1.0f, -1.0f, 1.0f);
-     glVertex3f(-1.0f,-1.0f, 1.0f);
+  glTexCoord2f(0,0);
+  glVertex3f(1.0f, -1.0f, -1.0f);
+  glTexCoord2f(0,1);
+  glVertex3f(1.0f, -1.0f, 1.0f);
+  glTexCoord2f(1,1);
+  glVertex3f(1.0f, 1.0f, 1.0f);
+  glTexCoord2f(1,0);
+  glVertex3f(1.0f,1.0f, -1.0f);
 
-     glVertex3f(-1.0f, 1.0f, -1.0f);
-     glVertex3f(1.0f, 1.0f, -1.0f);
-     glVertex3f(1.0f, 1.0f, 1.0f);
-     glVertex3f(-1.0f,1.0f, 1.0f);
+  glTexCoord2f(0,0);
+  glVertex3f(-1.0f, -1.0f, -1.0f);
+  glTexCoord2f(0,1);
+  glVertex3f(1.0f, -1.0f, -1.0f);
+  glTexCoord2f(1,1);
+  glVertex3f(1.0f, -1.0f, 1.0f);
+  glTexCoord2f(1,0);
+  glVertex3f(-1.0f,-1.0f, 1.0f);
+
+  glTexCoord2f(0,0);
+  glVertex3f(-1.0f, 1.0f, -1.0f);
+  glTexCoord2f(0,1);
+  glVertex3f(1.0f, 1.0f, -1.0f);
+  glTexCoord2f(1,1);
+  glVertex3f(1.0f, 1.0f, 1.0f);
+  glTexCoord2f(1,0);
+  glVertex3f(-1.0f,1.0f, 1.0f);
+
   glEnd();
 }

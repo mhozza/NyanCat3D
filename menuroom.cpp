@@ -22,7 +22,8 @@
 
 #define MAGIN 10
 
-MenuRoom::MenuRoom(int width, int height)
+MenuRoom::MenuRoom(Game *parent, int width, int height)
+  :Room(parent)
 {
   mode = MODE_2D;
   //Navyrabam si objekty
@@ -33,7 +34,7 @@ MenuRoom::MenuRoom(int width, int height)
   addObject(new GameObject(logo,(width-logo->getRect().width)/2,height-logo->getRect().height,0));
   //buttons
   //start
-  addObject(new StartButton(30,300));
+  addObject(new StartButton(30, 300, getParent()));
   /*//settins
   BitmapModel * settings = new BitmapModel("graphics/settings.png");
   addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));*/

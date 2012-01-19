@@ -19,8 +19,9 @@
 #include "mouse.h"
 
 
-Room::Room()
+Room::Room(Game *parent)
 {
+  this->parent = parent;
 }
 
 Room::~Room()
@@ -47,4 +48,18 @@ ColorRGBAf Room::getBackgroundColor()
 int Room::getMode()
 {
   return mode;
+}
+
+Game * Room::getParent()
+{
+  return parent;
+}
+
+void Room::timer()
+{
+  for(int i=0;i<objects.size();i++)
+  {
+    objects[i]->move();
+    objects[i]->step();
+  }
 }

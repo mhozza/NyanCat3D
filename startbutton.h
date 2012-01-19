@@ -19,12 +19,14 @@
 #define STARTBUTTON_H
 
 #include "button.h"
+#include "game.h"
 
 class StartButton : public Button
 {
   void onClick();
+  Game * game;
 public:
-    StartButton(int x,int y);
+    StartButton(int x,int y, Game * game);
 };
 
 #endif // STARTBUTTON_H

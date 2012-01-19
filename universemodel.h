@@ -23,7 +23,7 @@
 class UniverseModel : public Model
 {
 public:
-    UniverseModel();
+    UniverseModel(GLuint textureId);
     void draw();
 };
 

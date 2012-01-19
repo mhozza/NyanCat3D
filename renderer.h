@@ -23,6 +23,8 @@
 
 #include "room.h"
 
+class Room;
+
 class Renderer //singleton
 {
   static Renderer* instance;
@@ -33,8 +35,10 @@ public:
   static Renderer* getInstance();
   static void renderWrapper();
   static void reshapeWrapper(int, int);
+  static void timerWrapper(int);
   void render();
   void reshape(int w, int h);
+  void timer(int value);
   inline int getWidth(){return width;}
   inline int getHeight(){return height;}
   void setRoom(Room * room);

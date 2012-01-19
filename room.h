@@ -22,26 +22,31 @@
 #include <vector>
 #include <cstddef>
 #include "utils.h"
+#include "game.h"
 
 #define MODE_2D 0
 #define MODE_3D 1
 
 using namespace std;
 
+class Game;
+
 class Room
 {
   vector<GameObject*> objects;
+  Game * parent;
 protected:
   void addObject(GameObject* object);
   ColorRGBAf bgcolor;
   int mode;
+  Game * getParent();
 public:
-  Room();
+  Room(Game * parent);
   ~Room();
   vector<GameObject*> getObjects();
   ColorRGBAf getBackgroundColor();
   int getMode();
-
+  void timer();
 };
 
 #endif // ROOM_H

@@ -27,7 +27,7 @@ protected:
     float x,y,z,width, height, depth;
     float speedX,speedY,speedZ;
     Model* model;
-    GameObject(){model = NULL;}    
+    GameObject(){model = NULL; speedX = 0; speedY = 0; speedZ = 0;}
 public:    
     GameObject(Model * model,float x, float y, float z);
     ~GameObject();
@@ -41,6 +41,7 @@ public:
     Model* getModel();
     void setModel(Model* model);
     virtual void action(int){} // param: actionID
+    virtual void step(){}
 };
 
 #endif // GAMEOBJECT_H

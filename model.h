@@ -24,13 +24,16 @@ class Model
 {  
 protected:
   float x,y,z,width, height, depth;
+  GLuint textureId;
 public:
   Model();
+  Model(int textureId);
   virtual void draw() = 0;
+  Rect getRect();
+  void setTexture(int textureId);
   /*float getWidth();
   float getHeight();
   float getDepth();*/
-  Rect getRect();
 };
 
 #endif // MODEL_H

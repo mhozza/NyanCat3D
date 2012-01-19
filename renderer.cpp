@@ -47,6 +47,10 @@ void Renderer::reshapeWrapper(int w, int h)
   Renderer::getInstance()->reshape(w,h);
 }
 
+void Renderer::timerWrapper(int value)
+{
+  Renderer::getInstance()->timer(value);
+}
 
 Renderer* Renderer::getInstance()
 {
@@ -84,6 +88,12 @@ void Renderer::reshape(int w, int h)
 {
   //resetView(w,h);
   glutReshapeWindow(WINDOW_W, WINDOW_H);
+}
+
+void Renderer::timer(int value)
+{
+  actualRoom->timer();
+  glutTimerFunc(value,Renderer::timerWrapper, value);
 }
 
 void Renderer::resetView(int w, int h)

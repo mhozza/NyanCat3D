@@ -18,8 +18,9 @@
 #include "universe.h"
 #include "universemodel.h"
 
-Universe::Universe()
+Universe::Universe(GLuint textureId)
   :GameObject(NULL,0,0,0)
 {
-  this->setModel(new UniverseModel());
+  this->setModel(new UniverseModel(textureId));
+  speedZ = 0.1;
 }

@@ -34,7 +34,8 @@ class GameRoom : public Room
     NyanCat* player;
     vector<GameObject*> objects;
 public:
-    GameRoom();
+    GameRoom(Game * parent);
+    void timer();
 };
 
 #endif // GAMEROOM_H

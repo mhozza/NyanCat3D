@@ -23,7 +23,7 @@
 class Universe : public GameObject
 {
 public:
-    Universe();
+    Universe(GLuint textureId);
 };
 
 #endif // UNIVERSE_H

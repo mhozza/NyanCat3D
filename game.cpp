@@ -20,7 +20,8 @@
 #include "gameroom.h"
 
 #include <GL/glut.h>
-
+#include <iostream>
+using namespace std;
 
 
 Game::Game()
@@ -43,11 +44,14 @@ void Game::init()
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
   glDepthMask(GL_TRUE);
+  //glEnable(GL_CULL_FACE);
 
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
 
   //textures
   setupTextures();
+  glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
+  glEnable(GL_TEXTURE_2D);
 
 }
 
@@ -59,9 +63,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   glutInitWindowPosition(50, 50);
   glutInitWindowSize(WINDOW_W, WINDOW_H);
 
-  glutCreateWindow("NyanCat 3D" );
-
-
+  glutCreateWindow("NyanCat 3D");
 
   init();
 
@@ -69,12 +71,13 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   glutDisplayFunc(Renderer::renderWrapper);
   glutIdleFunc(Renderer::renderWrapper);
   glutReshapeFunc(Renderer::reshapeWrapper);
+  glutTimerFunc(30, Renderer::timerWrapper, 30);
   glutMouseFunc(Mouse::mouseFuncWrapper);
   glutKeyboardFunc(Keyboard::keyboardFuncWrapper);
   glutSpecialFunc(Keyboard::keyboardSpecialFuncWrapper);
 
 
-  renderer->setRoom(new MenuRoom(WINDOW_W,WINDOW_H));
+  renderer->setRoom(new MenuRoom(this,WINDOW_W,WINDOW_H));
   //renderer->setRoom(new GameRoom());
   glutMainLoop();
   return 0;
@@ -82,7 +85,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
 
 bool Game::setupTextures()
 {
-  const char * texFiles[] = {"stars.png"};
+  const char * texFiles[] = {"graphics/stars.png"};
 
   glGenTextures(TEXTURES_NUM,texId);
   for(int i = 0;i<TEXTURES_NUM;i++)
@@ -96,10 +99,18 @@ bool Game::setupTextures()
     float width, height;
     bool alpha;
     GLubyte * img;
-    Utils::loadPngImage(texFiles[i],width,height,alpha,&img);
+    if(!Utils::loadPngImage(texFiles[i],width,height,alpha,&img))
+    {
+      cerr << "Unable to load texture: " << texFiles[i] << endl;
+      continue;
+    }
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, alpha ? GL_RGBA : GL_RGB, GL_UNSIGNED_BYTE, img);
   }
 
-
   return true;
+}
+
+GLuint Game::getTextureId(int index)
+{
+  return texId[index];
 }

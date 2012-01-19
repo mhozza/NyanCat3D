@@ -23,14 +23,15 @@
 
 using namespace std;
 
-StartButton::StartButton(int x, int y)
+StartButton::StartButton(int x, int y, Game * game)
   :Button(x,y)
 {
   this->setModel(new BitmapModel("graphics/start.png"));
+  this->game = game;
 }
 
 void StartButton::onClick()
 {
   //zapni hru
-  Renderer::getInstance()->setRoom(new GameRoom());
+  Renderer::getInstance()->setRoom(new GameRoom(game));
 }

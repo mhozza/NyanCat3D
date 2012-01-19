@@ -24,6 +24,8 @@
 
 #define TEXTURES_NUM 1
 
+class Renderer;
+
 class Game
 {
     bool run;
@@ -35,6 +37,7 @@ public:
     Game();
     ~Game();
     int start(int argc, char *argv[]);
+    GLuint getTextureId(int index);
 };
 
 #endif // GAME_H

@@ -22,27 +22,18 @@ NyanCatModel::NyanCatModel()
 }
 
 void NyanCatModel::draw()
-{
-  //glTranslatef(-2.0f, 0.0f, -6.0f);
-
-  /*glColor3f(1.0, 1.0, 1.0);
+{  
+  glDisable(GL_TEXTURE_2D);
+  glColor3f(1.0, 1.0, 1.0);
   glutWireCube(3.0);
 
   /*glColor3f(1.0, 0.0, 0.0);
-  glBegin(GL_TRIANGLES);
-     glVertex3f( 0.0f, 1.0f, 0.0f);
-     glVertex3f(-1.0f,-1.0f, 0.0f);
-     glVertex3f( 1.0f,-1.0f, 0.0f);
-  glEnd();
-
-  glTranslatef(4.0f,0.0f,0.0f);
-*/
-  glColor3f(1.0, 0.0, 0.0);
   glScalef(3,3,3);
   glBegin(GL_QUADS);
      glVertex3f(-1.0f, 1.0f, 0.0f);
      glVertex3f( 1.0f, 1.0f, 0.0f);
      glVertex3f( 1.0f,-1.0f, 0.0f);
      glVertex3f(-1.0f,-1.0f, 0.0f);
-  glEnd();
+  glEnd();*/
+  glEnable(GL_TEXTURE_2D);
 }

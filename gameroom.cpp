@@ -19,9 +19,20 @@
 #include "nyancat.h"
 #include "universe.h"
 
-GameRoom::GameRoom()
+GameRoom::GameRoom(Game *parent)
+  :Room(parent)
 {
+  //fog
+  /*glEnable(GL_FOG);
+  GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
+  glFogi (GL_FOG_MODE, GL_EXP);
+  glFogfv (GL_FOG_COLOR, fogColor);
+  glFogf (GL_FOG_DENSITY, 0.05);
+  glHint (GL_FOG_HINT, GL_DONT_CARE);
+  glFogf (GL_FOG_START, 10.0);
+  glFogf (GL_FOG_END, 20.0);*/
+
   mode = MODE_3D;
   addObject(new NyanCat());
-  addObject(new Universe());
+  addObject(new Universe(getParent()->getTextureId(0)));
 }

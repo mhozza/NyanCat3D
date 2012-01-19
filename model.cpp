@@ -19,6 +19,23 @@
 
 Model::Model()
 {
+
+}
+
+Model::Model(int textureId)
+{
+ setTexture(textureId);
+}
+
+Rect Model::getRect()
+{
+  Rect r(x,y,z,width,height,depth);
+  return r;
+}
+
+void Model::setTexture(int textureId)
+{
+  this->textureId = textureId;
 }
 
 /*
@@ -38,9 +55,3 @@ float Model::getDepth()
 {
   return depth;
 }*/
-
-Rect Model::getRect()
-{
-  Rect r(x,y,z,width,height,depth);
-  return r;
-}

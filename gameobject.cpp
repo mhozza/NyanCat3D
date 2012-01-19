@@ -19,6 +19,7 @@
 
 GameObject::GameObject(Model * model = NULL, float x = 0.0f, float y = 0.0f, float z= 0.0f)
 {
+  speedX = 0; speedY = 0; speedZ = 0;
   this->model = NULL;
   setModel(model);
   setX(x);
