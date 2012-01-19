@@ -15,34 +15,36 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "nyancatmodel.h"
+#include "universemodel.h"
 
-NyanCatModel::NyanCatModel()
+UniverseModel::UniverseModel()
+  :Model()
 {
 }
 
-void NyanCatModel::draw()
+void UniverseModel::draw()
 {
-  //glTranslatef(-2.0f, 0.0f, -6.0f);
-
-  /*glColor3f(1.0, 1.0, 1.0);
-  glutWireCube(3.0);
-
-  /*glColor3f(1.0, 0.0, 0.0);
-  glBegin(GL_TRIANGLES);
-     glVertex3f( 0.0f, 1.0f, 0.0f);
-     glVertex3f(-1.0f,-1.0f, 0.0f);
-     glVertex3f( 1.0f,-1.0f, 0.0f);
-  glEnd();
-
-  glTranslatef(4.0f,0.0f,0.0f);
-*/
-  glColor3f(1.0, 0.0, 0.0);
-  glScalef(3,3,3);
+  glScalef(3.0,3.0,50.0);
+  glColor3f(0.0, 0.0, 1.0);
   glBegin(GL_QUADS);
-     glVertex3f(-1.0f, 1.0f, 0.0f);
-     glVertex3f( 1.0f, 1.0f, 0.0f);
-     glVertex3f( 1.0f,-1.0f, 0.0f);
-     glVertex3f(-1.0f,-1.0f, 0.0f);
+     glVertex3f(-1.0f, -1.0f, -1.0f);
+     glVertex3f( -1.0f, -1.0f, 1.0f);
+     glVertex3f( -1.0f, 1.0f, 1.0f);
+     glVertex3f(-1.0f,1.0f, -1.0f);
+
+     glVertex3f(1.0f, -1.0f, -1.0f);
+     glVertex3f(1.0f, -1.0f, 1.0f);
+     glVertex3f(1.0f, 1.0f, 1.0f);
+     glVertex3f(1.0f,1.0f, -1.0f);
+
+     glVertex3f(-1.0f, -1.0f, -1.0f);
+     glVertex3f(1.0f, -1.0f, -1.0f);
+     glVertex3f(1.0f, -1.0f, 1.0f);
+     glVertex3f(-1.0f,-1.0f, 1.0f);
+
+     glVertex3f(-1.0f, 1.0f, -1.0f);
+     glVertex3f(1.0f, 1.0f, -1.0f);
+     glVertex3f(1.0f, 1.0f, 1.0f);
+     glVertex3f(-1.0f,1.0f, 1.0f);
   glEnd();
 }

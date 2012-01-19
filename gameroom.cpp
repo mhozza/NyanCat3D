@@ -17,10 +17,11 @@
 
 #include "gameroom.h"
 #include "nyancat.h"
-
+#include "universe.h"
 
 GameRoom::GameRoom()
 {
   mode = MODE_3D;
   addObject(new NyanCat());
+  addObject(new Universe());
 }

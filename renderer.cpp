@@ -62,6 +62,7 @@ void Renderer::render()
                actualRoom->getBackgroundColor().green,
                actualRoom->getBackgroundColor().blue,
                actualRoom->getBackgroundColor().alpha);
+  glClearDepth(1.0f);
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
   glMatrixMode(GL_MODELVIEW);
@@ -73,10 +74,8 @@ void Renderer::render()
     glPushMatrix();
     glTranslatef(obj->getX(), obj->getY(), obj->getZ());
     obj->getModel()->draw();
-    glPopMatrix();
+    glPopMatrix();    
   }
-
-
 
   glutSwapBuffers();
 }
@@ -96,7 +95,8 @@ void Renderer::resetView(int w, int h)
   if(actualRoom->getMode()==MODE_2D)
     glOrtho (0.0, w, 0.0, h, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
   else
-    gluPerspective(80, (float)w/(float)h, 1.0, 5000.0); // Chceme perspektivu
+    gluPerspective(100, (float)w/(float)h, 1.0f, 5000.0f); // Chceme perspektivu
+
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici
   glLoadIdentity();                                   // A vynulujeme ju
   width = w;

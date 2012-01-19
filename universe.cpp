@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,12 +15,11 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "nyancat.h"
-#include "nyancatmodel.h"
+#include "universe.h"
+#include "universemodel.h"
 
-NyanCat::NyanCat()
-  :GameObject(NULL,0,0,-5)
+Universe::Universe()
+  :GameObject(NULL,0,0,0)
 {
-  this->model = new NyanCatModel();
+  this->setModel(new UniverseModel());
 }
-

@@ -40,13 +40,16 @@ void Game::init()
   glClearDepth(1.0f);
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
+  glDepthMask(GL_TRUE);
+  //glEnable(GL_CULL_FACE);
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+  //glDepthMask(true);
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)
 {
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE);
+  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
   glutInitWindowPosition(50, 50);
   glutInitWindowSize(WINDOW_W, WINDOW_H);
