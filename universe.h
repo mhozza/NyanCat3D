@@ -18,12 +18,14 @@
 #ifndef UNIVERSE_H
 #define UNIVERSE_H
 
+#include "gameroom.h"
 #include "gameobject.h"
 
 class Universe : public GameObject
 {
+  GameRoom * parent;
 public:
-    Universe(GLuint textureId, bool second = false);
+    Universe(GLuint textureId, GameRoom * parent , bool second = false);
     void step();
 };
 

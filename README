@@ -1,0 +1,27 @@
+Pouzite:
+vykreslovanie
+  1 textura
+  2 objekty
+  priamy mod
+
+interaktivita
+  menu
+
+
+Nesplnene:
+Vykreslovanie:
+    Min. 6 rôznych textúr (12b)
+    Min. 8 geometricky odlišných objektov, z toho aspon 4 animované (12b)
+    Použitie priameho módu vykreslovanie (glBegin, glEnd), Display Listov a aj Vertex Arrays, VBO na vykreslenie objektov (12b)
+    2D a 3D font priamo v hre mimo menu (6b)
+    Korektne osvetlená scéna klasickým spôsobom, aspon 2 rozne svetlá (8b)
+    Korektne priehladné okná (8b)
+    Casticový systém (efekt ohna, výbuchu, striel) (8b)
+    Vykreslenie hmly, jej vypnutie a zapnutie (4b)
+    Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
+Interaktivita:
+    Hlavné menu, menu s nastavením (4b)
+    Ovládanie myšou aj klávesnicou, volný pohyb v scéne (8b)
+    Interakcia užívatela so scénou (napr. kolízie striel s objektami, obmedzenie pohybu, …) (8b)
+Bonusy:
+    Použitie dalsich shaderov, dalších rozšírení, teselátorov, dobrý herný nápad, ...

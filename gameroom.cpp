@@ -18,6 +18,7 @@
 #include "gameroom.h"
 #include "nyancat.h"
 #include "universe.h"
+#include "asteroid.h"
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -35,14 +36,23 @@ GameRoom::GameRoom(Game *parent)
   mode = MODE_3D;
   player = new NyanCat();
   addObject(player);
-  addObject(new Universe(getParent()->getTextureId(0)));
-  addObject(new Universe(getParent()->getTextureId(0),true));
+  addObject(new Universe(getParent()->getTextureId(0),this));
+  addObject(new Universe(getParent()->getTextureId(0),this,true));
+  generateBlock();
 }
 
 void GameRoom::generateBlock()
 {
 
   //pridat nahodne asteroidy
+  for(int i = 0;i<20;i++)
+  {
+      int block_width = 6, block_height = 6, block_depth = 60;
+      float x = (rand()%(100*block_width))/100;
+      float y = (rand()%(100*block_height))/100;
+      float z = block_depth+(rand()%(100*block_depth))/100;
+      addObject(new Asteroid(x,y,-z));
+  }
 
   //pridat nahodny bonus
 

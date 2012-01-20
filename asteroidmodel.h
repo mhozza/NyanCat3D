@@ -20,10 +20,35 @@
 
 #include "model.h"
 
+struct MyVertex
+{
+  float x,y,z;
+  //float a,b,c,d;
+  //uint color;
+  float padding[5];
+  MyVertex()
+  {
+    this->x = 0;
+    this->y = 0;
+    this->z = 0;
+    //color = 0x9900ffff;
+  }
+  MyVertex(float x, float y, float z)
+  {
+    this->x = x;
+    this->y = y;
+    this->z = z;
+    //color = 0x9900ffff;
+  }
+};
+
 class AsteroidModel : public Model
 {
+  MyVertex vertices[38];
+  ushort index[216];
 public:
     AsteroidModel();
+    void draw();
 };
 
 #endif // ASTEROIDMODEL_H

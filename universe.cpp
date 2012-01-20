@@ -18,8 +18,8 @@
 #include "universe.h"
 #include "universemodel.h"
 
-Universe::Universe(GLuint textureId, bool second)
-  :GameObject(NULL,0,0,0)
+Universe::Universe(GLuint textureId, GameRoom *parent, bool second)
+  :GameObject(NULL,0,0,0), parent(parent)
 {
   this->setModel(new UniverseModel(textureId));
   speedZ = 0.2;
@@ -32,6 +32,7 @@ void Universe::step()
   {
     //vygneruj novy blok
     setZ(-model->getRect().depth);
+    parent->generateBlock();
   }
 }
 

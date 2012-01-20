@@ -23,7 +23,7 @@
 class Asteroid : public GameObject
 {
 public:
-    Asteroid();
+    Asteroid(float x,float y,float z);
 };
 
 #endif // ASTEROID_H

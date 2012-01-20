@@ -32,8 +32,8 @@ class GameRoom : public Room
 {
     //Camera* camera;
     NyanCat* player;
-    void generateBlock();
 public:
+    void generateBlock();
     GameRoom(Game * parent);
     void timer();
 };

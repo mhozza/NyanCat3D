@@ -16,7 +16,11 @@
  */
 
 #include "asteroid.h"
+#include "asteroidmodel.h"
 
-Asteroid::Asteroid()
+Asteroid::Asteroid(float x,float y,float z)
+  :GameObject(NULL,x,y,z)
 {
+  this->model = new AsteroidModel();
+  speedZ = 0.2;
 }
