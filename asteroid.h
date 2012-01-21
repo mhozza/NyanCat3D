@@ -23,7 +23,7 @@
 class Asteroid : public GameObject
 {
 public:
-    Asteroid(float x,float y,float z);
+    Asteroid(GLuint textureID, float x,float y,float z);
 };
 
 #endif // ASTEROID_H

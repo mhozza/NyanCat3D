@@ -22,7 +22,7 @@
 #include "mouse.h"
 #include "keyboard.h"
 
-#define TEXTURES_NUM 1
+#define TEXTURES_NUM 2
 
 class Renderer;
 

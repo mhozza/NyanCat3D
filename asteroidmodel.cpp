@@ -26,32 +26,33 @@ using namespace std;
 
 #define PI 3.1415
 
-AsteroidModel::AsteroidModel()
+AsteroidModel::AsteroidModel(int textureId)
+  :Model(textureId)
 {
   cout << sizeof(MyVertex) << endl;
 
-  float radius = 3.0;
+  float radius = 1.0;
   //create model
   //vertices
-  MyVertex v0(0,sin(3*PI/2)*radius,0);
+  MyVertex v0(0,-sin(3*PI/2)*radius,0,0,0);
   vertices[0] = v0;
   int ind = 1;
   for (int i = 1; i<6;i++)
   {
     int n = 4*(3-abs(i-3));
-    float py = sin(3*PI/2+i*PI/6)*radius;
+    float py = -sin(3*PI/2+i*PI/6)*radius;
     float miniradius = abs(cos(3*PI/2+i*PI/6)*radius);
     for(int j = 0;j<n;j++)
     {
       float angle = j*(PI/(2*i));
       float px = cos(angle)*miniradius;
-      float pz = sin(angle)*miniradius;
-      MyVertex v(px,py,pz);
+      float pz = -sin(angle)*miniradius;
+      MyVertex v(px,py,pz,i%2,j%2);
       vertices[ind++] = v;
     }
     //cout << ind << endl;
   }
-  MyVertex v1(0,sin(PI/2)*radius,0);
+  MyVertex v1(0,-sin(PI/2)*radius,0,1,1);
   vertices[ind] = v1;
   cout << ind << endl;
 
@@ -108,12 +109,14 @@ AsteroidModel::AsteroidModel()
 
 void AsteroidModel::draw()
 {
-  glColor3f(1,1,1);
-  glDisable(GL_TEXTURE_2D);
+  glColor3f(.4,.15,.01);
+  //glDisable(GL_TEXTURE_2D);
   glEnableClientState(GL_VERTEX_ARRAY);
   glVertexPointer(3, GL_FLOAT, sizeof(MyVertex), &vertices[0].x);
-  //glEnableClientState(GL_COLOR_ARRAY);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glTexCoordPointer(2, GL_FLOAT,sizeof(MyVertex), &vertices[0].tx);
   //glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(MyVertex), &vertices[0].color);
+  glBindTexture(GL_TEXTURE_2D,textureId);
   glDrawRangeElements(GL_TRIANGLES, 0, 37, 216, GL_UNSIGNED_SHORT, index);
-  glEnable(GL_TEXTURE_2D);
+  //glEnable(GL_TEXTURE_2D);
 }

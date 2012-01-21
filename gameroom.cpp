@@ -48,10 +48,10 @@ void GameRoom::generateBlock()
   for(int i = 0;i<20;i++)
   {
       int block_width = 6, block_height = 6, block_depth = 60;
-      float x = (rand()%(100*block_width))/100;
-      float y = (rand()%(100*block_height))/100;
-      float z = block_depth+(rand()%(100*block_depth))/100;
-      addObject(new Asteroid(x,y,-z));
+      float x = (rand()%(100*block_width))/100.0 - block_width/2.0;
+      float y = (rand()%(100*block_height))/100.0 - block_height/2.0;
+      float z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
+      addObject(new Asteroid(getParent()->getTextureId(1),x,y,-z));
   }
 
   //pridat nahodny bonus

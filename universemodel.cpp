@@ -27,9 +27,9 @@ void UniverseModel::draw()
 {
   glScalef(width/2,height/2,depth/2);
   glColor3f(1.0, 1.0, 0.7);
+  glBindTexture(GL_TEXTURE_2D,textureId);
   glBegin(GL_QUADS);
 
-  glBindTexture(GL_TEXTURE_2D,textureId);
   glTexCoord2f(0,0);
   glVertex3f(-1.0f, -1.0f, -1.0f);
   glTexCoord2f(0,1);

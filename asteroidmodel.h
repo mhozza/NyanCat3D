@@ -23,21 +23,25 @@
 struct MyVertex
 {
   float x,y,z;
-  //float a,b,c,d;
+  float tx,ty;
   //uint color;
-  float padding[5];
+  float padding[3];
   MyVertex()
   {
     this->x = 0;
     this->y = 0;
     this->z = 0;
+    this->tx = 0;
+    this->ty = 0;
     //color = 0x9900ffff;
   }
-  MyVertex(float x, float y, float z)
+  MyVertex(float x, float y, float z, float tx, float ty)
   {
     this->x = x;
     this->y = y;
     this->z = z;
+    this->tx = tx;
+    this->ty = ty;
     //color = 0x9900ffff;
   }
 };
@@ -47,7 +51,7 @@ class AsteroidModel : public Model
   MyVertex vertices[38];
   ushort index[216];
 public:
-    AsteroidModel();
+    AsteroidModel(int textureId);
     void draw();
 };
 
