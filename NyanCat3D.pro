@@ -31,7 +31,8 @@ SOURCES += main.cpp\
     nyancatmodel.cpp \
     universe.cpp \
     universemodel.cpp \
-    asteroidmodel.cpp
+    asteroidmodel.cpp \
+    scoremodel.cpp
 
 HEADERS  += \
     game.h \
@@ -56,6 +57,7 @@ HEADERS  += \
     nyancatmodel.h \
     universe.h \
     universemodel.h \
-    asteroidmodel.h
+    asteroidmodel.h \
+    scoremodel.h
 
 LIBS += -lglut -lGLU -lpng
