@@ -19,7 +19,7 @@
 #include "scoremodel.h"
 
 Score::Score()
-  :GameObject(NULL,30,574,0)
+  :GameObject(NULL,4,580,0)
 {
   this->model = new ScoreModel();
   //this->parent = parent;

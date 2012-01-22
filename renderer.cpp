@@ -106,10 +106,10 @@ void Renderer::resetView(int w, int h)
   if(actualRoom->getMode()==MODE_2D)
     glOrtho (0.0, w, 0.0, h, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
   else
-    gluPerspective(100, (float)w/(float)h, 1.0f, 5000.0f); // Chceme perspektivu
+    gluPerspective(80, (float)w/(float)h, 1.0f, 5000.0f); // Chceme perspektivu
 
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici
-  glLoadIdentity();                                   // A vynulujeme ju
+  glLoadIdentity();                                   // A vynulujeme ju  
   width = w;
   height = h;
 }

@@ -90,17 +90,15 @@ void ScoreModel::draw()
 {
   glDisable(GL_TEXTURE_2D);
   glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
+  glPushMatrix();
   glLoadIdentity();                                   // Vynulovanie
   glOrtho (0.0, 800, 0.0, 600, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
-  glMatrixMode(GL_MODELVIEW);
   glRasterPos2i(x, y);
   glPushAttrib (GL_LIST_BIT);
   glListBase(fontOffset);
   glCallLists(score_sz, GL_UNSIGNED_BYTE, scoreBytes);
   glPopAttrib();
-  glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
-  glLoadIdentity();                                   // Vynulovanie
-  gluPerspective(100, 4.0/3.0, 1.0f, 5000.0f); // Chceme perspektivu
+  glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_TEXTURE_2D);
 }
