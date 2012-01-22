@@ -104,9 +104,15 @@ void Renderer::resetView(int w, int h)
   glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
   glLoadIdentity();                                   // Vynulovanie
   if(actualRoom->getMode()==MODE_2D)
+  {
     glOrtho (0.0, w, 0.0, h, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
+    glDisable(GL_FOG);
+  }
   else
-    gluPerspective(80, (float)w/(float)h, 1.0f, 5000.0f); // Chceme perspektivu
+  {
+    gluPerspective(80, (float)w/(float)h, 1.0f, 100.0f); // Chceme perspektivu
+    glEnable(GL_FOG);
+  }
 
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici
   glLoadIdentity();                                   // A vynulujeme ju  

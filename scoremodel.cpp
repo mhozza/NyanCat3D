@@ -89,6 +89,7 @@ ScoreModel::ScoreModel(int x, int y)
 void ScoreModel::draw()
 {
   glDisable(GL_TEXTURE_2D);
+  glDisable(GL_FOG);
   glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
   glPushMatrix();
   glLoadIdentity();                                   // Vynulovanie
@@ -101,6 +102,7 @@ void ScoreModel::draw()
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_TEXTURE_2D);
+  glEnable(GL_FOG);
 }
 
 void ScoreModel::setScore(int score)

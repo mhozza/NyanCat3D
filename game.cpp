@@ -41,6 +41,9 @@ void Game::init()
   glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
   glClearDepth(1.0f);
 
+  gluLookAt (0,0,0,0,0,1,0,1,1);
+
+
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
   glDepthMask(GL_TRUE);
@@ -52,6 +55,15 @@ void Game::init()
   setupTextures();
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
   glEnable(GL_TEXTURE_2D);
+
+  //fog
+  //glEnable(GL_FOG);
+  glFogf(GL_FOG_MODE,GL_EXP2);
+  glFogf(GL_FOG_DENSITY,0.04);
+  glHint(GL_FOG_HINT, GL_NICEST);
+  /*glFogf(GL_FOG_START,0);
+  glFogf(GL_FOG_END,1);*/
+  //glFogf(GL_FOG_COLOR,);
 
 }
 
