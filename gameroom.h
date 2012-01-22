@@ -35,7 +35,7 @@ class GameRoom : public Room
 public:
     void generateBlock();
     GameRoom(Game * parent);
-    void timer();
+    //void timer();
 };
 
 #endif // GAMEROOM_H

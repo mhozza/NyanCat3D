@@ -23,9 +23,10 @@
 
 class ScoreModel : public Model
 {
-  GLubyte * score;
+  GLubyte * scoreBytes;
   int score_sz;
   int x,y;
+  GLuint fontOffset;
 public:
   ScoreModel(int x = 0, int y = 0);
   void draw();

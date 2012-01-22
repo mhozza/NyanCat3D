@@ -32,7 +32,8 @@ SOURCES += main.cpp\
     universe.cpp \
     universemodel.cpp \
     asteroidmodel.cpp \
-    scoremodel.cpp
+    scoremodel.cpp \
+    score.cpp
 
 HEADERS  += \
     game.h \
@@ -58,6 +59,7 @@ HEADERS  += \
     universe.h \
     universemodel.h \
     asteroidmodel.h \
-    scoremodel.h
+    scoremodel.h \
+    score.h
 
 LIBS += -lglut -lGLU -lpng

@@ -19,6 +19,7 @@
 #include "nyancat.h"
 #include "universe.h"
 #include "asteroid.h"
+#include "score.h"
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -36,6 +37,7 @@ GameRoom::GameRoom(Game *parent)
   mode = MODE_3D;
   player = new NyanCat();
   addObject(player);
+  addObject(new Score());
   addObject(new Universe(getParent()->getTextureId(0),this));
   addObject(new Universe(getParent()->getTextureId(0),this,true));
   generateBlock();
@@ -58,7 +60,8 @@ void GameRoom::generateBlock()
 
 }
 
+/*
 void GameRoom::timer()
 {
   Room::timer();
-}
+}*/

@@ -19,6 +19,7 @@
 #include "utils.h"
 #include <string>
 #include <sstream>
+#include <iostream>
 
 using namespace std;
 
@@ -29,51 +30,90 @@ ScoreModel::ScoreModel(int x, int y)
   this->y = y;
   float width, height;
   bool alpha;
-  GLubyte * img;
-  Utils::loadPngImage("graphics/numbers.png",width,height,alpha,&img);
+  GLubyte *img;
+  if(!Utils::loadPngImage("graphics/numbers.png",width,height,alpha,&img))
+  {
+    cerr << "Unable to load font: graphics/numbers.png" << endl;
+  }
   //todo skontrolovat return val, rozmery
 
   GLubyte font[10][192];
+  GLubyte bitmap[10][32];
+
   for(int i = 0;i<10;i++)
   {
     for(int j=0;j<16;j++)
     {
       for(int k = 0;k<12;k++)
       {
-        font[i][12*j+k] = img[120*j+12*i+k];
+        font[i][12*j+k] = *(img+((int)width*j+12*i+k)*4);
       }
     }
   }
-  //glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
-  GLuint fontOffset = glGenLists (10);
+
+  for(int i = 0;i<10;i++)
+  {
+    int k = 0;
+    for(int l = 0;l<32;l++)
+    {
+      GLubyte bt = 0;
+      for(int j = 0; j< 8;j++)
+      {
+        bt |= (1-(font[i][k] & 1)) << 7-j;
+
+        k++;
+        if(k%12 == 0) break;
+      }
+
+      bitmap[i][l] = bt;
+    }
+  }
+
+  glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+  fontOffset = glGenLists (10);
+
+
   for (int i = 0; i<10; i++)
   {
     glNewList(fontOffset + i, GL_COMPILE);
-    glBitmap(12, 16, 0.0, 0.0, 15.0, 0.0, font[i]);
+    //glColor3i(1,1,1);
+    glBitmap(12, 16, 0.0, 0.0, 15.0, 0.0, bitmap[i]);
     glEndList();
   }
-  score = new int[1];
-  score[0] = 0;
+
+
+  scoreBytes = new GLubyte[1];
+  scoreBytes[0] = 0;
 }
 
 void ScoreModel::draw()
 {
+  glDisable(GL_TEXTURE_2D);
+  glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
+  glLoadIdentity();                                   // Vynulovanie
+  glOrtho (0.0, 800, 0.0, 600, -1.0, 1.0);                // Rovnobezne pravouhle premietanie
+  glMatrixMode(GL_MODELVIEW);
   glRasterPos2i(x, y);
   glPushAttrib (GL_LIST_BIT);
   glListBase(fontOffset);
-  glCallLists(score_sz, GL_UNSIGNED_BYTE, (GLubyte *) score);
+  glCallLists(score_sz, GL_UNSIGNED_BYTE, scoreBytes);
   glPopAttrib();
+  glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
+  glLoadIdentity();                                   // Vynulovanie
+  gluPerspective(100, 4.0/3.0, 1.0f, 5000.0f); // Chceme perspektivu
+  glMatrixMode(GL_MODELVIEW);
+  glEnable(GL_TEXTURE_2D);
 }
 
 void ScoreModel::setScore(int score)
 {
-  istringstream s;
+  ostringstream s;
   s << score;
-  delete this->score;
+  delete this->scoreBytes;
   score_sz = s.str().length();
-  this->score = new int[score_sz];
+  this->scoreBytes = new GLubyte[score_sz];
   for(int i = 0; i<score_sz;i++)
   {
-    this->score[i] = s.str()[i]-'0';
+    this->scoreBytes[i] = s.str()[i]-'0';
   }
 }

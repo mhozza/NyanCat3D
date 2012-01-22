@@ -20,6 +20,8 @@
 #include "startbutton.h"
 #include "quitbutton.h"
 
+#include "score.h"
+
 #define MAGIN 10
 
 MenuRoom::MenuRoom(Game *parent, int width, int height)
@@ -40,7 +42,7 @@ MenuRoom::MenuRoom(Game *parent, int width, int height)
   addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));*/
   //quit
   addObject(new QuitButton(30,100));
-
+  //addObject(new Score());
 }
 
 MenuRoom::~MenuRoom()

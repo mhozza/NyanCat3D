@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,51 +15,21 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "room.h"
-#include "mouse.h"
+#include "score.h"
+#include "scoremodel.h"
 
-
-Room::Room(Game *parent)
+Score::Score()
+  :GameObject(NULL,30,574,0)
 {
-  this->parent = parent;
+  this->model = new ScoreModel();
+  //this->parent = parent;
+
+  score = 0;
+  counter = 0;
 }
 
-Room::~Room()
+void Score::step()
 {
-  Mouse::getInstance()->clearActions();
-}
-
-vector<GameObject*> Room::getObjects()
-{
-  return objects;
-}
-
-void Room::addObject(GameObject* object)
-{
-  if(object!=NULL)
-    objects.push_back(object);
-}
-
-ColorRGBAf Room::getBackgroundColor()
-{
-  return bgcolor;
-}
-
-int Room::getMode()
-{
-  return mode;
-}
-
-Game * Room::getParent()
-{
-  return parent;
-}
-
-void Room::timer()
-{
-  for(unsigned i=0;i<objects.size();i++)
-  {
-    objects[i]->move();
-    objects[i]->step();
-  }
+  if((counter++)%10 == 0)
+    ((ScoreModel* ) getModel())->setScore(score++);
 }

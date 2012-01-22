@@ -29,7 +29,7 @@ using namespace std;
 AsteroidModel::AsteroidModel(int textureId)
   :Model(textureId)
 {
-  cout << sizeof(MyVertex) << endl;
+  //cout << sizeof(MyVertex) << endl;
 
   float radius = 1.0;
   //create model
@@ -54,7 +54,7 @@ AsteroidModel::AsteroidModel(int textureId)
   }
   MyVertex v1(0,-sin(PI/2)*radius,0,1,1);
   vertices[ind] = v1;
-  cout << ind << endl;
+  //cout << ind << endl;
 
   //index
   /*ind = 1;
