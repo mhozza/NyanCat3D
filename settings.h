@@ -24,7 +24,8 @@ using namespace std;
 
 class Settings
 {
-public:
+public:  
+  static bool fog;
     Settings();
     //pair<int,int> getResolution();
 };

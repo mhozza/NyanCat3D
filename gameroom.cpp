@@ -20,6 +20,7 @@
 #include "universe.h"
 #include "asteroid.h"
 #include "score.h"
+#include "keyboard.h"
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)

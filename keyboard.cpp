@@ -60,4 +60,9 @@ void Keyboard::keyboardSpecialFunc(int key, int x, int y)
 
 }
 
+void Keyboard::RegisterAction(GameObject *object, int actionID, int key, bool special)
+{
+
+}
+
 

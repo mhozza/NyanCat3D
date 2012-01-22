@@ -19,6 +19,7 @@
 #include <GL/glut.h>
 #include "gameobject.h"
 #include <vector>
+#include "settings.h"
 
 using namespace std;
 
@@ -111,7 +112,8 @@ void Renderer::resetView(int w, int h)
   else
   {
     gluPerspective(80, (float)w/(float)h, 1.0f, 100.0f); // Chceme perspektivu
-    glEnable(GL_FOG);
+    if(Settings::fog)
+      glEnable(GL_FOG);
   }
 
   glMatrixMode(GL_MODELVIEW);                         // Vratime sa spat k modelview matici

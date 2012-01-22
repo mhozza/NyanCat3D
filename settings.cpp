@@ -17,6 +17,9 @@
 
 #include "settings.h"
 
+bool Settings::fog = true;
+
 Settings::Settings()
 {
+
 }

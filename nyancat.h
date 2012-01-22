@@ -24,6 +24,7 @@ class NyanCat : public GameObject
 {
 public:
     NyanCat();    
+    void action(int actionId);
 };
 
 #endif // NYANCAT_H

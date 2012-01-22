@@ -20,6 +20,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include "settings.h"
 
 using namespace std;
 
@@ -102,7 +103,8 @@ void ScoreModel::draw()
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_TEXTURE_2D);
-  glEnable(GL_FOG);
+  if(Settings::fog)
+    glEnable(GL_FOG);
 }
 
 void ScoreModel::setScore(int score)
