@@ -24,7 +24,7 @@ NyanCat::NyanCat()
   :GameObject(NULL,0,0,-5)
 {
   this->model = new NyanCatModel();
-  Keyboard::getInstance()->RegisterAction(this,0,'f',false);//fog
+  Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
 }
 
 void NyanCat::action(int actionId)
