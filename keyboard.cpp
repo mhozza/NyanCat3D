@@ -74,7 +74,7 @@ void Keyboard::keyboardSpecialFunc(int key, int x, int y)
   }
 }
 
-void Keyboard::RegisterAction(GameObject *object, int actionID, int key, bool special)
+void Keyboard::registerAction(GameObject *object, int actionID, int key, bool special)
 {
   if(special)
   {
@@ -86,4 +86,8 @@ void Keyboard::RegisterAction(GameObject *object, int actionID, int key, bool sp
   }
 }
 
-
+void Keyboard::clearActions()
+{
+  actions.clear();
+  actionsSpecial.clear();
+}

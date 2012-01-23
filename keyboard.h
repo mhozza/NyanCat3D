@@ -37,7 +37,8 @@ public:
   static void keyboardSpecialFuncWrapper(int key, int x, int y);
   void keyboardFunc(unsigned char key, int x, int y);
   void keyboardSpecialFunc(int key, int x, int y);
-  void RegisterAction(GameObject * object, int actionID, int key, bool special);
+  void registerAction(GameObject * object, int actionID, int key, bool special);
+  void clearActions();
   ~Keyboard();
 };
 
