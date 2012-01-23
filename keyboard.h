@@ -19,17 +19,23 @@
 #define KEYBOARD_H
 
 #include "gameobject.h"
+#include <map>
+
+using namespace std;
+
 
 class Keyboard
 {
   static Keyboard* instance;
   Keyboard();
   int width, height;
+  multimap<unsigned char, pair<GameObject*, int> > actions;
+  multimap<int, pair<GameObject*, int> > actionsSpecial;
 public:
   static Keyboard* getInstance();
   static void keyboardFuncWrapper(unsigned char key, int x, int y);
-  void keyboardFunc(unsigned char key, int x, int y);
   static void keyboardSpecialFuncWrapper(int key, int x, int y);
+  void keyboardFunc(unsigned char key, int x, int y);
   void keyboardSpecialFunc(int key, int x, int y);
   void RegisterAction(GameObject * object, int actionID, int key, bool special);
   ~Keyboard();

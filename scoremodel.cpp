@@ -60,7 +60,7 @@ ScoreModel::ScoreModel(int x, int y)
       GLubyte bt = 0;
       for(int j = 0; j< 8;j++)
       {
-        bt |= (1-(font[i][k] & 1)) << 7-j;
+        bt |= (1-(font[i][k] & 1)) << (7-j);
 
         k++;
         if(k%12 == 0) break;

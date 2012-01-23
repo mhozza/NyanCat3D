@@ -63,3 +63,6 @@ HEADERS  += \
     score.h
 
 LIBS += -lglut -lGLU -lpng
+
+OTHER_FILES += \
+    TODO.txt

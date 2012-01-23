@@ -31,6 +31,7 @@ Keyboard::~Keyboard()
 {
 
 }
+
 Keyboard* Keyboard::getInstance()
 {
   if(!instance)
@@ -52,17 +53,37 @@ void Keyboard::keyboardSpecialFuncWrapper(int key, int x, int y)
 
 void Keyboard::keyboardFunc(unsigned char key, int x, int y)
 {
-
+  pair<multimap<unsigned char,pair<GameObject*,int> >::iterator,
+      multimap<unsigned char,pair<GameObject*,int> >::iterator>
+      r = actions.equal_range(key);
+  for(multimap<unsigned char,pair<GameObject*,int> >::iterator
+      i = r.first;i!=r.second;i++)
+  {
+    ((*i).second.first)->action((*i).second.second);
+  }
 }
 
 void Keyboard::keyboardSpecialFunc(int key, int x, int y)
 {
-
+ pair<multimap<int, pair<GameObject*, int> >::iterator, multimap<int, pair<GameObject*, int> >::iterator>
+      r = actionsSpecial.equal_range(key);
+  for(multimap<int,pair<GameObject*,int> >::iterator
+      i = r.first;i!=r.second;i++)
+  {
+    ((*i).second.first)->action((*i).second.second);
+  }
 }
 
 void Keyboard::RegisterAction(GameObject *object, int actionID, int key, bool special)
 {
-
+  if(special)
+  {
+    actionsSpecial.insert(make_pair(key,make_pair(object,actionID)));
+  }
+  else
+  {
+    actions.insert(make_pair((unsigned char)key,make_pair(object,actionID)));
+  }
 }
 
 

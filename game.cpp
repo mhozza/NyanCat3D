@@ -59,7 +59,7 @@ void Game::init()
   //fog
   //glEnable(GL_FOG);
   glFogf(GL_FOG_MODE,GL_EXP2);
-  glFogf(GL_FOG_DENSITY,0.04);
+  glFogf(GL_FOG_DENSITY,0.047);
   glHint(GL_FOG_HINT, GL_NICEST);
   /*glFogf(GL_FOG_START,0);
   glFogf(GL_FOG_END,1);*/
