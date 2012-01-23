@@ -4,11 +4,13 @@ vykreslovanie
   3 objekty
   priamy mod, vertex arrays, dispaly listy
   2d font v hre
-  fog
+  fog +vyp/zap
 
 interaktivita
   menu  
 
+Splnene komplet:
+Vykreslenie hmly, jej vypnutie a zapnutie (4b)
 
 Nesplnene:
 Vykreslovanie:
@@ -19,7 +21,6 @@ Vykreslovanie:
     Korektne osvetlená scéna klasickým spôsobom, aspon 2 rozne svetlá (8b)
     Korektne priehladné okná (8b)
     Casticový systém (efekt ohna, výbuchu, striel) (8b)
-    Vykreslenie hmly, jej vypnutie a zapnutie (4b)
     Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
 Interaktivita:
     Hlavné menu, menu s nastavením (4b)

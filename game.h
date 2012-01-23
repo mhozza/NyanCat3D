@@ -38,6 +38,8 @@ public:
     ~Game();
     int start(int argc, char *argv[]);
     GLuint getTextureId(int index);
+    static bool fog;
 };
+
 
 #endif // GAME_H

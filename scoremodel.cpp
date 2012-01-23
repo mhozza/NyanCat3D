@@ -17,10 +17,11 @@
 
 #include "scoremodel.h"
 #include "utils.h"
+#include "game.h"
+
 #include <string>
 #include <sstream>
 #include <iostream>
-#include "settings.h"
 
 using namespace std;
 
@@ -103,7 +104,7 @@ void ScoreModel::draw()
   glPopMatrix();
   glMatrixMode(GL_MODELVIEW);
   glEnable(GL_TEXTURE_2D);
-  if(Settings::fog)
+  if(Game::fog)
     glEnable(GL_FOG);
 }
 

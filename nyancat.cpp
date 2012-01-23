@@ -18,7 +18,7 @@
 #include "nyancat.h"
 #include "nyancatmodel.h"
 #include "keyboard.h"
-#include "settings.h"
+#include "game.h"
 
 NyanCat::NyanCat()
   :GameObject(NULL,0,0,-5)
@@ -32,7 +32,7 @@ void NyanCat::action(int actionId)
   switch(actionId)
   {
   case 0:
-    Settings::fog = !Settings::fog;
+    Game::fog = !Game::fog;
     break;
   }
 }

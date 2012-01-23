@@ -112,7 +112,7 @@ void Renderer::resetView(int w, int h)
   else
   {
     gluPerspective(80, (float)w/(float)h, 1.0f, 100.0f); // Chceme perspektivu
-    if(Settings::fog)
+    if(Game::fog)
       glEnable(GL_FOG);
   }
 

@@ -25,9 +25,9 @@ using namespace std;
 class Settings
 {
 public:  
-  static bool fog;
-    Settings();
-    //pair<int,int> getResolution();
+  //static bool fog;
+  Settings();
+  //pair<int,int> getResolution();
 };
 
 #endif // SETTINGS_H

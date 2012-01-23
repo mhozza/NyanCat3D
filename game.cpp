@@ -23,6 +23,8 @@
 #include <iostream>
 using namespace std;
 
+bool Game::fog = true;
+
 
 Game::Game()
 {
