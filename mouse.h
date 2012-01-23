@@ -21,6 +21,7 @@
 #include "utils.h"
 #include "gameobject.h"
 #include <map>
+#include <vector>
 
 using namespace std;
 
@@ -30,12 +31,18 @@ class Mouse  //singleton
   Mouse();
   int width, height;
   multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> > actions;
+  vector<pair<GameObject*,int> > actionsMotion;
+  pair<int,int> motionCoords;
 public:
   static Mouse* getInstance();
   static void mouseFuncWrapper(int button, int state, int x, int y);
+  static void motionFuncWrapper(int x, int y);
   void mouseFunc(int button, int state, int x, int y);
+  void motionFunc(int x, int y);
   void registerAction(GameObject * object, int actionID, int button, int state, bool global);
+  void registerAction(GameObject * object, int actionID);
   void clearActions();
+  pair<int,int> getMotionCoords();
   ~Mouse();
 };
 

@@ -26,7 +26,7 @@ Mouse * Mouse::instance = 0;
 
 Mouse::Mouse()
 {
-
+  motionCoords = make_pair(0,0);
 }
 
 Mouse::~Mouse()
@@ -44,6 +44,11 @@ Mouse* Mouse::getInstance()
 void Mouse::mouseFuncWrapper(int button, int state, int x, int y)
 {
   Mouse::getInstance()->mouseFunc(button, state, x, y);
+}
+
+void Mouse::motionFuncWrapper(int x, int y)
+{
+  Mouse::getInstance()->motionFunc(x,y);
 }
 
 void Mouse::mouseFunc(int button, int state, int x, int y)
@@ -76,14 +81,33 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
   }
 }
 
+void Mouse::motionFunc(int x, int y)
+{
+  motionCoords = make_pair(x,y);
+  for(vector<pair<GameObject*,int> >::iterator i = actionsMotion.begin();i!=actionsMotion.end();i++)
+  {
+    ((*i).first)->action((*i).second);
+  }
+}
+
 void Mouse::registerAction(GameObject *object, int actionID, int button, int state, bool global)
 {
-  actions.insert(make_pair(make_pair(button,state),make_pair(make_pair(object,actionID),global)));
-  //cerr << "Reg:" << button << " " << state << endl;
+  actions.insert(make_pair(make_pair(button,state),make_pair(make_pair(object,actionID),global)));  
+}
+
+void Mouse::registerAction(GameObject *object, int actionID)
+{
+  actionsMotion.push_back(make_pair(object,actionID));
 }
 
 void Mouse::clearActions()
 {
   actions.clear();
+  actionsMotion.clear();
+}
+
+pair<int,int> Mouse::getMotionCoords()
+{
+  return motionCoords;
 }
 

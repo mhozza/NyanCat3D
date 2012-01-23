@@ -89,6 +89,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   glutMouseFunc(Mouse::mouseFuncWrapper);
   glutKeyboardFunc(Keyboard::keyboardFuncWrapper);
   glutSpecialFunc(Keyboard::keyboardSpecialFuncWrapper);
+  glutMotionFunc(Mouse::motionFuncWrapper);
 
 
   renderer->setRoom(new MenuRoom(this,WINDOW_W,WINDOW_H));
