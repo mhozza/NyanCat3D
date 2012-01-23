@@ -1,2 +1,5 @@
-Presunut wrapre do Game
-spravit podporu viac hier naraz - z niektorych jedinacikou spravit nejedinacikov...
+Refaktoring:
+- Presunut wrapre do Game
+- z niektorych jedinacikou spravit nejedinacikov(tak aby bolo teoreticky mozne pustit viac hier naraz)
+- zmenit action system an event system
+
