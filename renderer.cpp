@@ -16,10 +16,11 @@
  */
 
 #include "renderer.h"
-#include <GL/glut.h>
 #include "gameobject.h"
-#include <vector>
 #include "settings.h"
+#include <GL/glut.h>
+#include <vector>
+#include <cmath>
 
 using namespace std;
 
@@ -72,6 +73,20 @@ void Renderer::render()
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);  
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
+
+  /*GLfloat vzd = 3, fi = 0.7f, xi = 0.7f;
+  GLdouble ex = vzd*cos(fi)*cos(xi);
+  GLdouble ey = vzd*sin(fi)*cos(xi);
+  GLdouble ez = vzd*sin(xi);
+  gluLookAt( ex, ey, ez, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f );*/
+  gluLookAt(0,0,0,0,0,-1,0,1,1);
+
+  /*glBegin( GL_LINES );
+  glColor3f(1.0f, 0.0f, 0.0f );glVertex3f( 0.0f, 0.0f,0.0f );glVertex3f( 100.0f, 0.0f,0.0f );
+  glColor3f(0.0f, 1.0f, 0.0f );glVertex3f( 0.0f, 0.0f,0.0f );glVertex3f( 0.0f, 100.0f,0.0f );
+  glColor3f(0.0f, 0.0f, 1.0f );glVertex3f( 0.0f, 0.0f,0.0f );glVertex3f( 0.0f, 0.0f,100.0f );
+  glEnd();*/
+
   vector<GameObject*> objects = actualRoom->getObjects();
   for(unsigned i = 0;i<objects.size();i++)
   {

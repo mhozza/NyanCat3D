@@ -43,8 +43,6 @@ void Game::init()
   glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
   glClearDepth(1.0f);
 
-  gluLookAt (0,0,0,0,0,1,0,1,1);
-
 
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
@@ -68,7 +66,25 @@ void Game::init()
   //glFogf(GL_FOG_COLOR,);
 
   //light
-  //glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHTING);
+  glEnable(GL_LIGHT0);
+  glEnable(GL_LIGHT1);
+
+  float LightPos[4]={0.0f,0.0f,1.f,0.0f};
+  float Ambient[4]={1.f,1.f,1.f,1.0f};
+  GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
+  GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+
+  float LightPos2[4]={-1.0f,1.0f,10.f,1.0f};
+  float Ambient2[4]={1.f,1.f,1.f,1.0f};
+
+  glLightfv(GL_LIGHT0,GL_POSITION,LightPos);
+  glLightfv(GL_LIGHT0,GL_AMBIENT,Ambient);
+  glLightfv(GL_LIGHT0,GL_DIFFUSE,light_diffuse);
+  glLightfv(GL_LIGHT0,GL_SPECULAR,light_specular);
+
+  glLightfv(GL_LIGHT1,GL_POSITION,LightPos2);
+  glLightfv(GL_LIGHT1,GL_AMBIENT,Ambient2);
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)

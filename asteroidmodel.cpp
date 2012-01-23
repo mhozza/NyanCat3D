@@ -40,11 +40,14 @@ AsteroidModel::AsteroidModel(int textureId)
   for (int i = 1; i<6;i++)
   {
     int n = 4*(3-abs(i-3));
+
     float py = -sin(3*PI/2+i*PI/6)*radius;
+
     float miniradius = abs(cos(3*PI/2+i*PI/6)*radius);
     for(int j = 0;j<n;j++)
     {
-      float angle = j*(PI/(2*i));
+      //float angle = j*(PI/(2*i));
+      float angle = j*(PI/(2*(3-abs(i-3))));
       float px = cos(angle)*miniradius;
       float pz = -sin(angle)*miniradius;
       MyVertex v(px,py,pz,i%2,j%2);
@@ -52,7 +55,7 @@ AsteroidModel::AsteroidModel(int textureId)
     }
     //cout << ind << endl;
   }
-  MyVertex v1(0,-sin(PI/2)*radius,0,1,1);
+  MyVertex v1(0,-sin(PI/2)*radius,0,0,0);
   vertices[ind] = v1;
   //cout << ind << endl;
 
@@ -100,7 +103,7 @@ AsteroidModel::AsteroidModel(int textureId)
                6,14,15, 6,7,15, 7,15,16, 7,16,17, 7,8,17, 8,17,18, 8,9,18, 9,18,19, 9,19,20,
                9,10,20, 10,20,21, 10,11,21, 11,21,22, 11,22,23, 11,12,23, 12,23,24, 12,5,24,
                25,13,24, 25,13,14, 25,26,14, 26,14,15, 26,27,15, 27,15,16, 27,16,17, 27,28,17,
-               28,17,18, 28,29,18, 29,18,19, 29,19,20, 29,10,20, 30,20,21, 30,31,21, 31,21,22,
+               28,17,18, 28,29,18, 29,18,19, 29,19,20, 29,30,20, 30,20,21, 30,31,21, 31,21,22,
                31,22,23, 31,32,23, 32,23,24, 32,25,24, 33,25,26, 33,34,26, 33,32,25, 34,26,27,
                34,27,28, 34,35,28, 35,28,29, 35,29,30, 35,36,30, 36,30,31, 36,31,32, 36,33,32,
                37,33,34, 37,34,35, 37,35,36, 37,36,33 };
@@ -108,15 +111,18 @@ AsteroidModel::AsteroidModel(int textureId)
 }
 
 void AsteroidModel::draw()
-{
-  glColor3f(.4,.15,.01);
+{  
   //glDisable(GL_TEXTURE_2D);
   glEnableClientState(GL_VERTEX_ARRAY);
   glVertexPointer(3, GL_FLOAT, sizeof(MyVertex), &vertices[0].x);
+  glEnableClientState(GL_NORMAL_ARRAY);
+  glNormalPointer(GL_FLOAT,sizeof(MyVertex),&vertices[0].nx);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
   glTexCoordPointer(2, GL_FLOAT,sizeof(MyVertex), &vertices[0].tx);
   //glColorPointer(4, GL_UNSIGNED_BYTE, sizeof(MyVertex), &vertices[0].color);
   glBindTexture(GL_TEXTURE_2D,textureId);
   glDrawRangeElements(GL_TRIANGLES, 0, 37, 216, GL_UNSIGNED_SHORT, index);
+  //glDrawRangeElements(GL_TRIANGLES, 0, 37, 108, GL_UNSIGNED_SHORT, index);
+
   //glEnable(GL_TEXTURE_2D);
 }

@@ -25,12 +25,12 @@ UniverseModel::UniverseModel(GLuint textureId)
 
 void UniverseModel::draw()
 {
-  glScalef(width/2,height/2,depth/2);
-  glColor3f(1.0, 1.0, 0.7);
+  glScalef(width/2,height/2,depth/2);  
   glBindTexture(GL_TEXTURE_2D,textureId);
   glBegin(GL_QUADS);
 
-  glTexCoord2f(0,0);
+  glTexCoord2f(0,0);  
+  glNormal3f(-1,0,0);
   glVertex3f(-1.0f, -1.0f, -1.0f);
   glTexCoord2f(0,1);
   glVertex3f( -1.0f, -1.0f, 1.0f);
@@ -39,6 +39,7 @@ void UniverseModel::draw()
   glTexCoord2f(1,0);
   glVertex3f(-1.0f,1.0f, -1.0f);
 
+  glNormal3f(1,0,0);
   glTexCoord2f(0,0);
   glVertex3f(1.0f, -1.0f, -1.0f);
   glTexCoord2f(0,1);
@@ -48,6 +49,7 @@ void UniverseModel::draw()
   glTexCoord2f(1,0);
   glVertex3f(1.0f,1.0f, -1.0f);
 
+  glNormal3f(0,-1,0);
   glTexCoord2f(0,0);
   glVertex3f(-1.0f, -1.0f, -1.0f);
   glTexCoord2f(0,1);
@@ -57,6 +59,7 @@ void UniverseModel::draw()
   glTexCoord2f(1,0);
   glVertex3f(-1.0f,-1.0f, 1.0f);
 
+  glNormal3f(0,1,0);
   glTexCoord2f(0,0);
   glVertex3f(-1.0f, 1.0f, -1.0f);
   glTexCoord2f(0,1);
