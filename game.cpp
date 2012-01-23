@@ -67,6 +67,8 @@ void Game::init()
   glFogf(GL_FOG_END,1);*/
   //glFogf(GL_FOG_COLOR,);
 
+  //light
+  //glEnable(GL_LIGHTING);
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)

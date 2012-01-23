@@ -77,6 +77,7 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
       {
         ((*i).second.first.first)->action((*i).second.first.second);
       }
+      if(actions.size()==0) return;
     }
   }
 }
@@ -87,6 +88,7 @@ void Mouse::motionFunc(int x, int y)
   for(vector<pair<GameObject*,int> >::iterator i = actionsMotion.begin();i!=actionsMotion.end();i++)
   {
     ((*i).first)->action((*i).second);
+    if(actionsMotion.size()==0) return;
   }
 }
 

@@ -126,7 +126,7 @@ void Renderer::setRoom(Room * room)
 {
   if(actualRoom!=NULL)
   {
-    delete actualRoom;
+    delete actualRoom;    
   }
   this->actualRoom = room;
   resetView(WINDOW_W,WINDOW_H);

@@ -24,7 +24,7 @@
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
-{
+{  
   //fog
   /*glEnable(GL_FOG);
   GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};

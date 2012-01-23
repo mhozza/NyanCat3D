@@ -32,6 +32,10 @@ StartButton::StartButton(int x, int y, Game * game)
 
 void StartButton::onClick()
 {
+  //zmaz akcie
+  Mouse::getInstance()->clearActions();
+  Keyboard::getInstance()->clearActions();
+
   //zapni hru
   Renderer::getInstance()->setRoom(new GameRoom(game));
 }

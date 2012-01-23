@@ -26,8 +26,6 @@ Room::Room(Game *parent)
 
 Room::~Room()
 {
-  Mouse::getInstance()->clearActions();
-  Keyboard::getInstance()->clearActions();
 
 }
 
