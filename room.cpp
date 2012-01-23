@@ -17,7 +17,7 @@
 
 #include "room.h"
 #include "mouse.h"
-
+#include "keyboard.h"
 
 Room::Room(Game *parent)
 {
@@ -27,6 +27,8 @@ Room::Room(Game *parent)
 Room::~Room()
 {
   Mouse::getInstance()->clearActions();
+  Keyboard::getInstance()->clearActions();
+
 }
 
 vector<GameObject*> Room::getObjects()
