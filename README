@@ -1,28 +1,26 @@
 Pouzite:
 vykreslovanie
   2 textury
-  3 objekty
-  priamy mod, vertex arrays, dispaly listy
-  2d font v hre
-  fog +vyp/zap
+  4 objekty
+  2d font v hre  
   svetlo klasickym sposobom
 
 interaktivita
   menu  
 
 Body:
-4+3+9+3+0+0+0+0+2+4+0+0+4=29
+4+4+3+4+0+0+0+2+4+0+0+4+12=37
 
 Splnene komplet:
   Vykreslenie hmly, jej vypnutie a zapnutie (4b)
+  Použitie priameho módu vykreslovanie (glBegin, glEnd), Display Listov a aj Vertex Arrays, VBO na vykreslenie objektov (12b)
 ____________________
-4/29/100+
+16/37/100+
 
 Nesplnene:
 Vykreslovanie:
   Min. 6 rôznych textúr (12b)
   Min. 8 geometricky odlišných objektov, z toho aspon 4 animované (12b)
-  Použitie priameho módu vykreslovanie (glBegin, glEnd), Display Listov a aj Vertex Arrays, VBO na vykreslenie objektov (12b)
   2D a 3D font priamo v hre mimo menu (6b)
   Korektne osvetlená scéna klasickým spôsobom, aspon 2 rozne svetlá (8b)
   Korektne priehladné okná (8b)

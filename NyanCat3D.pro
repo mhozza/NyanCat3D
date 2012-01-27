@@ -65,4 +65,5 @@ HEADERS  += \
 LIBS += -lglut -lGLU -lpng
 
 OTHER_FILES += \
-    TODO.txt
+    TODO.txt \
+    README
