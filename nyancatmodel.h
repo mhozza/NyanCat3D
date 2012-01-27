@@ -18,12 +18,22 @@
 #ifndef NYANCATMODEL_H
 #define NYANCATMODEL_H
 
+#define GL_GLEXT_PROTOTYPES
+#include "GL/gl.h"
+#include "GL/glext.h"
 #include "model.h"
+
+#include <iostream>
+
+using namespace std;
 
 class NyanCatModel : public Model
 {
+  GLuint VertexVBOID, IndexVBOID;
+  GLuint indexSize;
 public:
     NyanCatModel();
+    ~NyanCatModel();
     void draw();
 };
 
