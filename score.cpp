@@ -30,6 +30,6 @@ Score::Score()
 
 void Score::step()
 {
-  if((counter++)%10 == 0)
+  if((counter++)%3 == 0)
     ((ScoreModel* ) getModel())->setScore(score++);
 }
