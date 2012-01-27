@@ -71,30 +71,11 @@ struct MyVertex
   float tx,ty;
   float nx, ny, nz;
   //float padding[3];
-  MyVertex()
-  {
-    this->x = 0;
-    this->y = 0;
-    this->z = 0;
-    this->nx = 0;
-    this->ny = 0;
-    this->nz = 0;
-    this->tx = 0;
-    this->ty = 0;
-    //color = 0x9900ffff;
-  }
-  MyVertex(float x, float y, float z, float tx, float ty)
-  {
-    this->x = x;
-    this->y = y;
-    this->z = z;
-    this->nx = x;
-    this->ny = y;
-    this->nz = z;
-    this->tx = tx;
-    this->ty = ty;
-    //color = 0x9900ffff;
-  }
+  MyVertex();
+  MyVertex(float x, float y, float z, float tx, float ty);
+  void setParams(float x, float y, float z);
+  void setParams(float x, float y, float z, float tx, float ty);
+  void setParams(float x, float y, float z, float tx, float ty, float nx, float ny, float nz);
 };
 
 

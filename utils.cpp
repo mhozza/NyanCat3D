@@ -146,3 +146,34 @@ bool Utils::loadPngImage(const char *name, float &outWidth, float &outHeight, bo
     /* That's it */
     return true;
 }
+
+MyVertex::MyVertex()
+{
+  setParams(0,0,0,0,0,0,0,0);
+}
+
+MyVertex::MyVertex(float x, float y, float z, float tx, float ty)
+{
+  setParams(x,y,z,tx,ty,x,y,z);
+}
+
+void MyVertex::setParams(float x, float y, float z)
+{
+  this->x = x;
+  this->y = y;
+  this->z = z;
+}
+
+void MyVertex::setParams(float x, float y, float z, float tx, float ty)
+{
+  setParams(x,y,z);
+  this->tx = tx;
+  this->ty = ty;
+}
+void MyVertex::setParams(float x, float y, float z, float tx, float ty, float nx, float ny, float nz)
+{
+  setParams(x,y,z,tx,ty);
+  this->nx = nx;
+  this->ny = ny;
+  this->nz = nz;
+}
