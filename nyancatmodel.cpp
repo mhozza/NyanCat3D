@@ -121,6 +121,9 @@ NyanCatModel::NyanCatModel(int textureId)
 
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
+
+  width = 2*0.1; height = .228*2; depth = .365*2;
+  x = -width/2;  y = -height/2;  z = -depth/2;
 }
 
 void NyanCatModel::draw()

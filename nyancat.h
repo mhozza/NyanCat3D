@@ -25,6 +25,7 @@ class NyanCat : public GameObject
 public:
     NyanCat(int textureId);
     void action(int actionId);
+    void step();
 };
 
 #endif // NYANCAT_H

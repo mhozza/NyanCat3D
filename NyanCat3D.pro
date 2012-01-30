@@ -15,12 +15,9 @@ SOURCES += main.cpp\
     gameroom.cpp \
     menuroom.cpp \
     nyancat.cpp \
-    camera.cpp \
     asteroid.cpp \
     renderer.cpp \
     model.cpp \
-    controller.cpp \
-    settings.cpp \
     bitmapmodel.cpp \
     utils.cpp \
     mouse.cpp \
@@ -42,12 +39,9 @@ HEADERS  += \
     gameroom.h \
     menuroom.h \
     nyancat.h \
-    camera.h \
     asteroid.h \
     renderer.h \
     model.h \
-    controller.h \
-    settings.h \
     bitmapmodel.h \
     utils.h \
     mouse.h \

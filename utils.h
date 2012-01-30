@@ -41,18 +41,18 @@ struct ColorRGBAf
 
 struct Rect
 {
-  int x, y, z, width, height, depth;
-  Rect(int x = 0,int y = 0, int w =0, int h=0)
+  float x, y, z, width, height, depth;
+  Rect(float x = 0,float y = 0, float w =0, float h=0)
   {
     setRect(x,y,0,w,h,0);
   }
 
-  Rect(int x = 0,int y = 0, int z = 0, int w =0, int h=0, int d = 0)
+  Rect(float x = 0,float y = 0, float z = 0, float w =0, float h=0, float d = 0)
   {
     setRect(x,y,z,w,h,d);
   }
 
-  void setRect(int x = 0,int y = 0, int z = 0, int w =0, int h=0, int d = 0)
+  void setRect(float x = 0,float y = 0, float z = 0, float w =0, float h=0, float d = 0)
   {
     this->x = x;
     this->y = y;
@@ -88,6 +88,7 @@ class Utils
   Utils(){}
 public:
   static bool loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData);
+  static float getDistance(float x1, float y1, float z1, float x2, float y2, float z2);
 };
 
 #endif // UTILS_H

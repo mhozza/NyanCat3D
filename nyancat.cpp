@@ -44,3 +44,7 @@ void NyanCat::action(int actionId)
   }
 }
 
+void NyanCat::step()
+{
+
+}

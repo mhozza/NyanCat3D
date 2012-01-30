@@ -17,7 +17,6 @@
 
 #include "renderer.h"
 #include "gameobject.h"
-#include "settings.h"
 #include <GL/glut.h>
 #include <vector>
 #include <cmath>

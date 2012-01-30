@@ -19,7 +19,6 @@
 #define GAMEROOM_H
 
 #include "nyancat.h"
-#include "camera.h"
 #include "gameobject.h"
 #include "room.h"
 

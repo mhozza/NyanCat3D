@@ -64,6 +64,9 @@ AsteroidModel::AsteroidModel(int textureId)
                34,27,28, 34,35,28, 35,28,29, 35,29,30, 35,36,30, 36,30,31, 36,31,32, 36,33,32,
                37,33,34, 37,34,35, 37,35,36, 37,36,33 };
   memcpy(index,t,sizeof(t));
+
+  width = height = depth = 2*radius;
+  x = y = z = -radius;
 }
 
 void AsteroidModel::draw()

@@ -19,6 +19,7 @@
 #include <png.h>
 #include <cstdio>
 #include <iostream>
+#include <cmath>
 
 using namespace std;
 
@@ -145,6 +146,11 @@ bool Utils::loadPngImage(const char *name, float &outWidth, float &outHeight, bo
 
     /* That's it */
     return true;
+}
+
+float Utils::getDistance(float x1, float y1, float z1, float x2, float y2, float z2)
+{
+  return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
 }
 
 MyVertex::MyVertex()
