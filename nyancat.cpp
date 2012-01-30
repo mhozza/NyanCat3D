@@ -20,10 +20,10 @@
 #include "keyboard.h"
 #include "game.h"
 
-NyanCat::NyanCat()
+NyanCat::NyanCat(int textureId)
   :GameObject(NULL,0,0,-5)
 {
-  this->model = new NyanCatModel();
+  this->model = new NyanCatModel(textureId);
   Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
 }
 

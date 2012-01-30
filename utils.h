@@ -65,6 +65,8 @@ struct Rect
 
 };
 
+enum CoordMapType {MAP_X,MAP_Y,MAP_Z};
+
 struct MyVertex
 {
   float x,y,z;
@@ -76,6 +78,8 @@ struct MyVertex
   void setParams(float x, float y, float z);
   void setParams(float x, float y, float z, float tx, float ty);
   void setParams(float x, float y, float z, float tx, float ty, float nx, float ny, float nz);
+  void makeTexturePoints(float w, float h, CoordMapType xmap, CoordMapType ymap);
+  void makeNormals(float xoffset = 0, float yoffset = 0, float zoffset = 0);
 };
 
 

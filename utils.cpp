@@ -170,10 +170,53 @@ void MyVertex::setParams(float x, float y, float z, float tx, float ty)
   this->tx = tx;
   this->ty = ty;
 }
+
 void MyVertex::setParams(float x, float y, float z, float tx, float ty, float nx, float ny, float nz)
 {
   setParams(x,y,z,tx,ty);
   this->nx = nx;
   this->ny = ny;
   this->nz = nz;
+}
+
+void MyVertex::makeTexturePoints(float w, float h, CoordMapType xmap, CoordMapType ymap)
+{
+  float xval = 0, yval = 0;
+  switch(xmap)
+  {
+  case MAP_X:
+    xval = x;
+    break;
+  case MAP_Y:
+    xval = y;
+    break;
+  case MAP_Z:
+    xval = z;
+    break;
+  }
+
+  switch(ymap)
+  {
+  case MAP_X:
+    yval = x;
+    break;
+  case MAP_Y:
+    yval = y;
+    break;
+  case MAP_Z:
+    yval = z;
+    break;
+  }
+
+  if(w!=0)
+    this->tx = xval/w;
+  if(h!=0)
+    this->ty = 1-yval/h;
+}
+
+void MyVertex::makeNormals(float xoffset, float yoffset, float zoffset)
+{
+  nx = x+xoffset;
+  ny = y+yoffset;
+  nz = z+zoffset;
 }

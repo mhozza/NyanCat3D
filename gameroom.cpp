@@ -36,7 +36,7 @@ GameRoom::GameRoom(Game *parent)
   glFogf (GL_FOG_END, 20.0);*/
 
   mode = MODE_3D;
-  player = new NyanCat();
+  player = new NyanCat(getParent()->getTextureId(2));
   addObject(player);
   addObject(new Score());
   addObject(new Universe(getParent()->getTextureId(0),this));

@@ -23,7 +23,7 @@
 class NyanCat : public GameObject
 {
 public:
-    NyanCat();    
+    NyanCat(int textureId);
     void action(int actionId);
 };
 

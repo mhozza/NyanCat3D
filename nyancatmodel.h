@@ -32,7 +32,7 @@ class NyanCatModel : public Model
   GLuint VertexVBOID, IndexVBOID;
   GLuint indexSize;
 public:
-    NyanCatModel();
+    NyanCatModel(int textureId);
     ~NyanCatModel();
     void draw();
 };
