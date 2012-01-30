@@ -61,8 +61,9 @@ void GameRoom::generateBlock()
 
 }
 
-/*
+
 void GameRoom::timer()
 {
   Room::timer();
-}*/
+  gluLookAt(0,0,0,player->getX(),player->getY(),player->getZ(),0,1,0);
+}

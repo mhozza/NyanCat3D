@@ -126,14 +126,9 @@ NyanCatModel::NyanCatModel(int textureId)
 }
 
 void NyanCatModel::draw()
-{  
-  //glDisable(GL_TEXTURE_2D);
-  //glDisable(GL_LIGHTING);
-  //glColor3f(1.0, 1.0, 1.0);
-  //glutWireCube(1.0);
-  //glRotatef(90,0,1,0);
-  glTranslatef(0,0,1);
-  glScalef(0.2,8,-8);
+{    
+  glTranslatef(0,0.114,-0.188);
+  glScalef(0.1,2,-2);
 
   glEnableClientState(GL_VERTEX_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
@@ -151,9 +146,7 @@ void NyanCatModel::draw()
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
-  //glEnable(GL_TEXTURE_2D);
-  //glEnable(GL_LIGHTING);
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);  
 }
 
 NyanCatModel::~NyanCatModel()

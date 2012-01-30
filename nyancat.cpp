@@ -21,10 +21,11 @@
 #include "game.h"
 
 NyanCat::NyanCat(int textureId)
-  :GameObject(NULL,0,0,-5)
+  :GameObject(NULL,0,0,-3.25)
 {
   this->model = new NyanCatModel(textureId);
   Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
+  Mouse::getInstance()->registerAction(this,1);//mouseMove
 }
 
 void NyanCat::action(int actionId)
@@ -33,6 +34,12 @@ void NyanCat::action(int actionId)
   {
   case 0:
     Game::fog = !Game::fog;
+    break;
+  case 1:
+    pair<int,int> mc = Mouse::getInstance()->getMotionCoords();
+    //cout << mc.first << " " << mc.second << endl;
+    this->setX(6*((float)mc.first/WINDOW_W)-3);
+    this->setY(-(5*((float)mc.second/WINDOW_H)-2.5));
     break;
   }
 }

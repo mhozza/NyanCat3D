@@ -47,7 +47,7 @@ void Mouse::mouseFuncWrapper(int button, int state, int x, int y)
 }
 
 void Mouse::motionFuncWrapper(int x, int y)
-{
+{  
   Mouse::getInstance()->motionFunc(x,y);
 }
 
@@ -83,10 +83,10 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
 }
 
 void Mouse::motionFunc(int x, int y)
-{
+{  
   motionCoords = make_pair(x,y);
   for(vector<pair<GameObject*,int> >::iterator i = actionsMotion.begin();i!=actionsMotion.end();i++)
-  {
+  {    
     ((*i).first)->action((*i).second);
     if(actionsMotion.size()==0) return;
   }

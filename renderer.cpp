@@ -79,7 +79,8 @@ void Renderer::render()
   GLdouble ey = vzd*sin(fi)*cos(xi);
   GLdouble ez = vzd*sin(xi);
   gluLookAt( ex, ey, ez, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f );*/
-  gluLookAt(0,0,0,0,0,-1,0,1,1);
+//  gluLookAt(0,0,0,0,0,-1,0,1,1);
+
 
   /*glBegin( GL_LINES );
   glColor3f(1.0f, 0.0f, 0.0f );glVertex3f( 0.0f, 0.0f,0.0f );glVertex3f( 100.0f, 0.0f,0.0f );
