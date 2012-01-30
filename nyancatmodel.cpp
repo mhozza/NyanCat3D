@@ -91,7 +91,7 @@ NyanCatModel::NyanCatModel(int textureId)
   for(int i = 0;i<sizeof(vertices)/sizeof(MyVertex);i++)
   {
     vertices[i].makeTexturePoints(0.376,-0.228,MAP_Z,MAP_Y);
-    //vertices[i].makeNormals(0,-0.2);
+    vertices[i].makeNormals(0,0.114,-0.188);
   }
 
   glGenBuffers(1, &VertexVBOID);
@@ -113,9 +113,7 @@ NyanCatModel::NyanCatModel(int textureId)
                         18,19,49,48, 19,16,46,49, 16,15,45,46, 15,26,56,45, 26,29,59,56,
                         29,28,58,59, 28,27,57,58, 27,3,33,57, 3,0,30,33
                        };
-  indexSize = sizeof(indices)/sizeof(GLushort);
-
-  cout << indexSize << endl;
+  indexSize = sizeof(indices)/sizeof(GLushort);  
 
   glGenBuffers(1, &IndexVBOID);
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
@@ -131,11 +129,12 @@ void NyanCatModel::draw()
   glScalef(0.1,2,-2);
 
   glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_NORMAL_ARRAY);
   glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glVertexPointer( 3, GL_FLOAT, sizeof(MyVertex), BUFFER_OFFSET(0) );
-
+  glNormalPointer(GL_FLOAT,sizeof(MyVertex),BUFFER_OFFSET((5*sizeof(float))));
   glTexCoordPointer(2, GL_FLOAT,sizeof(MyVertex), BUFFER_OFFSET((3*sizeof(float))));
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
@@ -143,6 +142,7 @@ void NyanCatModel::draw()
   glDrawElements(GL_QUADS, indexSize, GL_UNSIGNED_SHORT, (char *) NULL);
 
   glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_NORMAL_ARRAY);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
   glBindBuffer( GL_ARRAY_BUFFER, NULL );

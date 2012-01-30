@@ -66,25 +66,32 @@ void Game::init()
   //glFogf(GL_FOG_COLOR,);
 
   //light
-  glEnable(GL_LIGHTING);
-  glEnable(GL_LIGHT0);
-  glEnable(GL_LIGHT1);
 
   float LightPos[4]={0.0f,0.0f,1.f,0.0f};
-  float Ambient[4]={1.f,1.f,1.f,1.0f};
-  GLfloat light_diffuse[] = { 1.0, 1.0, 1.0, 1.0 };
-  GLfloat light_specular[] = { 1.0, 1.0, 1.0, 1.0 };
+  float Ambient[4]={0.2,0.2,0.2,1};
+  GLfloat Diffuse[] = { 1, 1, 1, 1 };
+  GLfloat Specular[] = { 1, 1, 1, 1 };
 
-  float LightPos2[4]={-1.0f,1.0f,10.f,1.0f};
-  float Ambient2[4]={1.f,1.f,1.f,1.0f};
+  float LightPos2[4]={0.0f,0.0f,-2.0f,1.0f};
+  float Ambient2[4]={0.2,0.2,0.2,1};
+  GLfloat Diffuse2[] = { 1, 1, 1, 1 };
+  GLfloat Specular2[] = { 1, 1, 1, 1 };
 
+
+  glEnable(GL_LIGHTING);
+
+  glEnable(GL_LIGHT0);
   glLightfv(GL_LIGHT0,GL_POSITION,LightPos);
   glLightfv(GL_LIGHT0,GL_AMBIENT,Ambient);
-  glLightfv(GL_LIGHT0,GL_DIFFUSE,light_diffuse);
-  glLightfv(GL_LIGHT0,GL_SPECULAR,light_specular);
+  glLightfv(GL_LIGHT0,GL_DIFFUSE,Diffuse);
+  glLightfv(GL_LIGHT0,GL_SPECULAR,Specular);
 
+  glEnable(GL_LIGHT1);
   glLightfv(GL_LIGHT1,GL_POSITION,LightPos2);
   glLightfv(GL_LIGHT1,GL_AMBIENT,Ambient2);
+  glLightfv(GL_LIGHT1,GL_DIFFUSE,Diffuse2);
+  glLightfv(GL_LIGHT1,GL_SPECULAR,Specular2);
+
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)
