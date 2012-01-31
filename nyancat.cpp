@@ -23,7 +23,7 @@
 NyanCat::NyanCat(int textureId)
   :GameObject(NULL,0,0,-3.25)
 {
-  this->model = new NyanCatModel(textureId);
+  this->model = new NyanCatModel(textureId,-0.02,100);
   Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
   Mouse::getInstance()->registerAction(this,1);//mouseMove
 }
@@ -46,5 +46,5 @@ void NyanCat::action(int actionId)
 
 void NyanCat::step()
 {
-
+  ((NyanCatModel*) model)->updateParticleSystem();
 }

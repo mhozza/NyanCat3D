@@ -153,6 +153,63 @@ float Utils::getDistance(float x1, float y1, float z1, float x2, float y2, float
   return sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2) + (z1-z2)*(z1-z2));
 }
 
+void Utils::hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB)
+{
+  int var_i;
+  float var_1,var_2, var_3,var_h;
+
+  if ( s == 0 ) //HSV from 0 to 1
+  {
+    outR = outG = outB = v;
+    return;
+  }
+  else
+  {
+    var_h = h * 6;
+    if ( var_h == 6 )
+      var_h = 0;      //H must be < 1
+
+    var_i = floor( var_h );             //Or ... var_i = floor( var_h )
+    var_1 = v * ( 1 - s );
+    var_2 = v * ( 1 - s * ( var_h - var_i ) );
+    var_3 = v * ( 1 - s * ( 1 - ( var_h - var_i ) ) );
+
+    switch (var_i)
+    {
+    case 0:
+      outR = v;
+      outG = var_3;
+      outB = var_1;
+      break;
+    case 1:
+      outR = var_2;
+      outG = v;
+      outB = var_1;
+      break;
+    case 2:
+      outR = var_1;
+      outG = v;
+      outB = var_3;
+      break;
+    case 3:
+      outR = var_1;
+      outG = var_2;
+      outB = v;
+      break;
+    case 4:
+      outR = var_3;
+      outG = var_1;
+      outB = v;
+      break;
+    case 5:
+      outR = v;
+      outG = var_1;
+      outB = var_2;
+      break;
+    }
+  }
+}
+
 MyVertex::MyVertex()
 {
   setParams(0,0,0,0,0,0,0,0);

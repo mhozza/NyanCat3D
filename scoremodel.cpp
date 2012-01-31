@@ -78,7 +78,7 @@ ScoreModel::ScoreModel(int x, int y)
   for (int i = 0; i<10; i++)
   {
     glNewList(fontOffset + i, GL_COMPILE);
-    //glColor3i(1,1,1);
+    //glColor3i(1,1,1);    
     glBitmap(12, 16, 0.0, 0.0, 15.0, 0.0, bitmap[i]);
     glEndList();
   }
@@ -93,6 +93,7 @@ void ScoreModel::draw()
   glDisable(GL_TEXTURE_2D);
   glDisable(GL_FOG);
   glDisable(GL_LIGHTING);
+  glColor3f(1,1,1);
   glMatrixMode(GL_PROJECTION);                        // Budeme menit projekcnu maticu (transformaciu)
   glPushMatrix();
   glLoadIdentity();                                   // Vynulovanie

@@ -50,6 +50,7 @@ void Game::init()
   //glEnable(GL_CULL_FACE);
 
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+  glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);         // Really Nice Point Smoothing
 
   //textures
   setupTextures();
@@ -61,6 +62,7 @@ void Game::init()
   glFogf(GL_FOG_MODE,GL_EXP2);
   glFogf(GL_FOG_DENSITY,0.047);
   glHint(GL_FOG_HINT, GL_NICEST);
+
   /*glFogf(GL_FOG_START,0);
   glFogf(GL_FOG_END,1);*/
   //glFogf(GL_FOG_COLOR,);
@@ -91,6 +93,10 @@ void Game::init()
   glLightfv(GL_LIGHT1,GL_AMBIENT,Ambient2);
   glLightfv(GL_LIGHT1,GL_DIFFUSE,Diffuse2);
   glLightfv(GL_LIGHT1,GL_SPECULAR,Specular2);
+
+  /*glColorMaterial(GL_FRONT_AND_BACK, GL_EMISSION);
+  glEnable(GL_COLOR_MATERIAL);*/
+
 
 }
 

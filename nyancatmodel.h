@@ -24,6 +24,7 @@
 #include "model.h"
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -31,10 +32,14 @@ class NyanCatModel : public Model
 {
   GLuint VertexVBOID, IndexVBOID;
   GLuint indexSize;
+  vector<Particle> particleSystem;
+  float speed;
+  int maxlife;
 public:
-    NyanCatModel(int textureId);
+    NyanCatModel(int textureId, float speed, int maxlife);
     ~NyanCatModel();
     void draw();
+    void updateParticleSystem();
 };
 
 #endif // NYANCATMODEL_H

@@ -82,6 +82,13 @@ struct MyVertex
   void makeNormals(float xoffset = 0, float yoffset = 0, float zoffset = 0);
 };
 
+struct Particle
+{
+  float x, y, z;
+  float vx, vy, vz;
+  float r, g, b;
+  float life;
+};
 
 class Utils
 {  
@@ -89,6 +96,7 @@ class Utils
 public:
   static bool loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData);
   static float getDistance(float x1, float y1, float z1, float x2, float y2, float z2);
+  static void hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB);
 };
 
 #endif // UTILS_H
