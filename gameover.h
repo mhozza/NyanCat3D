@@ -21,7 +21,7 @@
 #include "gameobject.h"
 
 class GameOver : public GameObject
-{
+{  
 public:
     GameOver();
     void draw();

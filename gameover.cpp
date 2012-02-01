@@ -16,17 +16,36 @@
  */
 
 #include "gameover.h"
+#include "GL/glut.h"
+
+#include <iostream>
+#include <string>
+#include <cstring>
+
+using namespace std;
 
 GameOver::GameOver()
 {
+
 }
 
 void GameOver::draw()
 {
-  /*glFontBegin(&font);
-  glScalef(8.0, 8.0, 8.0);
-  glTranslatef(30, 30, 0);
-  glFontTextOut("Test", 5, 5, 0);
-  glFontEnd();
-  glFlush();*/
+  //glDisable(GL_LIGHTING);
+  glDisable(GL_TEXTURE_2D);
+
+  //glLineWidth(2.0);
+
+  glPushMatrix();
+  glColor4i(1,1,1,1);
+  glTranslatef(0,0,-4);
+  glScalef(0.002,0.002,.002);
+  char* s = "Game Over";
+  for (int i=0;i<strlen(s);i++)
+     glutStrokeCharacter(GLUT_STROKE_ROMAN,s[i]);
+  glPopMatrix();
+
+  //glEnable(GL_LIGHTING);
+  glEnable(GL_TEXTURE_2D);
+  //glEnable(GL_FOG);
 }

@@ -23,4 +23,5 @@ GameOverRoom::GameOverRoom(Game *parent)
 {  
   mode = MODE_3D;
   addObject(new GameOver());
+
 }

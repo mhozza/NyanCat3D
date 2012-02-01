@@ -80,6 +80,7 @@ void GameRoom::timer()
     GameObject *obj =  getObjects().at(i);
     if(obj->getZ()<-7) continue;
     Asteroid a(0,0,0,0);
+    //Nyan cat vs Asteroid
     if(typeid(*obj) == typeid(a))
     {
       float closestX, closestY, closestZ;
@@ -124,12 +125,10 @@ void GameRoom::timer()
         closestZ = obj->getZ();
       }
 
-      float distance = Utils::getDistance(closestX, closestY, closestZ, obj->getX(), obj->getY(), obj->getZ());
-      //cout << distance << " " << obj->getModel()->getRect().width/2 << endl;
+      float distance = Utils::getDistance(closestX, closestY, closestZ, obj->getX(), obj->getY(), obj->getZ());      
 
       if(distance<obj->getModel()->getRect().width/2)
-      {
-        //cout << "collision" << endl;
+      {        
         Renderer::getInstance()->setRoom(new GameOverRoom(getParent()));
         return;
       }

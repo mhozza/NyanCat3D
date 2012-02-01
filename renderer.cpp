@@ -92,9 +92,7 @@ void Renderer::render()
   {
     GameObject * obj = objects[i];
     glPushMatrix();
-    glTranslatef(obj->getX(), obj->getY(), obj->getZ());
-    //glTranslatef(obj->getX()-obj->getModel()->getRect().x, obj->getY()-obj->getModel()->getRect().y, obj->getZ()-obj->getModel()->getRect().z);
-    //obj->getModel()->draw();
+    glTranslatef(obj->getX(), obj->getY(), obj->getZ());    
     obj->draw();
     glPopMatrix();    
   }
