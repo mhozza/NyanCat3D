@@ -21,7 +21,7 @@
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 
-NyanCatModel::NyanCatModel(int textureId, float speed, int maxlife)
+NyanCatModel::NyanCatModel(int textureId)
   :Model(textureId)
 {
   MyVertex vertices[60];
@@ -123,9 +123,7 @@ NyanCatModel::NyanCatModel(int textureId, float speed, int maxlife)
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
 
   width = 2*0.1; height = .228*2; depth = .365*2;
-  x = -width/2;  y = -height/2;  z = -depth/2;
-  this->speed = speed;
-  this->maxlife = maxlife;
+  x = -width/2;  y = -height/2;  z = -depth/2;  
 }
 
 void NyanCatModel::draw()
@@ -153,25 +151,7 @@ void NyanCatModel::draw()
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);  
 
-  glDisable(GL_TEXTURE_2D);
-  glEnable(GL_BLEND);						// Enable Blending
-  glBlendFunc(GL_SRC_ALPHA,GL_ONE);				// Type Of Blending To Perform
-  glDisable(GL_LIGHTING);
-  glPointSize(7);
 
-  glBegin(GL_POINTS);
-  for(int i = 0;i<particleSystem.size();i++)
-  {
-    //glColor3f(particleSystem[i].r,particleSystem[i].g,particleSystem[i].b);
-    glColor4f(particleSystem[i].r,particleSystem[i].g,particleSystem[i].b,(float)particleSystem[i].life/maxlife);
-    //glColor3f(particleSystem[i].r,particleSystem[i].g,particleSystem[i].b);
-    //glColor3f(1,0,0);
-    glVertex3f(particleSystem[i].x,particleSystem[i].y,particleSystem[i].z);
-  }
-  glEnd();
-  glEnable(GL_LIGHTING);
-  glDisable(GL_BLEND);
-  glEnable(GL_TEXTURE_2D);
 }
 
 NyanCatModel::~NyanCatModel()
@@ -180,50 +160,3 @@ NyanCatModel::~NyanCatModel()
   glDeleteBuffers(1, &IndexVBOID);
 }
 
-void NyanCatModel::updateParticleSystem()
-{
-  //create new
-  float z = 0;//0.365;
-  for(float x = -1; x<=1; x+=0.1)
-  {
-    for(float y = 0; y<=0.228; y+=0.01)
-    {
-      //for(float z = 0.365;z<0.365+speed;z+=0.05)
-      {
-        Particle p;
-        p.x = x; p.y = -y; p.z = z;
-        p.life = maxlife;
-        p.vz = speed;
-        Utils::hsv2rgb(y/0.228,1,1,p.r,p.g,p.b);
-        /*p.r = y/0.228;
-        p.g = 0;
-        p.b = 0;*/
-        //cout << p.r << " " << p.g << " " << p.b << endl;
-        particleSystem.push_back(p);
-      }
-    }
-  }
-  //update all
-  int i = 0;
-  while(i<particleSystem.size())
-  {
-    if((particleSystem[i].life--)<=0)
-    {
-      if(i<particleSystem.size())
-      {
-        particleSystem[i] = particleSystem.back();
-      }
-      particleSystem.pop_back();
-    }
-    else
-    {
-      //vx, vy == 0
-      //particleSystem[i].x+=particleSystem.vx;
-      //particleSystem[i].y+=particleSystem.vy;
-      particleSystem[i].z+=particleSystem[i].vz;
-      i++;
-      //cout /*<< particleSystem[i].x << " " << particleSystem[i].y << " " */<<  particleSystem[i].z  << endl;
-    }
-  }
-  //cout << particleSystem.size() << endl;
-}

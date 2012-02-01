@@ -15,28 +15,25 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NYANCATMODEL_H
-#define NYANCATMODEL_H
+#ifndef RAINBOW_H
+#define RAINBOW_H
 
-#define GL_GLEXT_PROTOTYPES
-#include "GL/gl.h"
-#include "GL/glext.h"
-#include "model.h"
-
-#include <iostream>
-
+#include "gameobject.h"
+#include <vector>
 
 using namespace std;
 
-class NyanCatModel : public Model
+class Rainbow : public GameObject
 {
-  GLuint VertexVBOID, IndexVBOID;
-  GLuint indexSize;  
+  GameObject * player;
+  vector<Particle> particleSystem;
+  float speed;
+  int maxlife;
 public:
-    NyanCatModel(int textureId);
-    ~NyanCatModel();
+    Rainbow(GameObject* player, float speed, int maxlife);
     void draw();
-
+    void updateParticleSystem();
+    void step();
 };
 
-#endif // NYANCATMODEL_H
+#endif // RAINBOW_H

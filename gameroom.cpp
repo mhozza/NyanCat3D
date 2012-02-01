@@ -17,6 +17,7 @@
 
 #include "gameroom.h"
 #include "nyancat.h"
+#include "rainbow.h"
 #include "universe.h"
 #include "asteroid.h"
 #include "score.h"
@@ -42,6 +43,7 @@ GameRoom::GameRoom(Game *parent)
   mode = MODE_3D;
   player = new NyanCat(getParent()->getTextureId(2));
   addObject(player);
+  addObject(new Rainbow(player, -0.03,30));
   addObject(new Score());
   addObject(new Universe(getParent()->getTextureId(0),this));
   addObject(new Universe(getParent()->getTextureId(0),this,true));
