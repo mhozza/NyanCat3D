@@ -59,4 +59,8 @@ void GameObject::setModel(Model* model)
   this->model = model;  
 }
 
-
+void GameObject::draw()
+{
+  if(this->getModel()!=NULL)
+    this->getModel()->draw();
+}

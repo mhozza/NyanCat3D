@@ -42,6 +42,7 @@ public:
     void setModel(Model* model);
     virtual void action(int){} // param: actionID
     virtual void step(){}
+    virtual void draw();
 };
 
 #endif // GAMEOBJECT_H
