@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,16 +15,18 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NYANCAT_H
-#define NYANCAT_H
+#include "gameover.h"
 
-#include "gameobject.h"
-
-class NyanCat : public GameObject
+GameOver::GameOver()
 {
-public:
-    NyanCat(int textureId);
-    void action(int actionId);    
-};
+}
 
-#endif // NYANCAT_H
+void GameOver::draw()
+{
+  /*glFontBegin(&font);
+  glScalef(8.0, 8.0, 8.0);
+  glTranslatef(30, 30, 0);
+  glFontTextOut("Test", 5, 5, 0);
+  glFontEnd();
+  glFlush();*/
+}

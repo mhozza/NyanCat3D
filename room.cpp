@@ -22,6 +22,9 @@
 Room::Room(Game *parent)
 {
   this->parent = parent;
+  //zmaz akcie
+  Mouse::getInstance()->clearActions();
+  Keyboard::getInstance()->clearActions();
 }
 
 Room::~Room()

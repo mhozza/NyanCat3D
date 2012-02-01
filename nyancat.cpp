@@ -43,8 +43,3 @@ void NyanCat::action(int actionId)
     break;
   }
 }
-
-void NyanCat::step()
-{
-
-}

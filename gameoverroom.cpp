@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,16 +15,12 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef NYANCAT_H
-#define NYANCAT_H
+#include "gameoverroom.h"
+#include "gameover.h"
 
-#include "gameobject.h"
-
-class NyanCat : public GameObject
-{
-public:
-    NyanCat(int textureId);
-    void action(int actionId);    
-};
-
-#endif // NYANCAT_H
+GameOverRoom::GameOverRoom(Game *parent)
+  :Room(parent)
+{  
+  mode = MODE_3D;
+  addObject(new GameOver());
+}

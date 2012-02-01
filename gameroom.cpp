@@ -16,6 +16,7 @@
  */
 
 #include "gameroom.h"
+#include "gameoverroom.h"
 #include "nyancat.h"
 #include "rainbow.h"
 #include "universe.h"
@@ -128,7 +129,9 @@ void GameRoom::timer()
 
       if(distance<obj->getModel()->getRect().width/2)
       {
-        cout << "collision" << endl;
+        //cout << "collision" << endl;
+        Renderer::getInstance()->setRoom(new GameOverRoom(getParent()));
+        return;
       }
     }
   }
