@@ -54,6 +54,40 @@ ScoreBonusModel::ScoreBonusModel()
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
 
-  width = 2*0.1; height = .228*2; depth = .365*2;
-  x = -width/2;  y = -height/2;  z = -depth/2;
+  /*width = 2*0.1; height = .228*2; depth = .365*2;
+  x = -width/2;  y = -height/2;  z = -depth/2;*/
+}
+
+ScoreBonusModel::~ScoreBonusModel()
+{
+  glDeleteBuffers(1, &VertexVBOID);
+  glDeleteBuffers(1, &IndexVBOID);
+}
+
+void ScoreBonusModel::draw()
+{
+  /*glTranslatef(0,0.114,-0.188);
+  glScalef(0.1,2,-2);*/
+
+  glEnableClientState(GL_VERTEX_ARRAY);
+  glEnableClientState(GL_NORMAL_ARRAY);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+
+  glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
+  glVertexPointer( 3, GL_FLOAT, sizeof(MyVertex), BUFFER_OFFSET(0) );
+  glNormalPointer(GL_FLOAT,sizeof(MyVertex),BUFFER_OFFSET((5*sizeof(float))));
+  glTexCoordPointer(2, GL_FLOAT,sizeof(MyVertex), BUFFER_OFFSET((3*sizeof(float))));
+
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
+  glBindTexture(GL_TEXTURE_2D,textureId);
+  glDrawElements(GL_QUADS, indexSize, GL_UNSIGNED_SHORT, (char *) NULL);
+
+  glDisableClientState(GL_VERTEX_ARRAY);
+  glDisableClientState(GL_NORMAL_ARRAY);
+  glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+  glBindBuffer( GL_ARRAY_BUFFER, NULL );
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
+
+
 }

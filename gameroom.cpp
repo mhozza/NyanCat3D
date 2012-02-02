@@ -23,8 +23,10 @@
 #include "keyboard.h"
 
 #include <typeinfo>
-
 #include <iostream>
+
+#include "scorebonus.h"
+#define BONUS_COUNT 1
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -44,9 +46,9 @@ void GameRoom::generateBlock()
 {
 
   //pridat nahodne asteroidy
+  int block_width = 6, block_height = 6, block_depth = 60;
   for(int i = 0;i<20;i++)
   {
-      int block_width = 6, block_height = 6, block_depth = 60;
       float x = (rand()%(100*block_width))/100.0 - block_width/2.0;
       float y = (rand()%(100*block_height))/100.0 - block_height/2.0;
       float z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
@@ -54,7 +56,19 @@ void GameRoom::generateBlock()
   }
 
   //pridat nahodny bonus
+  float x = (rand()%(100*block_width))/100.0 - block_width/2.0;
+  float y = (rand()%(100*block_height))/100.0 - block_height/2.0;
+  float z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
 
+  int bonusNumber = rand()%BONUS_COUNT;
+  GameObject * bonus;
+  switch(bonusNumber)
+  {
+  case 0:
+    bonus = new ScoreBonus();
+    break;
+  }
+  addObject(bonus);
 }
 
 
