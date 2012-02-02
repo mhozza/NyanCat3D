@@ -72,6 +72,9 @@ ScoreBonusModel::~ScoreBonusModel()
 void ScoreBonusModel::draw()
 {
   glDisable(GL_TEXTURE_2D);
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE);
+
   glColor4i(1,1,1,1);
 
   glScalef(2,2,2);
@@ -98,5 +101,6 @@ void ScoreBonusModel::draw()
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
 
   glEnable(GL_TEXTURE_2D);
+  glDisable(GL_BLEND);
 
 }
