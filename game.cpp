@@ -69,7 +69,7 @@ void Game::init()
 
   //light
 
-  float LightPos[4]={0.0f,0.0f,1.f,0.0f};
+  float LightPos[4]={1.0f,1.0f,1.f,0.0f};
   float Ambient[4]={0.2,0.2,0.2,1};
   GLfloat Diffuse[] = { 1, 1, 1, 1 };
   GLfloat Specular[] = { 1, 1, 1, 1 };
