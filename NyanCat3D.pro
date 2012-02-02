@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     score.cpp \
     rainbow.cpp \
     gameoverroom.cpp \
-    gameover.cpp
+    gameover.cpp \
+    scorebonus.cpp \
+    scorebonusmodel.cpp
 
 HEADERS  += \
     game.h \
@@ -60,7 +62,9 @@ HEADERS  += \
     score.h \
     rainbow.h \
     gameoverroom.h \
-    gameover.h
+    gameover.h \
+    scorebonus.h \
+    scorebonusmodel.h
 
 LIBS += -lglut -lGLU -lpng
 
