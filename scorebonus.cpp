@@ -16,7 +16,16 @@
  */
 
 #include "scorebonus.h"
+#include "scorebonusmodel.h"
 
-ScoreBonus::ScoreBonus()
+#include <iostream>
+
+using namespace std;
+
+ScoreBonus::ScoreBonus(float x, float y, float z)
+  :GameObject(new ScoreBonusModel(),x,y,z)
 {
+  speedZ = 0.2;
+  cout << x << " " << y << " " << z << endl;
 }
+

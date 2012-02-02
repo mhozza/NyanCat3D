@@ -19,8 +19,7 @@
 #include "asteroidmodel.h"
 
 Asteroid::Asteroid(GLuint textureID, float x,float y,float z)
-  :GameObject(NULL,x,y,z)
-{
-  this->model = new AsteroidModel(textureID);
+  :GameObject(new AsteroidModel(textureID),x,y,z)
+{  
   speedZ = 0.2;
 }

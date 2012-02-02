@@ -17,6 +17,10 @@
 
 #include "scorebonusmodel.h"
 
+#include <iostream>
+
+using namespace std;
+
 ScoreBonusModel::ScoreBonusModel()
 {
   MyVertex vertices[8];
@@ -41,10 +45,11 @@ ScoreBonusModel::ScoreBonusModel()
   */
 
   glGenBuffers(1, &VertexVBOID);
+  cout << VertexVBOID << endl;
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0].x, GL_STATIC_DRAW);
 
-  GLushort indices[] = {};
+  GLushort indices[] = {0,1,3,2, 0,1,5,4, 2,3,6,7, 4,5,7,6, 0,4,6,2, 1,5,7,3};
   indexSize = sizeof(indices)/sizeof(GLushort);
 
   glGenBuffers(1, &IndexVBOID);
@@ -66,12 +71,15 @@ ScoreBonusModel::~ScoreBonusModel()
 
 void ScoreBonusModel::draw()
 {
-  /*glTranslatef(0,0.114,-0.188);
-  glScalef(0.1,2,-2);*/
+  glDisable(GL_TEXTURE_2D);
+  glColor4i(1,1,1,1);
+
+  glScalef(2,2,2);
+  glTranslatef(-1,-1,-1);
 
   glEnableClientState(GL_VERTEX_ARRAY);
-  glEnableClientState(GL_NORMAL_ARRAY);
-  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  //glEnableClientState(GL_NORMAL_ARRAY);
+  //glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glVertexPointer( 3, GL_FLOAT, sizeof(MyVertex), BUFFER_OFFSET(0) );
@@ -89,5 +97,6 @@ void ScoreBonusModel::draw()
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
 
+  glEnable(GL_TEXTURE_2D);
 
 }

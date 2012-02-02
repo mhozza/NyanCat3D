@@ -30,7 +30,7 @@
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
-{    
+{
   mode = MODE_3D;
   player = new NyanCat(getParent()->getTextureId(2));
   addObject(player);
@@ -65,7 +65,7 @@ void GameRoom::generateBlock()
   switch(bonusNumber)
   {
   case 0:
-    bonus = new ScoreBonus();
+    bonus = new ScoreBonus(x,y,-z);
     break;
   }
   addObject(bonus);

@@ -23,7 +23,7 @@
 class ScoreBonus : public GameObject
 {
 public:
-    ScoreBonus();
+    ScoreBonus(float x, float y, float z);
 };
 
 #endif // SCOREBONUS_H
