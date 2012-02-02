@@ -18,10 +18,10 @@
 #include "gameoverroom.h"
 #include "gameover.h"
 
-GameOverRoom::GameOverRoom(Game *parent)
+GameOverRoom::GameOverRoom(Game *parent, int score)
   :Room(parent)
 {  
   mode = MODE_3D;
-  addObject(new GameOver());
+  addObject(new GameOver(this,score));
 
 }

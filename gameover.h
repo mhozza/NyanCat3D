@@ -19,12 +19,25 @@
 #define GAMEOVER_H
 
 #include "gameobject.h"
+#include "room.h"
+#include <sstream>
+#include <string>
+
+using namespace std;
 
 class GameOver : public GameObject
 {  
+  Room* parent;
+  int score;
+  bool info;
+  int gameOverStringW, scoreStringW, infoStringW;
+  string gameOverString, infoString;
+  stringstream scoreStream;
 public:
-    GameOver();
+    GameOver(Room * parent, int score);
     void draw();
+    void step();
+    void action(int);
 };
 
 #endif // GAMEOVER_H

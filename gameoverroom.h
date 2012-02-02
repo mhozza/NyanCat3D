@@ -23,7 +23,7 @@
 class GameOverRoom : public Room
 {
 public:
-    GameOverRoom(Game* parent);
+    GameOverRoom(Game* parent, int score);
 };
 
 #endif // GAMEOVERROOM_H

@@ -17,16 +17,30 @@
 
 #include "gameover.h"
 #include "GL/glut.h"
+#include "menuroom.h"
 
 #include <iostream>
-#include <string>
-#include <cstring>
+//#include <cstring>
 
-using namespace std;
+GameOver::GameOver(Room* parent, int score)
+  :parent(parent), score(score), info(false),
+    gameOverStringW(0), scoreStringW(0), infoStringW(0)
+{  
+  z = -10;
+  speedZ = 0.2;
+  gameOverString = "Game Over";
+  infoString = "Press ESC to show menu";
+  scoreStream << "Score: " << score;
 
-GameOver::GameOver()
-{
+  //zrataj sirky stringov
+  for (int i=0;i<gameOverString.size();i++)
+     gameOverStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,gameOverString[i]);
+  for (int i=0;i<scoreStream.str().size();i++)
+     scoreStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,scoreStream.str()[i]);
+  for (int i=0;i<infoString.size();i++)
+     infoStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,infoString[i]);
 
+  Keyboard::getInstance()->registerAction(this,0,27,false);
 }
 
 void GameOver::draw()
@@ -34,18 +48,57 @@ void GameOver::draw()
   //glDisable(GL_LIGHTING);
   glDisable(GL_TEXTURE_2D);
 
-  //glLineWidth(2.0);
+  glLineWidth(2.0);
+  glPointSize(1);
 
   glPushMatrix();
   glColor4i(1,1,1,1);
-  glTranslatef(0,0,-4);
-  glScalef(0.002,0.002,.002);
-  char* s = "Game Over";
-  for (int i=0;i<strlen(s);i++)
-     glutStrokeCharacter(GLUT_STROKE_ROMAN,s[i]);
+  glPushMatrix();
+  glScalef(0.004,0.004,1);
+  glTranslatef(-gameOverStringW/2.0,0,-4);
+  //glRotatef(30,1,0,0);
+  for (int i=0;i<gameOverString.size();i++)
+     glutStrokeCharacter(GLUT_STROKE_ROMAN,gameOverString[i]);
+  glPopMatrix();
+
+  if(info)
+  {
+    glPushMatrix();
+    glScalef(0.002,0.002,1);
+    glTranslatef(-scoreStringW/2.0,-300,-4);
+    for (int i=0;i<scoreStream.str().size();i++)
+      glutStrokeCharacter(GLUT_STROKE_ROMAN,scoreStream.str()[i]);
+    glPopMatrix();
+
+    glPushMatrix();
+    glScalef(0.002,0.002,1);
+    glTranslatef(-infoStringW/2.0,-600,-4);
+    for (int i=0;i<infoString.size();i++)
+      glutStrokeCharacter(GLUT_STROKE_ROMAN,infoString[i]);
+    glPopMatrix();
+  }
   glPopMatrix();
 
   //glEnable(GL_LIGHTING);
   glEnable(GL_TEXTURE_2D);
   //glEnable(GL_FOG);
+}
+
+void GameOver::step()
+{
+  GameObject::step();
+  if(z>=0)
+  {
+    speedZ = 0;
+    info = true;
+  }
+}
+
+void GameOver::action(int actionID)
+{
+  if (actionID==0)
+  {
+    Keyboard::getInstance()->clearActions();
+    Renderer::getInstance()->setRoom(new MenuRoom(parent->getParent(),WINDOW_W,WINDOW_H));
+  }
 }

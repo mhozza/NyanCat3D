@@ -29,6 +29,7 @@ public:
     //Score(Game* parent);
     Score();
     void step();
+    int getScore(){return score;}
 };
 
 #endif // SCORE_H

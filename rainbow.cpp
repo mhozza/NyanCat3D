@@ -31,8 +31,8 @@ void Rainbow::draw()
   glScalef(0.1,2,-2);
 
   glDisable(GL_TEXTURE_2D);
-  glEnable(GL_BLEND);						// Enable Blending
-  glBlendFunc(GL_SRC_ALPHA,GL_ONE);				// Type Of Blending To Perform
+  glEnable(GL_BLEND);
+  glBlendFunc(GL_SRC_ALPHA,GL_ONE);
   glDisable(GL_LIGHTING);
   glPointSize(6);
 
@@ -43,6 +43,7 @@ void Rainbow::draw()
     glVertex3f(particleSystem[i].x,particleSystem[i].y,particleSystem[i].z);
   }
   glEnd();
+
   glEnable(GL_LIGHTING);
   glDisable(GL_BLEND);
   glEnable(GL_TEXTURE_2D);

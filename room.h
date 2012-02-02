@@ -39,8 +39,8 @@ protected:
   void addObject(GameObject* object);
   ColorRGBAf bgcolor;
   int mode;
-  Game * getParent();
 public:
+  Game * getParent();
   Room(Game * parent);
   ~Room();
   vector<GameObject*> getObjects();

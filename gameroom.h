@@ -21,6 +21,7 @@
 #include "nyancat.h"
 #include "gameobject.h"
 #include "room.h"
+#include "score.h"
 
 #include <vector>
 
@@ -28,9 +29,9 @@
 using namespace std;
 
 class GameRoom : public Room
-{
-    //Camera* camera;
+{    
     NyanCat* player;
+    Score *score;
 public:
     void generateBlock();
     GameRoom(Game * parent);

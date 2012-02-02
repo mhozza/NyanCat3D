@@ -17,11 +17,9 @@
 
 #include "gameroom.h"
 #include "gameoverroom.h"
-#include "nyancat.h"
 #include "rainbow.h"
 #include "universe.h"
 #include "asteroid.h"
-#include "score.h"
 #include "keyboard.h"
 
 #include <typeinfo>
@@ -30,22 +28,13 @@
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
-{  
-  //fog
-  /*glEnable(GL_FOG);
-  GLfloat fogColor[4] = {0.0, 0.0, 0.0, 1.0};
-  glFogi (GL_FOG_MODE, GL_EXP);
-  glFogfv (GL_FOG_COLOR, fogColor);
-  glFogf (GL_FOG_DENSITY, 0.05);
-  glHint (GL_FOG_HINT, GL_DONT_CARE);
-  glFogf (GL_FOG_START, 10.0);
-  glFogf (GL_FOG_END, 20.0);*/
-
+{    
   mode = MODE_3D;
   player = new NyanCat(getParent()->getTextureId(2));
   addObject(player);
   addObject(new Rainbow(player, -0.03,30));
-  addObject(new Score());
+  score = new Score();
+  addObject(score);
   addObject(new Universe(getParent()->getTextureId(0),this));
   addObject(new Universe(getParent()->getTextureId(0),this,true));
   generateBlock();
@@ -71,16 +60,15 @@ void GameRoom::generateBlock()
 
 void GameRoom::timer()
 {
-  Room::timer();
-  //gluLookAt(0,0,0,player->getX(),player->getY(),player->getZ(),0,1,0);
-  //check collisions
-  //prevsetky gule
+  Room::timer();  
+  //check collisions  
   for(int i = 0;i<getObjects().size();i++)
   {
     GameObject *obj =  getObjects().at(i);
-    if(obj->getZ()<-7) continue;
-    Asteroid a(0,0,0,0);
+    if(obj->getZ()<-7) continue;//bulharska konstanta
+
     //Nyan cat vs Asteroid
+    Asteroid a(0,0,0,0);
     if(typeid(*obj) == typeid(a))
     {
       float closestX, closestY, closestZ;
@@ -129,7 +117,7 @@ void GameRoom::timer()
 
       if(distance<obj->getModel()->getRect().width/2)
       {        
-        Renderer::getInstance()->setRoom(new GameOverRoom(getParent()));
+        Renderer::getInstance()->setRoom(new GameOverRoom(getParent(),score->getScore()));
         return;
       }
     }
