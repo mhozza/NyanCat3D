@@ -20,6 +20,8 @@
 
 #include <GL/glut.h>
 
+#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 struct ColorRGBAf
 {
   GLclampf red, green, blue, alpha;

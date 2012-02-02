@@ -18,7 +18,7 @@
 #include "nyancatmodel.h"
 #include "utils.h"
 
-#define BUFFER_OFFSET(i) ((char *)NULL + (i))
+
 
 
 NyanCatModel::NyanCatModel(int textureId)
