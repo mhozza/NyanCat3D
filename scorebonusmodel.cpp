@@ -44,8 +44,7 @@ ScoreBonusModel::ScoreBonusModel()
   }
   */
 
-  glGenBuffers(1, &VertexVBOID);
-  cout << VertexVBOID << endl;
+  glGenBuffers(1, &VertexVBOID);  
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0].x, GL_STATIC_DRAW);
 

@@ -1,7 +1,9 @@
 #include "game.h"
+#include <time.h>
 
 int main(int argc, char *argv[])
 {
-    Game g;
-    return g.start(argc,argv);
+  srandom(time(NULL));
+  Game g;
+  return g.start(argc,argv);
 }
