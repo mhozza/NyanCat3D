@@ -21,7 +21,8 @@
 
 using namespace std;
 
-ScoreBonusModel::ScoreBonusModel()
+ScoreBonusModel::ScoreBonusModel(int textureid)
+  :Model(textureid)
 {
   MyVertex vertices[8];
 
@@ -31,7 +32,8 @@ ScoreBonusModel::ScoreBonusModel()
     {
       for(int z = 0;z<=1;z++)
       {
-        vertices[4*x+2*y+z].setParams(x,y,z);
+        vertices[4*x+2*y+z].setParams(x,y,z, x^z ,y);
+        cout << x << y << z << (x^z) << y << endl;
       }
     }
   }
@@ -70,7 +72,7 @@ ScoreBonusModel::~ScoreBonusModel()
 
 void ScoreBonusModel::draw()
 {
-  glDisable(GL_TEXTURE_2D);
+  //glDisable(GL_TEXTURE_2D);
   glEnable(GL_BLEND);
   glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 
@@ -81,11 +83,11 @@ void ScoreBonusModel::draw()
 
   glEnableClientState(GL_VERTEX_ARRAY);
   //glEnableClientState(GL_NORMAL_ARRAY);
-  //glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+  glEnableClientState(GL_TEXTURE_COORD_ARRAY);
 
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glVertexPointer( 3, GL_FLOAT, sizeof(MyVertex), BUFFER_OFFSET(0) );
-  glNormalPointer(GL_FLOAT,sizeof(MyVertex),BUFFER_OFFSET((5*sizeof(float))));
+  //glNormalPointer(GL_FLOAT,sizeof(MyVertex),BUFFER_OFFSET((5*sizeof(float))));
   glTexCoordPointer(2, GL_FLOAT,sizeof(MyVertex), BUFFER_OFFSET((3*sizeof(float))));
 
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
@@ -99,7 +101,6 @@ void ScoreBonusModel::draw()
   glBindBuffer( GL_ARRAY_BUFFER, NULL );
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
 
-  glEnable(GL_TEXTURE_2D);
+  //glEnable(GL_TEXTURE_2D);
   glDisable(GL_BLEND);
-
 }

@@ -65,7 +65,7 @@ void GameRoom::generateBlock()
   switch(bonusNumber)
   {
   case 0:
-    bonus = new ScoreBonus(x,y,-z);
+    bonus = new ScoreBonus(getParent()->getTextureId(3),x,y,-z);
     break;
   }
   addObject(bonus);

@@ -29,7 +29,7 @@ class ScoreBonusModel : public Model
   GLuint VertexVBOID, IndexVBOID;
   GLuint indexSize;
 public:
-    ScoreBonusModel();    
+    ScoreBonusModel(int textureid);
     ~ScoreBonusModel();
     void draw();
 };

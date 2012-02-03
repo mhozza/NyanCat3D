@@ -22,8 +22,8 @@
 
 using namespace std;
 
-ScoreBonus::ScoreBonus(float x, float y, float z)
-  :GameObject(new ScoreBonusModel(),x,y,z)
+ScoreBonus::ScoreBonus(int textureId, float x, float y, float z)
+  :GameObject(new ScoreBonusModel(textureId),x,y,z)
 {
   speedZ = 0.2;  
 }
