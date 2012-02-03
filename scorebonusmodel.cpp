@@ -49,7 +49,7 @@ ScoreBonusModel::ScoreBonusModel()
   glBindBuffer(GL_ARRAY_BUFFER, VertexVBOID);
   glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices[0].x, GL_STATIC_DRAW);
 
-  GLushort indices[] = {0,1,3,2, 0,1,5,4, 2,3,6,7, 4,5,7,6, 0,4,6,2, 1,5,7,3};
+  GLushort indices[] = {0,1,3,2, 0,1,5,4, 2,3,7,6, 4,5,7,6, 0,4,6,2, 1,5,7,3};
   indexSize = sizeof(indices)/sizeof(GLushort);
 
   glGenBuffers(1, &IndexVBOID);
