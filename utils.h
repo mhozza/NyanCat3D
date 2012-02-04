@@ -104,7 +104,7 @@ public:
 class Collisions
 {
 public:
-  static bool rect2sphere(Rect r, x, y, radius);
+  static bool rect2sphere(Rect r, float x, float y, float radius);
   static bool rect2rect(Rect r1, Rect r2);
 };
 

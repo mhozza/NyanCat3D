@@ -284,7 +284,7 @@ void MyVertex::makeNormals(float xoffset, float yoffset, float zoffset)
   nz = z+zoffset;
 }
 
-bool Collisions::rect2sphere(Rect r, x, y, radius)
+bool Collisions::rect2sphere(Rect r, float x, float y, float radius)
 {
   return false;
 }
