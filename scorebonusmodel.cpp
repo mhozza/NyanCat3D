@@ -33,7 +33,7 @@ ScoreBonusModel::ScoreBonusModel(int textureid)
       for(int z = 0;z<=1;z++)
       {
         vertices[4*x+2*y+z].setParams(x,y,z, x^z ,y);
-        cout << x << y << z << (x^z) << y << endl;
+        //cout << x << y << z << (x^z) << y << endl;
       }
     }
   }

@@ -69,7 +69,7 @@ bool Utils::loadPngImage(const char *name, float &outWidth, float &outHeight, bo
      * REQUIRED unless you  set up
      * your own error handlers in
      * the png_create_read_struct()
-     * earlier.
+     * earlieb.
      */
     if (setjmp(png_jmpbuf(png_ptr))) {
         /* Free all of the memory associated
@@ -284,12 +284,58 @@ void MyVertex::makeNormals(float xoffset, float yoffset, float zoffset)
   nz = z+zoffset;
 }
 
-bool Collisions::rect2sphere(Rect r, float x, float y, float radius)
+bool Collisions::rect2sphere(Block b, float x, float y, float z, float radius)
 {
+  float closestX, closestY, closestZ;
+  if(x < b.x)
+  {
+    closestX = b.x;
+  }
+  else if(x > b.x + b.width)
+  {
+    closestX = b.x + b.width;
+  }
+  else
+  {
+    closestX = x;
+  }
+
+  if(y < b.y)
+  {
+    closestY = b.y;
+  }
+  else if(y > b.y + b.height)
+  {
+    closestY = b.y + b.height;
+  }
+  else
+  {
+    closestY = y;
+  }
+
+  if(z < b.z)
+  {
+    closestZ = b.z;
+  }
+  else if(z > b.z + b.depth)
+  {
+    closestZ = b.z + b.depth;
+  }
+  else
+  {
+    closestZ = z;
+  }
+
+  float distance = Utils::getDistance(closestX, closestY, closestZ, x, y, z);
+
+  if(distance<radius)
+  {
+    return true;
+  }
   return false;
 }
 
-bool Collisions::rect2rect(Rect r1, Rect r2)
+bool Collisions::rect2rect(Block r1, Block r2)
 {
   return false;
 }

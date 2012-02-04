@@ -84,53 +84,13 @@ void GameRoom::timer()
     //Nyan cat vs Asteroid
     Asteroid a(0,0,0,0);
     if(typeid(*obj) == typeid(a))
-    {
-      float closestX, closestY, closestZ;
-      Rect playerRect = player->getModel()->getRect();
-
-      if(obj->getX() < playerRect.x + player->getX())
+    {      
+      Block playerRect = player->getModel()->getRect();
+      playerRect.x+=player->getX();
+      playerRect.y+=player->getY();
+      playerRect.z+=player->getZ();
+      if(Collisions::rect2sphere(playerRect,obj->getX(),obj->getY(),obj->getZ(),obj->getModel()->getRect().width/2))
       {
-        closestX = playerRect.x + player->getX();
-      }
-      else if(obj->getX() > playerRect.x + playerRect.width + player->getX())
-      {
-        closestX = playerRect.x + playerRect.width + player->getX();
-      }
-      else
-      {
-        closestX = obj->getX();
-      }
-
-      if(obj->getY() < playerRect.y + player->getY())
-      {
-        closestY = playerRect.y + player->getY();
-      }
-      else if(obj->getY() > playerRect.y + playerRect.height + player->getY())
-      {
-        closestY = playerRect.y + playerRect.height+ player->getY();
-      }
-      else
-      {
-        closestY = obj->getY();
-      }
-
-      if(obj->getZ() < playerRect.z + player->getZ())
-      {
-        closestZ = playerRect.z + player->getZ();
-      }
-      else if(obj->getZ() > playerRect.z + playerRect.depth+ player->getZ())
-      {
-        closestZ = playerRect.z + playerRect.depth+ player->getZ();
-      }
-      else
-      {
-        closestZ = obj->getZ();
-      }
-
-      float distance = Utils::getDistance(closestX, closestY, closestZ, obj->getX(), obj->getY(), obj->getZ());      
-
-      if(distance<obj->getModel()->getRect().width/2)
-      {        
         Renderer::getInstance()->setRoom(new GameOverRoom(getParent(),score->getScore()));
         return;
       }

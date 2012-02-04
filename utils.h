@@ -41,15 +41,15 @@ struct ColorRGBAf
   }
 };
 
-struct Rect
+struct Block
 {
   float x, y, z, width, height, depth;
-  Rect(float x = 0,float y = 0, float w =0, float h=0)
+  Block(float x = 0,float y = 0, float w =0, float h=0)
   {
     setRect(x,y,0,w,h,0);
   }
 
-  Rect(float x = 0,float y = 0, float z = 0, float w =0, float h=0, float d = 0)
+  Block(float x = 0,float y = 0, float z = 0, float w =0, float h=0, float d = 0)
   {
     setRect(x,y,z,w,h,d);
   }
@@ -104,8 +104,8 @@ public:
 class Collisions
 {
 public:
-  static bool rect2sphere(Rect r, float x, float y, float radius);
-  static bool rect2rect(Rect r1, Rect r2);
+  static bool rect2sphere(Block b, float x, float y, float z, float radius);
+  static bool rect2rect(Block r1, Block r2);
 };
 
 #endif // UTILS_H

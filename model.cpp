@@ -27,9 +27,9 @@ Model::Model(int textureId)
  setTexture(textureId);
 }
 
-Rect Model::getRect()
+Block Model::getRect()
 {
-  Rect r(x,y,z,width,height,depth);
+  Block r(x,y,z,width,height,depth);
   return r;
 }
 
