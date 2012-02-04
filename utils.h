@@ -41,6 +41,13 @@ struct ColorRGBAf
   }
 };
 
+struct Point
+{
+  float x,y,z;
+  Point():x(0),y(0),z(0){}
+  Point(float x, float y, float z) :x(x),y(y),z(z) {}
+};
+
 struct Block
 {
   float x, y, z, width, height, depth;
@@ -64,7 +71,17 @@ struct Block
     this->depth = d;
   }
 
-
+  Block operator+(Point p)
+  {
+    return Block(*this)+=p;
+  }
+  Block operator+=(Point p)
+  {
+    this->x+=p.x;
+    this->y+=p.y;
+    this->z+=p.z;
+    return *this;
+  }
 };
 
 enum CoordMapType {MAP_X,MAP_Y,MAP_Z};
@@ -96,16 +113,20 @@ class Utils
 {  
   Utils(){}
 public:
+  static int sgn(float v);
   static bool loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData);
   static float getDistance(float x1, float y1, float z1, float x2, float y2, float z2);
-  static void hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB);  
+  static void hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB);    
 };
 
 class Collisions
 {
+  static Point closest(Block b, float x, float y, float z);
+  static Point closest(Block b, Point p);
+
 public:
-  static bool rect2sphere(Block b, float x, float y, float z, float radius);
-  static bool rect2rect(Block r1, Block r2);
+  static bool block2sphere(Block b, float x, float y, float z, float radius);
+  static bool block2block(Block b1, Block b2);
 };
 
 #endif // UTILS_H

@@ -20,8 +20,16 @@
 #include <cstdio>
 #include <iostream>
 #include <cmath>
+#include <algorithm>
 
 using namespace std;
+
+int Utils::sgn(float v)
+{
+  if (v<0) return -1;
+  if (v>0) return 1;
+  return 0;
+}
 
 bool Utils::loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData)
 {
@@ -284,49 +292,10 @@ void MyVertex::makeNormals(float xoffset, float yoffset, float zoffset)
   nz = z+zoffset;
 }
 
-bool Collisions::rect2sphere(Block b, float x, float y, float z, float radius)
-{
-  float closestX, closestY, closestZ;
-  if(x < b.x)
-  {
-    closestX = b.x;
-  }
-  else if(x > b.x + b.width)
-  {
-    closestX = b.x + b.width;
-  }
-  else
-  {
-    closestX = x;
-  }
-
-  if(y < b.y)
-  {
-    closestY = b.y;
-  }
-  else if(y > b.y + b.height)
-  {
-    closestY = b.y + b.height;
-  }
-  else
-  {
-    closestY = y;
-  }
-
-  if(z < b.z)
-  {
-    closestZ = b.z;
-  }
-  else if(z > b.z + b.depth)
-  {
-    closestZ = b.z + b.depth;
-  }
-  else
-  {
-    closestZ = z;
-  }
-
-  float distance = Utils::getDistance(closestX, closestY, closestZ, x, y, z);
+bool Collisions::block2sphere(Block b, float x, float y, float z, float radius)
+{  
+  Point c = closest(b,x,y,z);
+  float distance = Utils::getDistance(c.x, c.y, c.z, x, y, z);
 
   if(distance<radius)
   {
@@ -335,7 +304,76 @@ bool Collisions::rect2sphere(Block b, float x, float y, float z, float radius)
   return false;
 }
 
-bool Collisions::rect2rect(Block r1, Block r2)
-{
+bool Collisions::block2block(Block b1, Block b2)
+{  
+  Point center1, center2;
+  center1.x = b1.x+b1.width/2;
+  center1.y = b1.y+b1.height/2;
+  center1.z = b1.z+b1.depth/2;
+
+  center2.x = b2.x+b2.width/2;
+  center2.y = b2.y+b2.height/2;
+  center2.z = b2.z+b2.depth/2;
+
+  Point closest1 = Collisions::closest(b1,center2);
+  Point closest2 = Collisions::closest(b2,center1);
+
+  if(Utils::sgn(center1.x-center2.x)== Utils::sgn(closest1.x-closest2.x) &&
+     Utils::sgn(center1.y-center2.y)== Utils::sgn(closest1.y-closest2.y) &&
+     Utils::sgn(center1.z-center2.z)== Utils::sgn(closest1.z-closest2.z))
+  {
+    cout << "collision" << endl;
+    return true;
+  }
+
   return false;
+}
+
+Point Collisions::closest(Block b, float x, float y, float z)
+{
+  Point c;
+  if(x < b.x)
+  {
+    c.x = b.x;
+  }
+  else if(x > b.x + b.width)
+  {
+    c.x = b.x + b.width;
+  }
+  else
+  {
+    c.x = x;
+  }
+
+  if(y < b.y)
+  {
+    c.y = b.y;
+  }
+  else if(y > b.y + b.height)
+  {
+    c.y = b.y + b.height;
+  }
+  else
+  {
+    c.y = y;
+  }
+
+  if(z < b.z)
+  {
+    c.z = b.z;
+  }
+  else if(z > b.z + b.depth)
+  {
+    c.z = b.z + b.depth;
+  }
+  else
+  {
+    c.z = z;
+  }
+  return c;
+}
+
+Point Collisions::closest(Block b, Point p)
+{
+  closest(b,p.x,p.y,p.z);
 }

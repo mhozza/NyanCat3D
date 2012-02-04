@@ -23,15 +23,15 @@ Universe::Universe(GLuint textureId, GameRoom *parent, bool second)
 {
   this->setModel(new UniverseModel(textureId));
   speedZ = 0.2;
-  if(second) setZ(-model->getRect().depth);
+  if(second) setZ(-model->getBlock().depth);
 }
 
 void Universe::step()
 {
-  if(z>=model->getRect().depth)
+  if(z>=model->getBlock().depth)
   {
     //vygneruj novy blok
-    setZ(-model->getRect().depth);
+    setZ(-model->getBlock().depth);
     parent->generateBlock();
   }
 }

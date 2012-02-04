@@ -67,7 +67,7 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
     else
     {
       //get object rect
-      Block r = ((*i).second.first.first)->getModel()->getRect();
+      Block r = ((*i).second.first.first)->getModel()->getBlock();
       r.x+=((*i).second.first.first)->getX();
       r.y+=((*i).second.first.first)->getY();
       int h = 600;//TODO zratat

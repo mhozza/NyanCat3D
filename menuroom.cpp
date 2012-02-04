@@ -33,7 +33,7 @@ MenuRoom::MenuRoom(Game *parent, int width, int height)
   bgcolor.setColor(1.0/255,51.0/255,102.0/255);
   //main logo
   BitmapModel * logo = new BitmapModel("graphics/logo.png");  
-  addObject(new GameObject(logo,(width-logo->getRect().width)/2,height-logo->getRect().height,0));
+  addObject(new GameObject(logo,(width-logo->getBlock().width)/2,height-logo->getBlock().height,0));
   //buttons
   //start
   addObject(new StartButton(30, 300, getParent()));

@@ -81,19 +81,35 @@ void GameRoom::timer()
     GameObject *obj =  getObjects().at(i);
     if(obj->getZ()<-7) continue;//bulharska konstanta
 
-    //Nyan cat vs Asteroid
     Asteroid a(0,0,0,0);
+    ScoreBonus sb(0,0,0,0);
+
+    Block playerBlock = player->getModel()->getBlock();
+    playerBlock.x+=player->getX();
+    playerBlock.y+=player->getY();
+    playerBlock.z+=player->getZ();
+
+    //Nyan cat vs Asteroid
     if(typeid(*obj) == typeid(a))
-    {      
-      Block playerRect = player->getModel()->getRect();
-      playerRect.x+=player->getX();
-      playerRect.y+=player->getY();
-      playerRect.z+=player->getZ();
-      if(Collisions::rect2sphere(playerRect,obj->getX(),obj->getY(),obj->getZ(),obj->getModel()->getRect().width/2))
+    {
+      if(Collisions::block2sphere(playerBlock,obj->getX(),obj->getY(),obj->getZ(),obj->getModel()->getBlock().width/2))
       {
         Renderer::getInstance()->setRoom(new GameOverRoom(getParent(),score->getScore()));
         return;
       }
     }
+    else if(typeid(*obj)==typeid(sb))
+    {
+      Block objBlock = obj->getModel()->getBlock();
+      Point p(obj->getX(),obj->getY(),obj->getZ());
+      objBlock+=p;
+      if(Collisions::block2block(playerBlock,objBlock))
+      {
+        score->add(100);
+        //TODO: zmaz objekt;
+        //return;
+      }
+    }
+
   }
 }

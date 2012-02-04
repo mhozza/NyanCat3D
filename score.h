@@ -30,6 +30,7 @@ public:
     Score();
     void step();
     int getScore(){return score;}
+    void add(int v){score+=v;}
 };
 
 #endif // SCORE_H

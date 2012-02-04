@@ -29,7 +29,7 @@ public:
   Model();
   Model(int textureId);
   virtual void draw() = 0;
-  Block getRect();
+  Block getBlock();
   void setTexture(int textureId);
   /*float getWidth();
   float getHeight();
