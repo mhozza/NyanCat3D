@@ -24,10 +24,9 @@
 using namespace std;
 
 StartButton::StartButton(int x, int y, Game * game)
-  :Button(x,y)
+  :Button(x,y), game(game)
 {
-  this->setModel(new BitmapModel("graphics/start.png"));
-  this->game = game;
+  this->setModel(new BitmapModel("graphics/start.png"));  
 }
 
 void StartButton::onClick()

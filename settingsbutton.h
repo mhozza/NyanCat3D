@@ -19,11 +19,13 @@
 #define SETTINGSBUTTON_H
 
 #include "button.h"
+#include "game.h"
 
 class SettingsButton : public Button
 {
+  Game* game;
 public:
-  SettingsButton(int x, int y);
+  SettingsButton(int x, int y, Game* game);
   void onClick();
 };
 

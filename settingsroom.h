@@ -15,19 +15,15 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settingsbutton.h"
-#include "bitmapmodel.h"
-#include "settingsroom.h"
+#ifndef SETTINGSROOM_H
+#define SETTINGSROOM_H
 
-SettingsButton::SettingsButton(int x, int y, Game *game)
-  :Button(x,y), game(game)
+#include "room.h"
+
+class SettingsRoom : public Room
 {
-  this->setModel(new BitmapModel("graphics/settings.png"));
-}
+public:
+    SettingsRoom(Game* parent, int width, int height);
+};
 
-void SettingsButton::onClick()
-{
-  Renderer::getInstance()->setRoom(new SettingsRoom(game,WINDOW_W,WINDOW_H));
-}
-
-
+#endif // SETTINGSROOM_H

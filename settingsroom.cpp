@@ -15,19 +15,17 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settingsbutton.h"
-#include "bitmapmodel.h"
 #include "settingsroom.h"
+#include "bitmapmodel.h"
 
-SettingsButton::SettingsButton(int x, int y, Game *game)
-  :Button(x,y), game(game)
+SettingsRoom::SettingsRoom(Game *parent, int width, int height)
+  :Room(parent)
 {
-  this->setModel(new BitmapModel("graphics/settings.png"));
+  mode = MODE_2D;
+  //Navyrabam si objekty
+  //background
+  bgcolor.setColor(1.0/255,51.0/255,102.0/255);
+  //main logo
+  BitmapModel * logo = new BitmapModel("graphics/logo.png");
+  addObject(new GameObject(logo,(width-logo->getBlock().width)/2,height-logo->getBlock().height,0));
 }
-
-void SettingsButton::onClick()
-{
-  Renderer::getInstance()->setRoom(new SettingsRoom(game,WINDOW_W,WINDOW_H));
-}
-
-
