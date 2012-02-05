@@ -26,6 +26,7 @@ NyanCat::NyanCat(int textureId)
   this->model = new NyanCatModel(textureId);//,-0.02,100);
   Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
   Mouse::getInstance()->registerAction(this,1);//mouseMove
+  Keyboard::getInstance()->registerAction(this,2,'p',false);//pause
 }
 
 void NyanCat::action(int actionId)
@@ -36,10 +37,16 @@ void NyanCat::action(int actionId)
     Game::fog = !Game::fog;
     break;
   case 1:
+  {
+    if(Game::paused) break;
     pair<int,int> mc = Mouse::getInstance()->getMotionCoords();
     //cout << mc.first << " " << mc.second << endl;
     this->setX(6*((float)mc.first/WINDOW_W)-3);
     this->setY(-(5*((float)mc.second/WINDOW_H)-2.5));
+    break;
+  }
+  case 2:
+    Game::paused = !Game::paused;
     break;
   }
 }

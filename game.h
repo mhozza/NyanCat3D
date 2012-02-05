@@ -42,8 +42,9 @@ public:
     int start(int argc, char *argv[]);
     GLuint getTextureId(int index);
     static void setLevel(Level l);
-    static bool fog;
     static float getSpeed(){return Game::speed;}
+    static bool fog;
+    static bool paused;
 };
 
 

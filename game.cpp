@@ -24,8 +24,10 @@
 using namespace std;
 
 bool Game::fog = true;
-
+bool Game::paused = false;
 float Game::speed = 0.2;
+
+
 
 Game::Game()
 {
