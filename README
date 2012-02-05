@@ -1,11 +1,8 @@
 Pouzite:
 vykreslovanie
   5 textur
-  5 objektov, 2 animovane
+  6 objektov, 3 animovane
   ovladanie mysou, klavestnicou
-
-interaktivita
-  menu  
 
 Body:
 10+7+0+4+0+12+8+8+6+8+8+4+8=83
@@ -29,6 +26,5 @@ Vykreslovanie:
   Min. 6 rôznych textúr (12b)
   Min. 8 geometricky odlišných objektov, z toho aspon 4 animované (12b)
   Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
-Interaktivita:
 Bonusy:
   Použitie dalsich shaderov, dalších rozšírení, teselátorov, dobrý herný nápad, ...

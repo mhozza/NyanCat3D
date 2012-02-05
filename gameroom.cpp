@@ -29,7 +29,8 @@
 #define BONUS_COUNT 1
 
 #include "candy.h"
-#define DECORATION_COUNT 1
+#include "sweet.h"
+#define DECORATION_COUNT 2
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -85,6 +86,9 @@ void GameRoom::generateBlock()
   {
   case 0:
     decor = new Candy(getParent()->getTextureId(4),x,y,-z);
+    break;
+  case 1:
+    decor = new Sweet(x,y,-z);
     break;
   }
   addObject(decor);

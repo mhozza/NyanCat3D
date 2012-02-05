@@ -128,6 +128,8 @@ NyanCatModel::NyanCatModel(int textureId)
 
 void NyanCatModel::draw()
 {    
+  //glMaterialf(GL_FRONT_AND_BACK,GL_SHININESS,1);
+
   glTranslatef(0,0.114,-0.188);
   glScalef(0.1,2,-2);
 

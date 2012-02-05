@@ -43,7 +43,8 @@ SOURCES += main.cpp\
     selectbutton.cpp \
     levelselectbutton.cpp \
     camera.cpp \
-    candy.cpp
+    candy.cpp \
+    sweet.cpp
 
 HEADERS  += \
     game.h \
@@ -80,7 +81,8 @@ HEADERS  += \
     selectbutton.h \
     levelselectbutton.h \
     camera.h \
-    candy.h
+    candy.h \
+    sweet.h
 
 LIBS += -lglut -lGLU -lpng
 
