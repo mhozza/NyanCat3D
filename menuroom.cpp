@@ -18,6 +18,7 @@
 #include "menuroom.h"
 #include "bitmapmodel.h"
 #include "startbutton.h"
+#include "settingsbutton.h"
 #include "quitbutton.h"
 
 #include "score.h"
@@ -37,9 +38,8 @@ MenuRoom::MenuRoom(Game *parent, int width, int height)
   //buttons
   //start
   addObject(new StartButton(30, 300, getParent()));
-  /*//settins
-  BitmapModel * settings = new BitmapModel("graphics/settings.png");
-  addObject(new GameObject(settings,(width-settings->getWidth())/2,height-logo->getHeight()-2*MAGIN-start->getWidth()-settings->getWidth(),0));*/
+  //settins
+  addObject(new SettingsButton(30, 200));
   //quit
   addObject(new QuitButton(30,100));
   //addObject(new Score());

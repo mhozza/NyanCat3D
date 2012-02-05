@@ -35,7 +35,8 @@ SOURCES += main.cpp\
     gameoverroom.cpp \
     gameover.cpp \
     scorebonus.cpp \
-    scorebonusmodel.cpp
+    scorebonusmodel.cpp \
+    settingsbutton.cpp
 
 HEADERS  += \
     game.h \
@@ -64,7 +65,8 @@ HEADERS  += \
     gameoverroom.h \
     gameover.h \
     scorebonus.h \
-    scorebonusmodel.h
+    scorebonusmodel.h \
+    settingsbutton.h
 
 LIBS += -lglut -lGLU -lpng
 

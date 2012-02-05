@@ -1,14 +1,14 @@
 Pouzite:
 vykreslovanie
   4 textury
-  4 objekty
+  4 objekty, 1 animovany
   ovladanie mysou, klavestnicou
 
 interaktivita
   menu  
 
 Body:
-6+3+0+2+4+0+4+12+8+8+6+8+8=69
+8+5+0+2+4+0+4+12+8+8+6+8+8=73
 
 Splnene komplet:
   Vykreslenie hmly, jej vypnutie a zapnutie (4b)
@@ -20,7 +20,7 @@ Splnene komplet:
   Interakcia užívatela so scénou (napr. kolízie striel s objektami, obmedzenie pohybu, …) (8b)
   Korektne priehladné okná (8b)
 ____________________
-54/69/100+
+54/73/100+
 
 Nesplnene:
 Vykreslovanie:
