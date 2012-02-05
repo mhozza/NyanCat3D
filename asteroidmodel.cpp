@@ -31,6 +31,7 @@ using namespace std;
 AsteroidModel::AsteroidModel(int textureId)
   :Model(textureId)
 {
+  rotationSpeed = rand()%21-10;
   float radius = 1.0;
   //create model
   //vertices
@@ -71,6 +72,7 @@ AsteroidModel::AsteroidModel(int textureId)
 
 void AsteroidModel::draw()
 {
+  glRotatef(rotationAngle,0,1,0);
   glEnableClientState(GL_VERTEX_ARRAY);  
   glVertexPointer(3, GL_FLOAT, sizeof(MyVertex), &vertices[0].x);
   glEnableClientState(GL_NORMAL_ARRAY);
@@ -82,4 +84,10 @@ void AsteroidModel::draw()
   glDisableClientState(GL_VERTEX_ARRAY);
   glDisableClientState(GL_NORMAL_ARRAY);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+}
+
+void AsteroidModel::rotate()
+{
+  rotationAngle+=rotationSpeed;
+  rotationAngle%=360;
 }

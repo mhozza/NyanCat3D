@@ -26,9 +26,12 @@ class AsteroidModel : public Model
 {
   MyVertex vertices[38];
   ushort index[216];
+  int rotationSpeed;
+  int rotationAngle;
 public:
     AsteroidModel(int textureId);
     void draw();
+    void rotate();
 };
 
 #endif // ASTEROIDMODEL_H

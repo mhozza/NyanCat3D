@@ -23,3 +23,9 @@ Asteroid::Asteroid(GLuint textureID, float x,float y,float z)
 {  
   speedZ = 0.2;
 }
+
+void Asteroid::step()
+{
+  GameObject::step();
+  ((AsteroidModel*) model)->rotate();
+}

@@ -109,6 +109,7 @@ void GameRoom::timer()
       if(Collisions::block2sphere(playerBlock,obj->getX(),obj->getY(),obj->getZ(),obj->getModel()->getBlock().width/2))
       {
         Renderer::getInstance()->setRoom(new GameOverRoom(getParent(),score->getScore()));
+        remove[i] = true;
         return;
       }
     }

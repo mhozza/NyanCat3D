@@ -24,6 +24,7 @@ class Asteroid : public GameObject
 {
 public:
     Asteroid(GLuint textureID, float x,float y,float z);
+    void step();
 };
 
 #endif // ASTEROID_H
