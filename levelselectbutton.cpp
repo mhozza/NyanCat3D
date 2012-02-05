@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,35 +15,29 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#include "levelselectbutton.h"
+#include "bitmapmodel.h"
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
+#include <string>
 
-#define TEXTURES_NUM 4
+using namespace std;
 
-enum Level {easy,medium,difficult};
-
-class Renderer;
-
-class Game
+LevelSelectButton::LevelSelectButton(SelectGroup *parent, int x, int y, Level l)
+  :SelectButton(parent,x,y), level(l)
 {
-    bool run;
-    void init();
-    GLuint texId[TEXTURES_NUM];
-    Renderer* renderer;
-    bool setupTextures();
-    float speed;
-public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-    GLuint getTextureId(int index);
-    void setLevel(Level l);
-    static bool fog;
-};
+  string filename = "graphics/";
+  switch(level)
+  {
+  case easy:
+    filename += "easy.png";
+    break;
+  case medium:
+    filename += "medium.png";
+    break;
+  case difficult:
+    filename += "difficult.png";
+    break;
+  }
 
-
-#endif // GAME_H
+  this->setModel(new BitmapModel(filename));
+}

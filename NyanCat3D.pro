@@ -38,7 +38,10 @@ SOURCES += main.cpp\
     scorebonusmodel.cpp \
     settingsbutton.cpp \
     settingsroom.cpp \
-    backbutton.cpp
+    backbutton.cpp \
+    selectgroup.cpp \
+    selectbutton.cpp \
+    levelselectbutton.cpp
 
 HEADERS  += \
     game.h \
@@ -70,7 +73,10 @@ HEADERS  += \
     scorebonusmodel.h \
     settingsbutton.h \
     settingsroom.h \
-    backbutton.h
+    backbutton.h \
+    selectgroup.h \
+    selectbutton.h \
+    levelselectbutton.h
 
 LIBS += -lglut -lGLU -lpng
 

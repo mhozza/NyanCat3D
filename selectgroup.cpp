@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2011-2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,35 +15,19 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#include "selectgroup.h"
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
-
-#define TEXTURES_NUM 4
-
-enum Level {easy,medium,difficult};
-
-class Renderer;
-
-class Game
+SelectGroup::SelectGroup()
+  :current(NULL)
 {
-    bool run;
-    void init();
-    GLuint texId[TEXTURES_NUM];
-    Renderer* renderer;
-    bool setupTextures();
-    float speed;
-public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-    GLuint getTextureId(int index);
-    void setLevel(Level l);
-    static bool fog;
-};
+}
 
-
-#endif // GAME_H
+void SelectGroup::setCurrentButton(SelectButton *button)
+{
+  if(current!=NULL)
+  {
+    current->deactivate();
+  }
+  current = button;
+  current->activate();
+}

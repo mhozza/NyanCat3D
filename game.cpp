@@ -105,7 +105,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   glutInit(&argc, argv);
   glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
 
-  glutInitWindowPosition(50, 50);
+  //glutInitWindowPosition(, 50);
   glutInitWindowSize(WINDOW_W, WINDOW_H);
 
   glutCreateWindow("NyanCat 3D");
@@ -159,4 +159,21 @@ bool Game::setupTextures()
 GLuint Game::getTextureId(int index)
 {
   return texId[index];
+}
+
+void Game::setLevel(Level l)
+{
+  switch(l)
+  {
+  case easy:
+    speed = 0.2;
+    break;
+  case medium:
+    speed = 0.3;
+    break;
+  case difficult:
+    speed = 0.4;
+    break;
+  }
+  }
 }

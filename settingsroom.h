@@ -19,11 +19,13 @@
 #define SETTINGSROOM_H
 
 #include "room.h"
+#include "selectgroup.h"
 
 class SettingsRoom : public Room
 {
+  SelectGroup levelGroup;
 public:
-    SettingsRoom(Game* parent, int width, int height);
+  SettingsRoom(Game* parent, int width, int height);
 };
 
 #endif // SETTINGSROOM_H

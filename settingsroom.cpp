@@ -18,6 +18,7 @@
 #include "settingsroom.h"
 #include "bitmapmodel.h"
 #include "backbutton.h"
+#include "levelselectbutton.h"
 
 SettingsRoom::SettingsRoom(Game *parent, int width, int height)
   :Room(parent)
@@ -29,7 +30,18 @@ SettingsRoom::SettingsRoom(Game *parent, int width, int height)
   //main logo
   BitmapModel * logo = new BitmapModel("graphics/logo.png");
   addObject(new GameObject(logo,(width-logo->getBlock().width)/2,height-logo->getBlock().height,0));
+
   //Buttons
+  //level
+  BitmapModel * level = new BitmapModel("graphics/level.png");
+  addObject(new GameObject(level,30,300,0));
+  SelectButton *easyButton = new LevelSelectButton(&levelGroup,150,300,easy);
+  addObject(easyButton);
+  addObject(new LevelSelectButton(&levelGroup,250,300,medium));
+  addObject(new LevelSelectButton(&levelGroup,400,300,difficult));
+
+  levelGroup.setCurrentButton(easyButton);
+
   //back
   addObject(new BackButton(30,100,getParent()));
 }
