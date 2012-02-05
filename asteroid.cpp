@@ -17,11 +17,12 @@
 
 #include "asteroid.h"
 #include "asteroidmodel.h"
+#include "game.h"
 
 Asteroid::Asteroid(GLuint textureID, float x,float y,float z)
   :GameObject(new AsteroidModel(textureID),x,y,z)
 {  
-  speedZ = 0.2;
+  speedZ = Game::getSpeed();
 }
 
 void Asteroid::step()

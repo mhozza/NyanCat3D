@@ -22,7 +22,7 @@ Universe::Universe(GLuint textureId, GameRoom *parent, bool second)
   :GameObject(NULL,0,0,0), parent(parent)
 {
   this->setModel(new UniverseModel(textureId));
-  speedZ = 0.2;
+  speedZ = Game::getSpeed();
   if(second) setZ(-model->getBlock().depth);
 }
 

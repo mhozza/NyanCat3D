@@ -19,12 +19,10 @@
 #define LEVELSELECTBUTTON_H
 
 #include "selectbutton.h"
-
-enum Level {easy,medium,difficult};
+#include "game.h"
 
 class LevelSelectButton : public SelectButton
-{
-  Level level;
+{  
 public:
   LevelSelectButton(SelectGroup * parent, int x, int y, Level l);
 };

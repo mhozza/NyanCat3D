@@ -8,7 +8,7 @@ interaktivita
   menu  
 
 Body:
-8+5+0+2+4+0+4+12+8+8+6+8+8=73
+8+5+0+4+0+4+12+8+8+6+8+8+4=73
 
 Splnene komplet:
   Vykreslenie hmly, jej vypnutie a zapnutie (4b)
@@ -19,8 +19,9 @@ Splnene komplet:
   2D a 3D font priamo v hre mimo menu (6b)
   Interakcia užívatela so scénou (napr. kolízie striel s objektami, obmedzenie pohybu, …) (8b)
   Korektne priehladné okná (8b)
+  Hlavné menu, menu s nastavením (4b)
 ____________________
-54/73/100+
+58/75/100+
 
 Nesplnene:
 Vykreslovanie:
@@ -28,7 +29,6 @@ Vykreslovanie:
   Min. 8 geometricky odlišných objektov, z toho aspon 4 animované (12b)
   Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
 Interaktivita:
-  Hlavné menu, menu s nastavením (4b)
   Ovládanie myšou aj klávesnicou, volný pohyb v scéne (8b)
 Bonusy:
   Použitie dalsich shaderov, dalších rozšírení, teselátorov, dobrý herný nápad, ...

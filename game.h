@@ -35,14 +35,15 @@ class Game
     GLuint texId[TEXTURES_NUM];
     Renderer* renderer;
     bool setupTextures();
-    float speed;
+    static float speed;
 public:
     Game();
     ~Game();
     int start(int argc, char *argv[]);
     GLuint getTextureId(int index);
-    void setLevel(Level l);
+    static void setLevel(Level l);
     static bool fog;
+    static float getSpeed(){return Game::speed;}
 };
 
 

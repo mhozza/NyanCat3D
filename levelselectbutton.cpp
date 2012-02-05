@@ -23,10 +23,10 @@
 using namespace std;
 
 LevelSelectButton::LevelSelectButton(SelectGroup *parent, int x, int y, Level l)
-  :SelectButton(parent,x,y), level(l)
+  :SelectButton(parent,x,y)
 {
   string filename = "graphics/";
-  switch(level)
+  switch(l)
   {
   case easy:
     filename += "easy.png";
@@ -40,4 +40,6 @@ LevelSelectButton::LevelSelectButton(SelectGroup *parent, int x, int y, Level l)
   }
 
   this->setModel(new BitmapModel(filename));
+  Game::setLevel(l);
+
 }

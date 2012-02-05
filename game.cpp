@@ -25,6 +25,7 @@ using namespace std;
 
 bool Game::fog = true;
 
+float Game::speed = 0.2;
 
 Game::Game()
 {
@@ -166,14 +167,13 @@ void Game::setLevel(Level l)
   switch(l)
   {
   case easy:
-    speed = 0.2;
+    Game::speed = 0.2;
     break;
   case medium:
-    speed = 0.3;
+    Game::speed = 0.3;
     break;
   case difficult:
-    speed = 0.4;
+    Game::speed = 0.4;
     break;
-  }
   }
 }

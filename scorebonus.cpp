@@ -17,6 +17,7 @@
 
 #include "scorebonus.h"
 #include "scorebonusmodel.h"
+#include "game.h"
 
 #include <iostream>
 
@@ -25,6 +26,6 @@ using namespace std;
 ScoreBonus::ScoreBonus(int textureId, float x, float y, float z)
   :GameObject(new ScoreBonusModel(textureId),x,y,z)
 {
-  speedZ = 0.2;  
+  speedZ = Game::getSpeed();
 }
 
