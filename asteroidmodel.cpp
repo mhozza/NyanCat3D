@@ -20,13 +20,16 @@
 #include "GL/glext.h"
 
 #include "asteroidmodel.h"
+#include "utils.h"
+
 #include <cmath>
 #include <cstring>
 #include <iostream>
 
+
 using namespace std;
 
-#define PI 3.1415
+
 
 AsteroidModel::AsteroidModel(int textureId)
   :Model(textureId)

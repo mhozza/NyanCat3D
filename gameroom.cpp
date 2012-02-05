@@ -21,6 +21,7 @@
 #include "universe.h"
 #include "asteroid.h"
 #include "keyboard.h"
+#include "camera.h"
 
 #include <typeinfo>
 #include <iostream>
@@ -32,13 +33,14 @@ GameRoom::GameRoom(Game *parent)
   :Room(parent)
 {
   mode = MODE_3D;
-  player = new NyanCat(getParent()->getTextureId(2));
+  //addObject(new Camera());
+  player = new NyanCat(getParent()->getTextureId(2));  
   addObject(player);
   addObject(new Rainbow(player, -0.03,30));
   score = new Score();
   addObject(score);
   addObject(new Universe(getParent()->getTextureId(0),this));
-  addObject(new Universe(getParent()->getTextureId(0),this,true));
+  addObject(new Universe(getParent()->getTextureId(0),this,true));  
   generateBlock();
 }
 

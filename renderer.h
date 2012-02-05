@@ -22,6 +22,7 @@
 #define WINDOW_H 600
 
 #include "room.h"
+#include "camera.h"
 
 class Room;
 
@@ -31,6 +32,7 @@ class Renderer //singleton
   Room * actualRoom;
   Renderer();
   int width, height;
+  Camera* camera;
 public:  
   static Renderer* getInstance();
   static void renderWrapper();

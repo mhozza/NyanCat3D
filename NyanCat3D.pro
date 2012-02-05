@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     backbutton.cpp \
     selectgroup.cpp \
     selectbutton.cpp \
-    levelselectbutton.cpp
+    levelselectbutton.cpp \
+    camera.cpp
 
 HEADERS  += \
     game.h \
@@ -76,7 +77,8 @@ HEADERS  += \
     backbutton.h \
     selectgroup.h \
     selectbutton.h \
-    levelselectbutton.h
+    levelselectbutton.h \
+    camera.h
 
 LIBS += -lglut -lGLU -lpng
 

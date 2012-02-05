@@ -20,6 +20,7 @@
 
 #include <GL/glut.h>
 
+#define PI 3.1415
 #define BUFFER_OFFSET(i) ((char *)NULL + (i))
 
 struct ColorRGBAf

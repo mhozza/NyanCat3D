@@ -17,6 +17,8 @@
 
 #include "renderer.h"
 #include "gameobject.h"
+#include "keyboard.h"
+
 #include <GL/glut.h>
 #include <vector>
 #include <cmath>
@@ -26,8 +28,8 @@ using namespace std;
 Renderer * Renderer::instance = 0;
 
 Renderer::Renderer()
-{
-  this->actualRoom = NULL;
+  :camera(new Camera()), actualRoom(NULL)
+{  
 }
 
 Renderer::~Renderer()
@@ -78,7 +80,9 @@ void Renderer::render()
   GLdouble ey = vzd*sin(fi)*cos(xi);
   GLdouble ez = vzd*sin(xi);
   gluLookAt( ex, ey, ez, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f );*/
-//  gluLookAt(0,0,0,0,0,-1,0,1,1);
+
+  if(actualRoom->getMode()==MODE_3D && Game::paused)
+    gluLookAt(camera->getX(),camera->getY(),camera->getZ(),camera->lookAt.x,camera->lookAt.y,camera->lookAt.z,0,1,0);
 
 
   /*glBegin( GL_LINES );
@@ -143,6 +147,16 @@ void Renderer::setRoom(Room * room)
     delete actualRoom;    
   }
   this->actualRoom = room;
+
+  Keyboard::getInstance()->registerAction(camera,0,'w',false);
+  Keyboard::getInstance()->registerAction(camera,1,'s',false);
+  Keyboard::getInstance()->registerAction(camera,2,'a',false);
+  Keyboard::getInstance()->registerAction(camera,3,'d',false);
+  Keyboard::getInstance()->registerAction(camera,4,GLUT_KEY_UP,true);
+  Keyboard::getInstance()->registerAction(camera,5,GLUT_KEY_DOWN,true);
+  Keyboard::getInstance()->registerAction(camera,6,GLUT_KEY_LEFT,true);
+  Keyboard::getInstance()->registerAction(camera,7,GLUT_KEY_RIGHT,true);
+
   resetView(WINDOW_W,WINDOW_H);
 }
 
