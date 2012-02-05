@@ -122,8 +122,6 @@ public:
 class Collisions
 {
   static Point closest(Block b, float x, float y, float z);
-  static Point closest(Block b, Point p);
-
 public:
   static bool block2sphere(Block b, float x, float y, float z, float radius);
   static bool block2block(Block b1, Block b2);

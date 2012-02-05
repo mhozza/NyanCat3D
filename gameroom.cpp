@@ -74,15 +74,29 @@ void GameRoom::generateBlock()
 
 void GameRoom::timer()
 {
-  Room::timer();  
+  Room::timer();
+
+  vector<bool> remove;
+  remove.resize(0);
+  remove.resize(getObjects().size(),false);
+
+  Universe u(0,0,0);
+  Asteroid a(0,0,0,0);
+  ScoreBonus sb(0,0,0,0);
+
   //check collisions  
   for(int i = 0;i<getObjects().size();i++)
   {
     GameObject *obj =  getObjects().at(i);
-    if(obj->getZ()<-7) continue;//bulharska konstanta
+    if(obj->getZ()<-10) continue;//bulharska konstanta
+    if(obj->getZ()>0)
+    {
+      if(typeid(*obj)!=typeid(u))
+      remove[i] = true;
+      continue;
+    }
 
-    Asteroid a(0,0,0,0);
-    ScoreBonus sb(0,0,0,0);
+
 
     Block playerBlock = player->getModel()->getBlock();
     playerBlock.x+=player->getX();
@@ -101,15 +115,17 @@ void GameRoom::timer()
     else if(typeid(*obj)==typeid(sb))
     {
       Block objBlock = obj->getModel()->getBlock();
-      Point p(obj->getX(),obj->getY(),obj->getZ());
-      objBlock+=p;
+      Point p(obj->getX(),obj->getY(),obj->getZ());      
+      objBlock+=p;      
       if(Collisions::block2block(playerBlock,objBlock))
       {
         score->add(100);
-        //TODO: zmaz objekt;
+        remove[i] = true;
         //return;
       }
     }
 
   }
+
+  removeObjects(remove);
 }

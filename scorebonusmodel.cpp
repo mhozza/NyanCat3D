@@ -32,7 +32,7 @@ ScoreBonusModel::ScoreBonusModel(int textureid)
     {
       for(int z = 0;z<=1;z++)
       {
-        vertices[4*x+2*y+z].setParams(x,y,z, x^z ,y);
+        vertices[4*x+2*y+z].setParams(2*x-1,2*y-1,2*z-1, x^z ,y);
         //cout << x << y << z << (x^z) << y << endl;
       }
     }
@@ -77,9 +77,6 @@ void ScoreBonusModel::draw()
   glBlendFunc(GL_SRC_ALPHA,GL_ONE);
 
   glColor4i(1,1,1,1);
-
-  glScalef(2,2,2);
-  glTranslatef(-1,-1,-1);
 
   glEnableClientState(GL_VERTEX_ARRAY);
   //glEnableClientState(GL_NORMAL_ARRAY);

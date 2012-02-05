@@ -24,7 +24,7 @@
 class GameObject
 {
 protected:
-    float x,y,z,width, height, depth;
+    float x,y,z;//,width, height, depth;
     float speedX,speedY,speedZ;
     Model* model;
     GameObject(){model = NULL; speedX = 0; speedY = 0; speedZ = 0;}

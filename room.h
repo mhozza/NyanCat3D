@@ -19,10 +19,11 @@
 #define ROOM_H
 
 #include "gameobject.h"
-#include <vector>
-#include <cstddef>
 #include "utils.h"
 #include "game.h"
+
+#include <vector>
+#include <cstddef>
 
 #define MODE_2D 0
 #define MODE_3D 1
@@ -37,6 +38,7 @@ class Room
   Game * parent;
 protected:
   void addObject(GameObject* object);
+  void removeObjects(vector<bool> objectIndices);
   ColorRGBAf bgcolor;
   int mode;
 public:

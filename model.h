@@ -23,7 +23,7 @@
 class Model
 {  
 protected:
-  float x,y,z,width, height, depth;
+  float x,y,z, width, height, depth;
   GLuint textureId;
 public:
   Model();

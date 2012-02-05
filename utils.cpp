@@ -315,23 +315,25 @@ bool Collisions::block2block(Block b1, Block b2)
   center2.y = b2.y+b2.height/2;
   center2.z = b2.z+b2.depth/2;
 
-  Point closest1 = Collisions::closest(b1,center2);
-  Point closest2 = Collisions::closest(b2,center1);
 
-  if(Utils::sgn(center1.x-center2.x)== Utils::sgn(closest1.x-closest2.x) &&
-     Utils::sgn(center1.y-center2.y)== Utils::sgn(closest1.y-closest2.y) &&
-     Utils::sgn(center1.z-center2.z)== Utils::sgn(closest1.z-closest2.z))
+  Point closest1 = Collisions::closest(b1,center2.x,center2.y,center2.z);
+  Point closest2 = Collisions::closest(b2,center1.x, center1.y, center1.z);
+
+  if(Utils::sgn(center1.x-center2.x)!= Utils::sgn(closest1.x-closest2.x) &&
+     Utils::sgn(center1.y-center2.y)!= Utils::sgn(closest1.y-closest2.y) &&
+     Utils::sgn(center1.z-center2.z)!= Utils::sgn(closest1.z-closest2.z))
   {
-    cout << "collision" << endl;
+    //cout << "collision" << endl;
     return true;
   }
+
 
   return false;
 }
 
 Point Collisions::closest(Block b, float x, float y, float z)
 {
-  Point c;
+  Point c(0,0,0);
   if(x < b.x)
   {
     c.x = b.x;
@@ -371,9 +373,4 @@ Point Collisions::closest(Block b, float x, float y, float z)
     c.z = z;
   }
   return c;
-}
-
-Point Collisions::closest(Block b, Point p)
-{
-  closest(b,p.x,p.y,p.z);
 }

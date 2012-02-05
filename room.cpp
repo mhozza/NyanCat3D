@@ -66,3 +66,21 @@ void Room::timer()
     objects[i]->step();
   }
 }
+
+void Room::removeObjects(vector<bool> objectIndices)
+{
+  unsigned j = 0;
+  for(unsigned i = 0; i<objects.size(); i++)
+  {
+    if(objectIndices[i])
+    {
+      delete objects[i];
+    }
+    else
+    {
+      objects[j]=objects[i];
+      j++;
+    }
+  }
+  objects.resize(j);
+}
