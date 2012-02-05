@@ -23,7 +23,7 @@
 using namespace std;
 
 Camera::Camera()
-  :GameObject(NULL,0,0,0), lookAt(Point(0,0,-1)), direction(0),direction2(0)
+  :GameObject(NULL,0,0,0), direction(0),direction2(0), lookAt(Point(0,0,-1))
 {  
 
 }
@@ -37,18 +37,17 @@ Camera::Camera()
 
 void Camera::action(int actionId)
 {
-  cout << x << y << z << endl;
   float speed =0.1;
   switch(actionId)
   {
   case 0:
     x+=speed*sin(direction*PI/180);
-    y+=speed*cos(direction2*PI/180);
+    y+=speed*sin(direction2*PI/180);
     z+=speed*-cos(direction*PI/180);
     break;
   case 1:
     x-=speed*sin(direction*PI/180);
-    y-=speed*cos(direction2*PI/180);
+    y-=speed*sin(direction2*PI/180);
     z-=speed*-cos(direction*PI/180);
     break;
   case 2:
@@ -74,7 +73,7 @@ void Camera::action(int actionId)
   }
 
   lookAt.x = x-speed*-sin(direction*PI/180);
-  lookAt.y = y+speed*cos(direction2*PI/180);
+  lookAt.y = y+speed*sin(direction2*PI/180);
   lookAt.z = z-speed*cos(direction*PI/180);
 
 }

@@ -37,7 +37,7 @@ void Rainbow::draw()
   glPointSize(6);
 
   glBegin(GL_POINTS);
-  for(int i = 0;i<particleSystem.size();i++)
+  for(unsigned i = 0;i<particleSystem.size();i++)
   {
     glColor4f(particleSystem[i].r,particleSystem[i].g,particleSystem[i].b,particleSystem[i].life/maxlife);
     glVertex3f(particleSystem[i].x,particleSystem[i].y,particleSystem[i].z);
@@ -70,7 +70,7 @@ void Rainbow::updateParticleSystem()
     }
   }
   //update all
-  int i = 0;
+  unsigned i = 0;
   while(i<particleSystem.size())
   {
     if((particleSystem[i].life--)<=0)

@@ -28,7 +28,7 @@ using namespace std;
 Renderer * Renderer::instance = 0;
 
 Renderer::Renderer()
-  :camera(new Camera()), actualRoom(NULL)
+  :actualRoom(NULL), camera(new Camera())
 {  
 }
 

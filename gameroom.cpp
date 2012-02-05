@@ -21,13 +21,15 @@
 #include "universe.h"
 #include "asteroid.h"
 #include "keyboard.h"
-#include "camera.h"
 
 #include <typeinfo>
 #include <iostream>
 
 #include "scorebonus.h"
 #define BONUS_COUNT 1
+
+#include "candy.h"
+#define DECORATION_COUNT 1
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -71,6 +73,21 @@ void GameRoom::generateBlock()
     break;
   }
   addObject(bonus);
+
+  //dekoracne objekty
+  x = (rand()%(100*block_width))/100.0 - block_width/2.0;
+  y = (rand()%(100*block_height))/100.0 - block_height/2.0;
+  z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
+
+  int decorationNumber = rand()%DECORATION_COUNT;
+  GameObject * decor;
+  switch(decorationNumber)
+  {
+  case 0:
+    decor = new Candy(getParent()->getTextureId(4),x,y,-z);
+    break;
+  }
+  addObject(decor);
 }
 
 
@@ -87,7 +104,7 @@ void GameRoom::timer()
   ScoreBonus sb(0,0,0,0);
 
   //check collisions  
-  for(int i = 0;i<getObjects().size();i++)
+  for(unsigned i = 0;i<getObjects().size();i++)
   {
     GameObject *obj =  getObjects().at(i);
     if(obj->getZ()<-10) continue;//bulharska konstanta

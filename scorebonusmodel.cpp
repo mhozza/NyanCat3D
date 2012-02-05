@@ -26,13 +26,13 @@ ScoreBonusModel::ScoreBonusModel(int textureid)
 {
   MyVertex vertices[8];
 
-  for(int x = 0;x<=1;x++)
+  for(int xx = 0;xx<=1;xx++)
   {
-    for(int y = 0;y<=1;y++)
+    for(int yy = 0;yy<=1;yy++)
     {
-      for(int z = 0;z<=1;z++)
+      for(int zz = 0;zz<=1;zz++)
       {
-        vertices[4*x+2*y+z].setParams(2*x-1,2*y-1,2*z-1, x^z ,y);
+        vertices[4*xx+2*yy+zz].setParams(2*xx-1,2*yy-1,2*zz-1, xx^zz ,yy);
         //cout << x << y << z << (x^z) << y << endl;
       }
     }
@@ -57,8 +57,8 @@ ScoreBonusModel::ScoreBonusModel(int textureid)
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-  glBindBuffer( GL_ARRAY_BUFFER, NULL );
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
+  glBindBuffer( GL_ARRAY_BUFFER, 0 );
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
   width =  height = depth = 2;
   x =  y =  z = -1;
@@ -95,8 +95,8 @@ void ScoreBonusModel::draw()
   glDisableClientState(GL_NORMAL_ARRAY);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER, NULL );
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
+  glBindBuffer( GL_ARRAY_BUFFER, 0 );
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
   //glEnable(GL_TEXTURE_2D);
   glDisable(GL_BLEND);

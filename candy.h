@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,37 +15,19 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef CANDY_H
+#define CANDY_H
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
+#include "gameobject.h"
 
-#define TEXTURES_NUM 5
-
-enum Level {easy,medium,difficult};
-
-class Renderer;
-
-class Game
+class Candy : public GameObject
 {
-    bool run;
-    void init();
-    GLuint texId[TEXTURES_NUM];
-    Renderer* renderer;
-    bool setupTextures();
-    static float speed;
+  GLuint textureId;
+  int rot;
 public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-    GLuint getTextureId(int index);
-    static void setLevel(Level l);
-    static float getSpeed(){return Game::speed;}
-    static bool fog;
-    static bool paused;
+  Candy(GLuint textureID, float x, float y, float z);
+  void draw();
+  void step();
 };
 
-
-#endif // GAME_H
+#endif // CANDY_H

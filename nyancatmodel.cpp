@@ -88,7 +88,7 @@ NyanCatModel::NyanCatModel(int textureId)
   vertices[58].setParams(-1,-0.092,0.034);
   vertices[59].setParams(-1,-0.092,0);
 
-  for(int i = 0;i<sizeof(vertices)/sizeof(MyVertex);i++)
+  for(unsigned i = 0;i<sizeof(vertices)/sizeof(MyVertex);i++)
   {
     vertices[i].makeTexturePoints(0.376,-0.228,MAP_Z,MAP_Y);
     vertices[i].makeNormals(0,0.114,-0.188);
@@ -119,8 +119,8 @@ NyanCatModel::NyanCatModel(int textureId)
   glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, IndexVBOID);
   glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_STATIC_DRAW);
 
-  glBindBuffer( GL_ARRAY_BUFFER, NULL );
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);
+  glBindBuffer( GL_ARRAY_BUFFER, 0 );
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
   width = 2*0.1; height = .228*2; depth = .365*2;
   x = -width/2;  y = -height/2;  z = -depth/2;  
@@ -148,8 +148,8 @@ void NyanCatModel::draw()
   glDisableClientState(GL_NORMAL_ARRAY);
   glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 
-  glBindBuffer( GL_ARRAY_BUFFER, NULL );
-  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, NULL);  
+  glBindBuffer( GL_ARRAY_BUFFER, 0 );
+  glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 
 
 }

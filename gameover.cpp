@@ -33,11 +33,11 @@ GameOver::GameOver(Room* parent, int score)
   scoreStream << "Score: " << score;
 
   //zrataj sirky stringov
-  for (int i=0;i<gameOverString.size();i++)
+  for (unsigned i=0;i<gameOverString.size();i++)
      gameOverStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,gameOverString[i]);
-  for (int i=0;i<scoreStream.str().size();i++)
+  for (unsigned i=0;i<scoreStream.str().size();i++)
      scoreStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,scoreStream.str()[i]);
-  for (int i=0;i<infoString.size();i++)
+  for (unsigned i=0;i<infoString.size();i++)
      infoStringW+=glutStrokeWidth(GLUT_STROKE_ROMAN,infoString[i]);
 
   Keyboard::getInstance()->registerAction(this,0,27,false);
@@ -57,7 +57,7 @@ void GameOver::draw()
   glScalef(0.004,0.004,1);
   glTranslatef(-gameOverStringW/2.0,0,-4);
   //glRotatef(30,1,0,0);
-  for (int i=0;i<gameOverString.size();i++)
+  for (unsigned i=0;i<gameOverString.size();i++)
      glutStrokeCharacter(GLUT_STROKE_ROMAN,gameOverString[i]);
   glPopMatrix();
 
@@ -66,14 +66,14 @@ void GameOver::draw()
     glPushMatrix();
     glScalef(0.002,0.002,1);
     glTranslatef(-scoreStringW/2.0,-300,-4);
-    for (int i=0;i<scoreStream.str().size();i++)
+    for (unsigned i=0;i<scoreStream.str().size();i++)
       glutStrokeCharacter(GLUT_STROKE_ROMAN,scoreStream.str()[i]);
     glPopMatrix();
 
     glPushMatrix();
     glScalef(0.002,0.002,1);
     glTranslatef(-infoStringW/2.0,-600,-4);
-    for (int i=0;i<infoString.size();i++)
+    for (unsigned i=0;i<infoString.size();i++)
       glutStrokeCharacter(GLUT_STROKE_ROMAN,infoString[i]);
     glPopMatrix();
   }

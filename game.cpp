@@ -134,7 +134,9 @@ int Game::start(int argc = 0, char *argv[] = NULL)
 
 bool Game::setupTextures()
 {
-  const char * texFiles[] = {"graphics/stars.png", "graphics/noise.png", "graphics/nyancat.png", "graphics/score.png"};
+  const char * texFiles[] = {"graphics/stars.png", "graphics/noise.png",
+                             "graphics/nyancat.png", "graphics/score.png",
+                             "graphics/spiral.png"};
 
   glGenTextures(TEXTURES_NUM,texId);
   for(int i = 0;i<TEXTURES_NUM;i++)
