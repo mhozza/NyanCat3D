@@ -15,21 +15,19 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "settingsroom.h"
-#include "bitmapmodel.h"
-#include "backbutton.h"
+#ifndef BACKBUTTON_H
+#define BACKBUTTON_H
 
-SettingsRoom::SettingsRoom(Game *parent, int width, int height)
-  :Room(parent)
+#include "button.h"
+#include "game.h"
+
+class BackButton : public Button
 {
-  mode = MODE_2D;
-  //Navyrabam si objekty
-  //background
-  bgcolor.setColor(1.0/255,51.0/255,102.0/255);
-  //main logo
-  BitmapModel * logo = new BitmapModel("graphics/logo.png");
-  addObject(new GameObject(logo,(width-logo->getBlock().width)/2,height-logo->getBlock().height,0));
-  //Buttons
-  //back
-  addObject(new BackButton(30,100,getParent()));
-}
+  Game* game;
+public:
+  BackButton(int x, int y, Game* game);
+  void onClick();
+public:
+};
+
+#endif // BACKBUTTON_H

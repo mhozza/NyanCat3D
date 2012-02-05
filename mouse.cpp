@@ -16,8 +16,10 @@
  */
 
 #include "mouse.h"
-#include <GL/glut.h>
 #include "gameobject.h"
+#include "renderer.h"
+
+#include <GL/glut.h>
 #include <iostream>
 
 using namespace std;
@@ -53,6 +55,7 @@ void Mouse::motionFuncWrapper(int x, int y)
 
 void Mouse::mouseFunc(int button, int state, int x, int y)
 {
+  Room * actualRoom = Renderer::getInstance()->getRoom();
   //cerr << "Klik:" << button << " " << state << endl;
   pair<multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator,
       multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator>
@@ -67,17 +70,18 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
     else
     {
       //get object rect
-      Block r = ((*i).second.first.first)->getModel()->getBlock();
-      r.x+=((*i).second.first.first)->getX();
-      r.y+=((*i).second.first.first)->getY();
+      Block b = ((*i).second.first.first)->getModel()->getBlock();
+      b.x+=((*i).second.first.first)->getX();
+      b.y+=((*i).second.first.first)->getY();
       int h = 600;//TODO zratat
       //cerr << x << " " << h-y << endl << r.x << " " << r.y << " " << r.x+r.width << " " << r.y+r.height << endl;
       //ak som trafil do obdlznika
-      if(x>=r.x && x<=r.x+r.width && h-y>=r.y && h-y<=r.y+r.height)
+      if(x>=b.x && x<=b.x+b.width && h-y>=b.y && h-y<=b.y+b.height)
       {
         ((*i).second.first.first)->action((*i).second.first.second);
       }
-      if(actions.size()==0) return;
+      //if(actions.size()==0) return;
+      if(actualRoom!=Renderer::getInstance()->getRoom()) return;
     }
   }
 }

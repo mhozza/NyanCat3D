@@ -41,8 +41,7 @@ MenuRoom::MenuRoom(Game *parent, int width, int height)
   //settins
   addObject(new SettingsButton(30, 200, getParent()));
   //quit
-  addObject(new QuitButton(30,100));
-  //addObject(new Score());
+  addObject(new QuitButton(30,100));  
 }
 
 MenuRoom::~MenuRoom()
