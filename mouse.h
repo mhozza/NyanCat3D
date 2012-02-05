@@ -33,6 +33,7 @@ class Mouse  //singleton
   multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> > actions;
   vector<pair<GameObject*,int> > actionsMotion;
   pair<int,int> motionCoords;
+  bool cleared;
 public:
   static Mouse* getInstance();
   static void mouseFuncWrapper(int button, int state, int x, int y);

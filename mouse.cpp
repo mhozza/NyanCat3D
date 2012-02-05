@@ -27,6 +27,7 @@ using namespace std;
 Mouse * Mouse::instance = 0;
 
 Mouse::Mouse()
+  :cleared(false)
 {
   motionCoords = make_pair(0,0);
 }
@@ -54,8 +55,7 @@ void Mouse::motionFuncWrapper(int x, int y)
 }
 
 void Mouse::mouseFunc(int button, int state, int x, int y)
-{
-  Room * actualRoom = Renderer::getInstance()->getRoom();
+{ 
   //cerr << "Klik:" << button << " " << state << endl;
   pair<multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator,
       multimap<pair<int,int>,pair<pair<GameObject*,int>,bool> >::iterator>
@@ -74,14 +74,16 @@ void Mouse::mouseFunc(int button, int state, int x, int y)
       b.x+=((*i).second.first.first)->getX();
       b.y+=((*i).second.first.first)->getY();
       int h = 600;//TODO zratat
-      //cerr << x << " " << h-y << endl << r.x << " " << r.y << " " << r.x+r.width << " " << r.y+r.height << endl;
       //ak som trafil do obdlznika
       if(x>=b.x && x<=b.x+b.width && h-y>=b.y && h-y<=b.y+b.height)
       {
         ((*i).second.first.first)->action((*i).second.first.second);
+      }            
+      if(cleared)
+      {
+        cleared = false;
+        return;
       }
-      //if(actions.size()==0) return;
-      if(actualRoom!=Renderer::getInstance()->getRoom()) return;
     }
   }
 }
@@ -92,7 +94,11 @@ void Mouse::motionFunc(int x, int y)
   for(vector<pair<GameObject*,int> >::iterator i = actionsMotion.begin();i!=actionsMotion.end();i++)
   {    
     ((*i).first)->action((*i).second);
-    if(actionsMotion.size()==0) return;
+    if(cleared)
+    {
+      cleared = false;
+      return;
+    }
   }
 }
 
@@ -108,6 +114,7 @@ void Mouse::registerAction(GameObject *object, int actionID)
 
 void Mouse::clearActions()
 {
+  cleared = true;
   actions.clear();
   actionsMotion.clear();
 }

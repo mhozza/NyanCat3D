@@ -31,6 +31,7 @@ class Keyboard
   int width, height;
   multimap<unsigned char, pair<GameObject*, int> > actions;
   multimap<int, pair<GameObject*, int> > actionsSpecial;
+  bool cleared;
 public:
   static Keyboard* getInstance();
   static void keyboardFuncWrapper(unsigned char key, int x, int y);

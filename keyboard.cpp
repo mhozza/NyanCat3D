@@ -23,6 +23,7 @@
 Keyboard * Keyboard::instance = 0;
 
 Keyboard::Keyboard()
+  :cleared(false)
 {
 
 }
@@ -60,7 +61,11 @@ void Keyboard::keyboardFunc(unsigned char key, int x, int y)
       i = r.first;i!=r.second;i++)
   {
     ((*i).second.first)->action((*i).second.second);
-    if(actions.size()==0) return;
+    if(cleared)
+    {
+      cleared = false;
+      return;
+    }
   }
 }
 
@@ -72,7 +77,11 @@ void Keyboard::keyboardSpecialFunc(int key, int x, int y)
       i = r.first;i!=r.second;i++)
   {
     ((*i).second.first)->action((*i).second.second);
-    if(actionsSpecial.size()==0) return;
+    if(cleared)
+    {
+      cleared = false;
+      return;
+    }
   }
 }
 
@@ -90,6 +99,7 @@ void Keyboard::registerAction(GameObject *object, int actionID, int key, bool sp
 
 void Keyboard::clearActions()
 {
+  cleared = true;
   actions.clear();
   actionsSpecial.clear();
 }

@@ -42,7 +42,7 @@ public:
   inline int getWidth(){return width;}
   inline int getHeight(){return height;}
   void setRoom(Room * room);
-  Room* getRoom();
+  //Room* getRoom();
   void resetView(int w, int h);
   ~Renderer();
 };

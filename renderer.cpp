@@ -146,7 +146,7 @@ void Renderer::setRoom(Room * room)
   resetView(WINDOW_W,WINDOW_H);
 }
 
-Room* Renderer::getRoom()
+/*Room* Renderer::getRoom()
 {
   return this->actualRoom;
-}
+}*/
