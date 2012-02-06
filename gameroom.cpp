@@ -30,7 +30,8 @@
 
 #include "candy.h"
 #include "sweet.h"
-#define DECORATION_COUNT 2
+#include "teapot.h"
+#define DECORATION_COUNT 3
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -80,7 +81,7 @@ void GameRoom::generateBlock()
   y = (rand()%(100*block_height))/100.0 - block_height/2.0;
   z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
 
-  int decorationNumber = 1;//rand()%DECORATION_COUNT;
+  int decorationNumber = rand()%DECORATION_COUNT;
   GameObject * decor;
   switch(decorationNumber)
   {
@@ -89,6 +90,9 @@ void GameRoom::generateBlock()
     break;
   case 1:
     decor = new Sweet(x,y,-z);
+    break;
+  case 2:
+    decor = new Teapot(getParent()->getTextureId(0),x,y,-z);
     break;
   }
   addObject(decor);

@@ -1,11 +1,10 @@
 Pouzite:
 vykreslovanie
   5 textur
-  6 objektov, 3 animovane
-  ovladanie mysou, klavestnicou
+  7 objektov, 3 animovane
 
 Body:
-10+9+0+4+0+12+8+8+6+8+8+4+8=85
+10+10+4+12+8+8+6+8+8+4+8+10=96
 
 Splnene komplet:
   Vykreslenie hmly, jej vypnutie a zapnutie (4b)
@@ -18,13 +17,13 @@ Splnene komplet:
   Korektne priehladné okná (8b)
   Hlavné menu, menu s nastavením (4b)
   Ovládanie myšou aj klávesnicou, volný pohyb v scéne (8b)
+  Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
 ____________________
-66/85/100+
+76/90/100+
 
 Nesplnene:
 Vykreslovanie:
   Min. 6 rôznych textúr (12b)
   Min. 8 geometricky odlišných objektov, z toho aspon 4 animované (12b)
-  Použitie GLSL shaderov na per-pixel osvetlenie a environmental mapping, … (10b)
 Bonusy:
   Použitie dalsich shaderov, dalších rozšírení, teselátorov, dobrý herný nápad, ...

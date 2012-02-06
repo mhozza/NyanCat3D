@@ -15,48 +15,40 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "candy.h"
+#include "teapot.h"
 #include "game.h"
+#include "utils.h"
 
-Candy::Candy(GLuint textureID, float x, float y, float z)
-  :GameObject(NULL,x,y,z), textureId(textureID), rot(0)
+Teapot::Teapot(int textureId, float x, float y, float z)
+  :GameObject(NULL,x,y,z), shader("shaders/envmap.vert","shaders/envmap.frag"),
+    textureId(textureId)
 {
   speedZ = Game::getSpeed();
 }
 
-void Candy::draw()
+
+void Teapot::draw()
 {
-  glColor4i(1,1,1,1);
-  glBindTexture(GL_TEXTURE_2D,textureId);
-  glTranslatef(0,0,-0.1);
-  GLUquadricObj* candy;
-  candy = gluNewQuadric();
-  gluQuadricDrawStyle(candy, GLU_FILL);  
-  gluQuadricTexture(candy,true);
-
-
-  gluCylinder(candy, 0.4, 0.4, 0.2, 24, 1);
-  glPushMatrix();
-  glRotatef(rot,0,0,1);
-  gluDisk(candy,0,0.4,24,1);
-  glPopMatrix();
-  glTranslatef(0,0,0.2);
-  glPushMatrix();
-  glRotatef(rot,0,0,1);
-  gluDisk(candy,0,0.4,24,1);
-  glPopMatrix();
-
   glDisable(GL_TEXTURE_2D);
+  glBindTexture(GL_TEXTURE_2D,textureId);
+  if(Game::shaders)
+  {
+    shader.bind();
+  }
+  glColor4f(1,1,1, 1.0);
 
-  glTranslatef(0,-0.4,-0.1);
-  glRotatef(90,1,0,0);
-  gluCylinder(candy, 0.04, 0.04, 1, 6, 1);
+  glTranslatef(0,0,-0.1);
+  GLUquadricObj* teapot;
+  teapot = gluNewQuadric();
+  gluQuadricDrawStyle(teapot, GLU_FILL);
 
+  glutSolidTeapot(0.5);
+
+  if(Game::shaders)
+  {
+    shader.unbind();
+  }
   glEnable(GL_TEXTURE_2D);
 }
 
-void Candy::step()
-{
-  rot+=12;
-  rot%=360;
-}
+

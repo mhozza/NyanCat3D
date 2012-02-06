@@ -15,20 +15,19 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef SWEET_H
-#define SWEET_H
+#ifndef POND_H
+#define POND_H
 
 #include "gameobject.h"
 #include "shader.h"
 
-class Sweet : public GameObject
+class Teapot : public GameObject
 {
-  float color;
   Shader shader;
+  int textureId;
 public:
-  Sweet(float x, float y, float z);
+  Teapot(int textureId, float x, float y, float z);
   void draw();
-  void step();
 };
 
-#endif // SWEET_H
+#endif // POND_H

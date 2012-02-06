@@ -45,7 +45,8 @@ SOURCES += main.cpp\
     camera.cpp \
     candy.cpp \
     sweet.cpp \
-    shader.cpp
+    shader.cpp \
+    teapot.cpp
 
 HEADERS  += \
     game.h \
@@ -84,7 +85,8 @@ HEADERS  += \
     camera.h \
     candy.h \
     sweet.h \
-    shader.h
+    shader.h \
+    teapot.h
 
 LIBS += -lglut -lGLU -lpng
 
@@ -92,4 +94,6 @@ OTHER_FILES += \
     TODO.txt \
     README \
     shaders/shader.vert \
-    shaders/shader.frag
+    shaders/shader.frag \
+    shaders/envmap.vert \
+    shaders/envmap.frag

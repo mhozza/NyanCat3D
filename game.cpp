@@ -28,8 +28,6 @@ bool Game::shaders = true;
 bool Game::paused = false;
 float Game::speed = 0.2;
 
-
-
 Game::Game()
 {
   this->renderer = Renderer::getInstance();
@@ -50,26 +48,20 @@ void Game::init()
 
   glEnable(GL_DEPTH_TEST);
   glDepthFunc(GL_LEQUAL);
-  glDepthMask(GL_TRUE);
-  //glEnable(GL_CULL_FACE);
+  glDepthMask(GL_TRUE);  
 
   glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-  glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);         // Really Nice Point Smoothing
+  glHint(GL_POINT_SMOOTH_HINT,GL_NICEST);
 
   //textures
   setupTextures();
   glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_MODULATE);
   glEnable(GL_TEXTURE_2D);
 
-  //fog
-  //glEnable(GL_FOG);
+  //fog  
   glFogf(GL_FOG_MODE,GL_EXP2);
   glFogf(GL_FOG_DENSITY,0.047);
   glHint(GL_FOG_HINT, GL_NICEST);
-
-  /*glFogf(GL_FOG_START,0);
-  glFogf(GL_FOG_END,1);*/
-  //glFogf(GL_FOG_COLOR,);
 
   //light
 
@@ -97,27 +89,14 @@ void Game::init()
   glLightfv(GL_LIGHT1,GL_AMBIENT,Ambient2);
   glLightfv(GL_LIGHT1,GL_DIFFUSE,Diffuse2);
   glLightfv(GL_LIGHT1,GL_SPECULAR,Specular2);
-
-  //glColorMaterial(GL_FRONT_AND_BACK, GL_EMISSION);
-  //glEnable(GL_COLOR_MATERIAL);
-  //glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,Specular);
-  //glMaterialfv(GL_FRONT_AND_BACK,GL_EMISSION,Emission);
-
-  /*GLfloat defaultDiffuseColor[] = {0.5,0.5,0.5,1};
-  glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,defaultDiffuseColor);*/
-
 }
 
 int Game::start(int argc = 0, char *argv[] = NULL)
 {
   glutInit(&argc, argv);
-  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);
-
-  //glutInitWindowPosition(, 50);
+  glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH);  
   glutInitWindowSize(WINDOW_W, WINDOW_H);
-
   glutCreateWindow("NyanCat 3D");
-
   init();
 
   // Zaregistrujeme callback funkcie
@@ -130,9 +109,7 @@ int Game::start(int argc = 0, char *argv[] = NULL)
   glutSpecialFunc(Keyboard::keyboardSpecialFuncWrapper);
   glutPassiveMotionFunc(Mouse::motionFuncWrapper);
 
-
-  renderer->setRoom(new MenuRoom(this,WINDOW_W,WINDOW_H));
-  //renderer->setRoom(new GameRoom());
+  renderer->setRoom(new MenuRoom(this,WINDOW_W,WINDOW_H));  
   glutMainLoop();
   return 0;
 }

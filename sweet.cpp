@@ -20,7 +20,7 @@
 #include "utils.h"
 
 Sweet::Sweet(float x, float y, float z)
-  :GameObject(NULL,x,y,z), color(0), sl("shaders/shader.vert","shaders/shader.frag")
+  :GameObject(NULL,x,y,z), color(0), shader("shaders/shader.vert","shaders/shader.frag")
 {
   speedZ = Game::getSpeed();
 }
@@ -33,20 +33,16 @@ void Sweet::draw()
   float r,g,b;
   Utils::hsv2rgb(color,1.0f,1.0f,r,g,b);
 
-  /*GLfloat clr[] = {r,g,b,1};
-  glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,clr);*/
-
   if(Game::shaders)
   {
-    sl.bind();
+    shader.bind();
   }
   glColor4f(r, g, b, 1.0);
 
   glTranslatef(0,0,-0.1);
   GLUquadricObj* sweet;
   sweet = gluNewQuadric();
-  gluQuadricDrawStyle(sweet, GLU_FILL);
-  //gluQuadricNormals(sweet,GLU_OUTSIDE);
+  gluQuadricDrawStyle(sweet, GLU_FILL);  
 
   glScalef(0.2,0.2,0.2);
 
@@ -59,13 +55,11 @@ void Sweet::draw()
   glRotatef(180,0,1,0);
   gluCylinder(sweet,1,0,1,24,1);
 
-  //glutSolidTeapot(2.0);
   if(Game::shaders)
   {
-    sl.unbind();
+    shader.unbind();
   }
-  /*GLfloat defaultDiffuseColor[] = {0.5,0.5,0.5,1};
-  glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,defaultDiffuseColor);*/
+
   glEnable(GL_TEXTURE_2D);
 
 
