@@ -44,7 +44,8 @@ SOURCES += main.cpp\
     levelselectbutton.cpp \
     camera.cpp \
     candy.cpp \
-    sweet.cpp
+    sweet.cpp \
+    shaderloader.cpp
 
 HEADERS  += \
     game.h \
@@ -82,10 +83,13 @@ HEADERS  += \
     levelselectbutton.h \
     camera.h \
     candy.h \
-    sweet.h
+    sweet.h \
+    shaderloader.h
 
 LIBS += -lglut -lGLU -lpng
 
 OTHER_FILES += \
     TODO.txt \
-    README
+    README \
+    vertex.glsl \
+    fragment.glsl
