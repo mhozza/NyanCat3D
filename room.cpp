@@ -60,13 +60,11 @@ Game * Room::getParent()
 
 void Room::timer()
 {
-  if(!Game::paused)
+  //if(Game::paused) return;
+  for(unsigned i=0;i<objects.size();i++)
   {
-    for(unsigned i=0;i<objects.size();i++)
-    {
-      objects[i]->move();
-      objects[i]->step();
-    }
+    objects[i]->move();
+    objects[i]->step();
   }
 }
 

@@ -16,6 +16,7 @@
  */
 
 #include "gameobject.h"
+#include "game.h"
 
 #include <iostream>
 
@@ -40,15 +41,14 @@ GameObject::~GameObject()
 
 void GameObject::move()
 {
-    x+=speedX;
-    y+=speedY;
-    z+=speedZ;
-    //cout << x << " " << y << " " << z << endl;
+  if(Game::paused) return;
+  x+=speedX;
+  y+=speedY;
+  z+=speedZ;
 }
 
 Model * GameObject::getModel()
-{
-  //if(model == NULL) TODO vyhod exception
+{  
   return model;
 }
 

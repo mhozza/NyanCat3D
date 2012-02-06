@@ -46,7 +46,8 @@ SOURCES += main.cpp\
     candy.cpp \
     sweet.cpp \
     shader.cpp \
-    teapot.cpp
+    teapot.cpp \
+    fish.cpp
 
 HEADERS  += \
     game.h \
@@ -86,7 +87,8 @@ HEADERS  += \
     candy.h \
     sweet.h \
     shader.h \
-    teapot.h
+    teapot.h \
+    fish.h
 
 LIBS += -lglut -lGLU -lpng
 

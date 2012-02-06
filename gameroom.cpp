@@ -31,7 +31,8 @@
 #include "candy.h"
 #include "sweet.h"
 #include "teapot.h"
-#define DECORATION_COUNT 3
+#include "fish.h"
+#define DECORATION_COUNT 4
 
 GameRoom::GameRoom(Game *parent)
   :Room(parent)
@@ -93,6 +94,9 @@ void GameRoom::generateBlock()
     break;
   case 2:
     decor = new Teapot(getParent()->getTextureId(0),x,y,-z);
+    break;
+  case 3:
+    decor = new Fish(getParent()->getTextureId(5),x,y,-z);
     break;
   }
   addObject(decor);

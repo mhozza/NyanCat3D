@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2011-2011  Michal Hozza (mhozza@gmail.com)
+ *    Copyright (C) 2012  Michal Hozza (mhozza@gmail.com)
  *
  *    This program is free software: you can redistribute it and/or modify
  *    it under the terms of the GNU General Public License as published by
@@ -15,38 +15,36 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef GAME_H
-#define GAME_H
+#include "fish.h"
+#include "game.h"
+#include "cmath"
 
-#include "renderer.h"
-#include "mouse.h"
-#include "keyboard.h"
-
-#define TEXTURES_NUM 6
-
-enum Level {easy,medium,difficult};
-
-class Renderer;
-
-class Game
+Fish::Fish(GLuint textureID, float x, float y, float z)
+  :GameObject(NULL,x,y,z), textureId(textureID), rot(0)
 {
-    bool run;
-    void init();
-    GLuint texId[TEXTURES_NUM];
-    Renderer* renderer;
-    bool setupTextures();
-    static float speed;
-public:
-    Game();
-    ~Game();
-    int start(int argc, char *argv[]);
-    GLuint getTextureId(int index);
-    static void setLevel(Level l);
-    static float getSpeed(){return Game::speed;}
-    static bool fog;
-    static bool shaders;
-    static bool paused;
-};
+  speedZ = Game::getSpeed();
+}
 
+void Fish::draw()
+{
+  glColor4i(1,1,1,1);
+  glBindTexture(GL_TEXTURE_2D,textureId);
+  glTranslatef(0,0,-0.1);
+  GLUquadricObj* fish;
+  fish = gluNewQuadric();
+  gluQuadricDrawStyle(fish, GLU_FILL);
+  gluQuadricTexture(fish,true);
 
-#endif // GAME_H
+  glScalef(0.4,-0.8,1.2);
+  gluSphere(fish,1,24,24);
+  glRotatef(sin(rot*PI/180)*20,0,1,0);
+  glTranslatef(0,0,-1);
+  glScalef(1,1,1.2);
+  gluCylinder(fish,1,0,1,24,1);
+
+}
+
+void Fish::step()
+{
+  rot+=10;
+}
