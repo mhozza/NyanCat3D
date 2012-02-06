@@ -24,6 +24,7 @@
 using namespace std;
 
 bool Game::fog = true;
+bool Game::shaders = true;
 bool Game::paused = false;
 float Game::speed = 0.2;
 
@@ -75,8 +76,7 @@ void Game::init()
   float LightPos[4]={1.0f,1.0f,1.f,0.0f};
   float Ambient[4]={0.2,0.2,0.2,1};
   GLfloat Diffuse[] = { 1, 1, 1, 1 };
-  GLfloat Specular[] = {1, 1, 1, 1 };
-  GLfloat Emission[] = { 0, 0, 0, 1 };
+  GLfloat Specular[] = {1, 1, 1, 1 };  
 
   float LightPos2[4]={0.0f,0.0f,-2.0f,1.0f};
   float Ambient2[4]={0.2,0.2,0.2,1};
@@ -103,8 +103,8 @@ void Game::init()
   //glMaterialfv(GL_FRONT_AND_BACK,GL_SPECULAR,Specular);
   //glMaterialfv(GL_FRONT_AND_BACK,GL_EMISSION,Emission);
 
-  GLfloat defaultDiffuseColor[] = {0.5,0.5,0.5,1};
-  glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,defaultDiffuseColor);
+  /*GLfloat defaultDiffuseColor[] = {0.5,0.5,0.5,1};
+  glMaterialfv(GL_FRONT_AND_BACK,GL_DIFFUSE,defaultDiffuseColor);*/
 
 }
 

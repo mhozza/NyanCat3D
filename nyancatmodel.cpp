@@ -18,9 +18,6 @@
 #include "nyancatmodel.h"
 #include "utils.h"
 
-
-
-
 NyanCatModel::NyanCatModel(int textureId)
   :Model(textureId)
 {

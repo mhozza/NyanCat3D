@@ -19,10 +19,12 @@
 #define SWEET_H
 
 #include "gameobject.h"
+#include "shader.h"
 
 class Sweet : public GameObject
 {
   float color;
+  Shader sl;
 public:
   Sweet(float x, float y, float z);
   void draw();

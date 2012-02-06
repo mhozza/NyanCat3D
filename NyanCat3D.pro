@@ -45,7 +45,7 @@ SOURCES += main.cpp\
     camera.cpp \
     candy.cpp \
     sweet.cpp \
-    shaderloader.cpp
+    shader.cpp
 
 HEADERS  += \
     game.h \
@@ -84,12 +84,12 @@ HEADERS  += \
     camera.h \
     candy.h \
     sweet.h \
-    shaderloader.h
+    shader.h
 
 LIBS += -lglut -lGLU -lpng
 
 OTHER_FILES += \
     TODO.txt \
     README \
-    vertex.glsl \
-    fragment.glsl
+    shaders/shader.vert \
+    shaders/shader.frag

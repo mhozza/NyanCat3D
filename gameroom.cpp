@@ -80,7 +80,7 @@ void GameRoom::generateBlock()
   y = (rand()%(100*block_height))/100.0 - block_height/2.0;
   z = block_depth+(rand()%(100*block_depth))/100.0 - block_depth/2.0;
 
-  int decorationNumber = rand()%DECORATION_COUNT;
+  int decorationNumber = 1;//rand()%DECORATION_COUNT;
   GameObject * decor;
   switch(decorationNumber)
   {

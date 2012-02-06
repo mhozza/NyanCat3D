@@ -15,6 +15,8 @@
  *    along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+
+
 #include "renderer.h"
 #include "gameobject.h"
 #include "keyboard.h"
@@ -75,11 +77,6 @@ void Renderer::render()
   glMatrixMode(GL_MODELVIEW);
   glLoadIdentity();
 
-  /*GLfloat vzd = 3, fi = 0.7f, xi = 0.7f;
-  GLdouble ex = vzd*cos(fi)*cos(xi);
-  GLdouble ey = vzd*sin(fi)*cos(xi);
-  GLdouble ez = vzd*sin(xi);
-  gluLookAt( ex, ey, ez, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f );*/
 
   if(actualRoom->getMode()==MODE_3D && Game::paused)
     gluLookAt(camera->getX(),camera->getY(),camera->getZ(),camera->lookAt.x,camera->lookAt.y,camera->lookAt.z,0,1,0);
@@ -91,6 +88,7 @@ void Renderer::render()
   glColor3f(0.0f, 0.0f, 1.0f );glVertex3f( 0.0f, 0.0f,0.0f );glVertex3f( 0.0f, 0.0f,100.0f );
   glEnd();*/
 
+
   vector<GameObject*> objects = actualRoom->getObjects();
   for(unsigned i = 0;i<objects.size();i++)
   {
@@ -100,6 +98,7 @@ void Renderer::render()
     obj->draw();
     glPopMatrix();    
   }
+
 
   glutSwapBuffers();
 }

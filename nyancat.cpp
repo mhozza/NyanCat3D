@@ -27,6 +27,7 @@ NyanCat::NyanCat(int textureId)
   Keyboard::getInstance()->registerAction(this,0,'f',false);//fog
   Mouse::getInstance()->registerAction(this,1);//mouseMove
   Keyboard::getInstance()->registerAction(this,2,'p',false);//pause
+  Keyboard::getInstance()->registerAction(this,3,'h',false);//shaders
 }
 
 void NyanCat::action(int actionId)
@@ -47,6 +48,9 @@ void NyanCat::action(int actionId)
   }
   case 2:
     Game::paused = !Game::paused;
+    break;  
+  case 3:
+    Game::shaders= !Game::shaders;
     break;
   }
 }

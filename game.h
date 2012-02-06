@@ -44,6 +44,7 @@ public:
     static void setLevel(Level l);
     static float getSpeed(){return Game::speed;}
     static bool fog;
+    static bool shaders;
     static bool paused;
 };
 

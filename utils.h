@@ -117,7 +117,7 @@ public:
   static int sgn(float v);
   static bool loadPngImage(const char *name, float &outWidth, float &outHeight, bool &outHasAlpha, GLubyte **outData);
   static float getDistance(float x1, float y1, float z1, float x2, float y2, float z2);
-  static void hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB);    
+  static void hsv2rgb(float h, float s, float v, float &outR, float &outG, float &outB);
 };
 
 class Collisions
