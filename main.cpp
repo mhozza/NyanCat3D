@@ -3,7 +3,7 @@
 
 int main(int argc, char *argv[])
 {
-  srandom(time(NULL));
+  srand(time(NULL));
   Game g;
   return g.start(argc,argv);
 }
